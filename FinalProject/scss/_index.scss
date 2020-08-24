@@ -2912,7 +2912,7 @@
                                 border-color: #ed1e3c;
                                 transition: 0.4s linear;
                                 // margin-top: 5px;
-                            height: 34px;
+                                height: 34px;
 
                                 font-size: 14px;
 
@@ -3018,8 +3018,266 @@
                         }
                     }
                     // Delivery Method css
-                    .deliveryMethod{
-                        
+                    .deliveryMethod {
+                        padding-bottom: 50px;
+                        position: relative;
+                        h4 {
+                            padding-top: 22px;
+                            font-weight: 400;
+                            color: #272727;
+                            letter-spacing: 0.4px;
+                            font-size: 14px;
+                            line-height: 20px;
+                        }
+                        h1 {
+                            font-weight: 700;
+                            color: #272727;
+                            letter-spacing: 0.4px;
+                            margin-top: 12px;
+                            font-size: 14px;
+                            line-height: 20px;
+                        }
+                        .form-check {
+                            font-size: 13px;
+                            .form-check-input {
+                                margin-top: 3px;
+                            }
+                        }
+                        .form-group {
+                            .form-control {
+                                font-size: 12px;
+                                box-shadow: none;
+                                &:focus {
+                                    border-color: #ed1e3c;
+                                }
+                            }
+                        }
+                        .btn {
+                            color: white;
+                            background-color: #ed1e3c;
+                            border-color: #ed1e3c;
+                            transition: 0.4s linear;
+                            margin-bottom: 15px;
+                            font-size: 14px;
+                            height: 34px;
+
+                            position: absolute;
+                            right: 0;
+                            bottom: 0;
+
+                            &:hover {
+                                background-color: #333333;
+                                border-color: #333333;
+                            }
+                            &:focus {
+                                box-shadow: none;
+                            }
+                        }
+                    }
+                    // Payment Method css
+                    .paymentMethod {
+                        padding-bottom: 5px;
+                        h2 {
+                            font-weight: 400;
+                            color: #272727;
+                            letter-spacing: 0.4px;
+                            font-size: 14px;
+                            line-height: 20px;
+                            padding-top: 20px;
+                        }
+                        .firstCheck {
+                            font-size: 13px;
+                            margin-top: 5px;
+                            margin-bottom: 5px;
+                            .form-check-input {
+                                margin-top: 3px;
+                            }
+                        }
+                        .form-group {
+                            color: #272727;
+                            label {
+                                font-size: 14px;
+                                font-weight: 700;
+                            }
+                            .form-control {
+                                font-size: 12px;
+                                box-shadow: none;
+                                border-color: #ebebeb;
+                                &:focus {
+                                    border-color: #ed1e3c;
+                                }
+                            }
+                        }
+                        .cekbox {
+                            // position: relative;
+                            display: flex;
+                            justify-content: flex-end;
+                            p{
+                                display: inline-block;
+                                margin-bottom: 0;
+                                font-weight: 400;
+                                margin-top: 5px;
+                                margin-right: 5px;
+                                color: #272727;
+                                letter-spacing: 0.4px;
+                                font-size: 14px;
+                                line-height: 20px;
+                                a{
+                                    text-decoration: none;
+                                    color: #272727;
+                                    font-weight: 700;
+                                    transition: 0.4s linear;
+                                    &:hover{
+                                        color: #ed1e3c;
+                                    }
+
+                                }
+                            }
+                            .form-check {
+                                font-size: 13px;
+                                margin-top: 5px;
+                                margin-bottom: 5px;
+                                .form-check-input {
+                                    margin-top: 3px;
+                                }
+                            }
+                            .btn {
+                                color: white;
+                                background-color: #ed1e3c;
+                                border-color: #ed1e3c;
+                                transition: 0.4s linear;
+                                margin-bottom: 15px;
+                                font-size: 14px;
+                                height: 34px;
+
+                                // position: absolute;
+                                // right: 0;
+                                // bottom: 0;
+
+                                &:hover {
+                                    background-color: #333333;
+                                    border-color: #333333;
+                                }
+                                &:focus {
+                                    box-shadow: none;
+                                }
+                            }
+                        }
+                    }
+                    // Confirm order css
+                    .confirmOrder{
+                        padding-top: 15px;
+                        .table {
+                            background-color: #ffffff;
+                            color: #272727;
+                            letter-spacing: 0.4px;
+                            font-size: 14px;
+        
+                            tr {
+                                th {
+                                    padding: 8px;
+                                }
+                                td {
+                                    padding: 8px;
+                                    span {
+                                        text-decoration: line-through;
+                                    }
+                                    img {
+                                        width: 88px;
+                                        height: 98px;
+                                    }
+                                    a {
+                                        text-decoration: none;
+                                        color: #272727;
+                                        letter-spacing: 0.4px;
+                                        transition: 0.4s linear;
+                                        text-transform: capitalize;
+                                        &:hover {
+                                            color: #ed1e3c;
+                                        }
+                                    }
+                                    .miqdar {
+                                        display: flex;
+                                        input {
+                                            width: 60%;
+                                            height: 34px;
+                                            border: 1px solid #ebebeb;
+                                            border-top-left-radius: 5px;
+                                            border-bottom-left-radius: 5px;
+                                            font-size: 12px;
+                                            padding-left: 10px;
+                                            color: #555555;
+        
+                                            &:focus {
+                                                border: 1px solid #ed1e3c;
+                                                outline: 0;
+                                            }
+                                        }
+                                        .btn {
+                                            width: 38px;
+                                            height: 34px;
+                                            color: white;
+                                            border-radius: 0;
+                                            font-size: 14px;
+                                            transition: 0.4s linear;
+                                            &:focus {
+                                                box-shadow: none;
+                                            }
+                                            i {
+                                            }
+                                        }
+                                        .refresh {
+                                            background-color: #ed1e3c;
+                                            border-color: #ed1e3c;
+        
+                                            &:hover {
+                                                background-color: #333;
+                                                border-color: #333333;
+                                            }
+                                        }
+                                        .remove {
+                                            background-color: #333;
+                                            border-color: #333333;
+                                            border-top-right-radius: 15%;
+                                            border-bottom-right-radius: 15%;
+                                            &:hover {
+                                                background-color: #ed1e3c;
+                                                border-color: #ed1e3c;
+                                            }
+                                        }
+                                    }
+                                }
+                                .price {
+                                    text-align: right;
+                                }
+                            }
+                        }
+                        .myButton{
+                            display: flex;
+                            justify-content: flex-end;
+                            padding-top: 10px;
+                            .btn {
+                                color: white;
+                                background-color: #ed1e3c;
+                                border-color: #ed1e3c;
+                                transition: 0.4s linear;
+                                margin-bottom: 15px;
+                                font-size: 14px;
+                                height: 34px;
+
+                                // position: absolute;
+                                // right: 0;
+                                // bottom: 0;
+
+                                &:hover {
+                                    background-color: #333333;
+                                    border-color: #333333;
+                                }
+                                &:focus {
+                                    box-shadow: none;
+                                }
+                            }
+                        }
                     }
                 }
             }
