@@ -2791,6 +2791,7 @@
                     border-radius: 4px;
                     margin-top: 5px;
                     border: 1px solid #dddddd;
+                    cursor: pointer;
 
                     .accordionTitle {
                         padding: 9.4px 4px 9.4px 9.4px;
@@ -2811,6 +2812,11 @@
                     border: 1px solid #dddddd;
                     margin: 0;
                     border-top: 0;
+
+                    // for active class css
+                    display: none;
+                    // end of active class css
+
                     // Checkout Options css
                     .newCostumer {
                         padding-top: 35px;
@@ -3112,7 +3118,7 @@
                             // position: relative;
                             display: flex;
                             justify-content: flex-end;
-                            p{
+                            p {
                                 display: inline-block;
                                 margin-bottom: 0;
                                 font-weight: 400;
@@ -3122,15 +3128,14 @@
                                 letter-spacing: 0.4px;
                                 font-size: 14px;
                                 line-height: 20px;
-                                a{
+                                a {
                                     text-decoration: none;
                                     color: #272727;
                                     font-weight: 700;
                                     transition: 0.4s linear;
-                                    &:hover{
+                                    &:hover {
                                         color: #ed1e3c;
                                     }
-
                                 }
                             }
                             .form-check {
@@ -3165,14 +3170,14 @@
                         }
                     }
                     // Confirm order css
-                    .confirmOrder{
+                    .confirmOrder {
                         padding-top: 15px;
                         .table {
                             background-color: #ffffff;
                             color: #272727;
                             letter-spacing: 0.4px;
                             font-size: 14px;
-        
+
                             tr {
                                 th {
                                     padding: 8px;
@@ -3207,7 +3212,7 @@
                                             font-size: 12px;
                                             padding-left: 10px;
                                             color: #555555;
-        
+
                                             &:focus {
                                                 border: 1px solid #ed1e3c;
                                                 outline: 0;
@@ -3229,7 +3234,7 @@
                                         .refresh {
                                             background-color: #ed1e3c;
                                             border-color: #ed1e3c;
-        
+
                                             &:hover {
                                                 background-color: #333;
                                                 border-color: #333333;
@@ -3252,7 +3257,7 @@
                                 }
                             }
                         }
-                        .myButton{
+                        .myButton {
                             display: flex;
                             justify-content: flex-end;
                             padding-top: 10px;
@@ -3280,9 +3285,69 @@
                         }
                     }
                 }
+                .active {
+                    display: flex;
+                }
             }
         }
         // end of Checkout page css
+
+        // Site map css
+        #siteMap {
+            #breadcrumb {
+                background-color: white;
+                margin-bottom: 20px;
+                padding: 8px 10px;
+                border-radius: 4px;
+                .icon {
+                    display: inline-block;
+                    font-size: 14px;
+                    line-height: 1.5;
+                    a {
+                        color: #222;
+                        letter-spacing: 1px;
+                        transition: 0.4s linear;
+                        text-decoration: none;
+                        &:hover {
+                            color: #ed1e3c;
+                        }
+                    }
+                    i {
+                        margin-right: 10px;
+                    }
+                }
+                a {
+                    color: #222;
+                    letter-spacing: 1px;
+                    font-size: 14px;
+                    transition: 0.4s linear;
+                    text-decoration: none;
+                    &:hover {
+                        color: #ed1e3c;
+                    }
+                }
+            }
+            .myMap {
+                font-weight: 400;
+                color: #272727;
+                letter-spacing: 0.4px;
+                font-size: 14px;
+                line-height: 20px;
+                ul {
+                    li {
+                    }
+                }
+                a {
+                    color: #222222;
+                    text-decoration: none;
+                    transition: 0.4s linear;
+                    &:hover {
+                        color: #ed1e3c;
+                    }
+                }
+            }
+        }
+        // end of Site map page css
 
         // companies only in Home Page
         #companies {

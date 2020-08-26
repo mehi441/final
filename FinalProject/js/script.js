@@ -1,8 +1,17 @@
 $(document).ready(function () {
 
+    $("#accordion .header").click(function(){
+
+        $(this).next().toggleClass( "active" );
+
+    })
 
 
 
+   
+
+
+ 
 
 
     // hot deals owl in left side navbar
@@ -228,8 +237,8 @@ $(document).ready(function () {
         }
     })
 
-        // on related owl
-        $('#productDetails #related .sliderProducts .owl-carousel').owlCarousel({
+    // on related owl
+    $('#productDetails #related .sliderProducts .owl-carousel').owlCarousel({
             loop: true,
             margin: 10,
             nav: true,
@@ -246,7 +255,7 @@ $(document).ready(function () {
                     items: 4
                 }
             }
-        })
+    })
 
 
 

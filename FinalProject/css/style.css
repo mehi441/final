@@ -1961,7 +1961,8 @@
     background-color: white;
     border-radius: 4px;
     margin-top: 5px;
-    border: 1px solid #dddddd; }
+    border: 1px solid #dddddd;
+    cursor: pointer; }
     #wrapper main #checkout #accordion .header .accordionTitle {
       padding: 9.4px 4px 9.4px 9.4px;
       margin-bottom: 0;
@@ -1977,7 +1978,8 @@
     border-radius: 4px;
     border: 1px solid #dddddd;
     margin: 0;
-    border-top: 0; }
+    border-top: 0;
+    display: none; }
     #wrapper main #checkout #accordion .content .newCostumer {
       padding-top: 35px; }
       #wrapper main #checkout #accordion .content .newCostumer h2 {
@@ -2314,6 +2316,46 @@
             border-color: #333333; }
           #wrapper main #checkout #accordion .content .confirmOrder .myButton .btn:focus {
             box-shadow: none; }
+  #wrapper main #checkout #accordion .active {
+    display: flex; }
+  #wrapper main #siteMap #breadcrumb {
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 8px 10px;
+    border-radius: 4px; }
+    #wrapper main #siteMap #breadcrumb .icon {
+      display: inline-block;
+      font-size: 14px;
+      line-height: 1.5; }
+      #wrapper main #siteMap #breadcrumb .icon a {
+        color: #222;
+        letter-spacing: 1px;
+        transition: 0.4s linear;
+        text-decoration: none; }
+        #wrapper main #siteMap #breadcrumb .icon a:hover {
+          color: #ed1e3c; }
+      #wrapper main #siteMap #breadcrumb .icon i {
+        margin-right: 10px; }
+    #wrapper main #siteMap #breadcrumb a {
+      color: #222;
+      letter-spacing: 1px;
+      font-size: 14px;
+      transition: 0.4s linear;
+      text-decoration: none; }
+      #wrapper main #siteMap #breadcrumb a:hover {
+        color: #ed1e3c; }
+  #wrapper main #siteMap .myMap {
+    font-weight: 400;
+    color: #272727;
+    letter-spacing: 0.4px;
+    font-size: 14px;
+    line-height: 20px; }
+    #wrapper main #siteMap .myMap a {
+      color: #222222;
+      text-decoration: none;
+      transition: 0.4s linear; }
+      #wrapper main #siteMap .myMap a:hover {
+        color: #ed1e3c; }
   #wrapper main #companies {
     background-color: white;
     box-shadow: 0px 1px 4px 0 rgba(0, 0, 0, 0.09);
