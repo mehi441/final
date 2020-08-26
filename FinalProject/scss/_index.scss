@@ -3349,6 +3349,341 @@
         }
         // end of Site map page css
 
+        // account registration and login pages css
+        #account {
+            // register css
+            #register {
+                #breadcrumb {
+                    background-color: white;
+                    margin-bottom: 20px;
+                    padding: 8px 10px;
+                    border-radius: 4px;
+                    .icon {
+                        display: inline-block;
+                        font-size: 14px;
+                        line-height: 1.5;
+                        a {
+                            color: #222;
+                            letter-spacing: 1px;
+                            transition: 0.4s linear;
+                            text-decoration: none;
+                            &:hover {
+                                color: #ed1e3c;
+                            }
+                        }
+                        i {
+                            margin-right: 10px;
+                        }
+                    }
+                    a {
+                        color: #222;
+                        letter-spacing: 1px;
+                        font-size: 14px;
+                        transition: 0.4s linear;
+                        text-decoration: none;
+                        &:hover {
+                            color: #ed1e3c;
+                        }
+                    }
+                }
+                .title {
+                    font-size: 18px;
+                    color: #222222;
+                    line-height: 1.1;
+                }
+                p {
+                    font-size: 14px;
+                    color: #272727;
+                    margin-bottom: 15px;
+                }
+                h3 {
+                    font-size: 18px;
+                    color: #333333;
+                }
+                hr {
+                    margin-top: 7px;
+                }
+                .cekbox {
+                    // position: relative;
+                    display: flex;
+                    justify-content: flex-end;
+                    p {
+                        display: inline-block;
+                        margin-bottom: 0;
+                        font-weight: 400;
+                        margin-top: 5px;
+                        margin-right: 5px;
+                        color: #272727;
+                        letter-spacing: 0.4px;
+                        font-size: 14px;
+                        line-height: 20px;
+                        a {
+                            text-decoration: none;
+                            color: #272727;
+                            font-weight: 700;
+                            transition: 0.4s linear;
+                            &:hover {
+                                color: #ed1e3c;
+                            }
+                        }
+                    }
+                    .form-check {
+                        font-size: 13px;
+                        margin-top: 5px;
+                        margin-bottom: 5px;
+                        // label::before{
+                        //     content: "";
+                        // }
+                        .form-check-input {
+                            margin-top: 3px;
+                        }
+                    }
+                    .btn {
+                        color: white;
+                        background-color: #ed1e3c;
+                        border-color: #ed1e3c;
+                        transition: 0.4s linear;
+                        margin-bottom: 15px;
+                        font-size: 14px;
+                        height: 34px;
+
+                        // position: absolute;
+                        // right: 0;
+                        // bottom: 0;
+
+                        &:hover {
+                            background-color: #333333;
+                            border-color: #333333;
+                        }
+                        &:focus {
+                            box-shadow: none;
+                        }
+                    }
+                }
+                form {
+                    .form-group {
+                        font-size: 13px;
+                        color: #272727;
+                        margin-bottom: 13px;
+                        .forRecuired::before {
+                            content: "* ";
+                            color: #f00;
+                            font-weight: bold;
+                        }
+                        legend{
+                            display: flex;
+                            justify-content: flex-end;
+                        }
+                        label {
+                            display: flex;
+                            justify-content: flex-end;
+                            // margin-bottom: 3px;
+                            padding-right: 5px;
+                        }
+                        .form-control {
+                            font-size: 12px;
+                            color: #272727;
+                            border: 1px solid #ebebeb;
+                            &:focus {
+                                box-shadow: none;
+                                border-color: #ed1e3c;
+                            }
+                        }
+                        a {
+                            text-decoration: none;
+                            color: #222222;
+                            font-weight: 400;
+                            letter-spacing: 0.4px;
+                            font-size: 14px;
+                            line-height: 20px;
+                            transition: 0.4s linear;
+                            &:hover {
+                                color: #ed1e3c;
+                            }
+                        }
+                    }
+                }
+            }
+            // end of register page css
+
+            // login page css
+            #breadcrumb {
+                background-color: white;
+                margin-bottom: 20px;
+                padding: 8px 10px;
+                border-radius: 4px;
+                .icon {
+                    display: inline-block;
+                    font-size: 14px;
+                    line-height: 1.5;
+                    a {
+                        color: #222;
+                        letter-spacing: 1px;
+                        transition: 0.4s linear;
+                        text-decoration: none;
+                        &:hover {
+                            color: #ed1e3c;
+                        }
+                    }
+                    i {
+                        margin-right: 10px;
+                    }
+                }
+                a {
+                    color: #222;
+                    letter-spacing: 1px;
+                    font-size: 14px;
+                    transition: 0.4s linear;
+                    text-decoration: none;
+                    &:hover {
+                        color: #ed1e3c;
+                    }
+                }
+            }
+            #newUser{
+                padding-top: 35px;
+                background-color: #f6f6f6;
+                border: 1px solid #eaeaea;
+                padding-left: 20px;
+                padding-right: 20px;
+                margin-bottom: 20px;
+            
+                h2 {
+                    font-size: 27px;
+                    color: #333;
+                    line-height: 1.1;
+                    letter-spacing: 0.4px;
+                    margin-bottom: 10px;
+                }
+                h4 {
+                    font-size: 14px;
+                    color: #272727;
+                    margin-bottom: 10px;
+                    font-weight: 700;
+                }
+                p{
+                    font-weight: 400;
+                    color: #272727;
+                    letter-spacing: 0.4px;
+                    font-size: 14px;
+                    line-height: 20px;
+                    margin-bottom: 10px;
+                }
+                a{
+                    text-decoration: none;
+                    .btn {
+                        color: white;
+                        background-color: #ed1e3c;
+                        border-color: #ed1e3c;
+                        transition: 0.4s linear;
+                        margin-bottom: 20px;
+                        font-size: 14px;
+                        height: 34px;
+                        &:hover {
+                            background-color: #333333;
+                            border-color: #333333;
+                        }
+                        &:focus {
+                            box-shadow: none;
+                        }
+                    }
+                }
+            }
+            #login {
+                padding-top: 35px;
+                background-color: #f6f6f6;
+                border: 1px solid #eaeaea;
+                padding-left: 20px;
+                padding-right: 20px;
+            
+                h2 {
+                    font-size: 27px;
+                    color: #333;
+                    line-height: 1.1;
+                    letter-spacing: 0.4px;
+                    margin-bottom: 10px;
+                }
+                h4 {
+                    font-size: 14px;
+                    color: #272727;
+                    margin-bottom: 10px;
+                    font-weight: 700;
+                }
+                form {
+                    .form-group {
+                        font-size: 13px;
+                        color: #272727;
+                        label {
+                            margin-bottom: 3px;
+                        }
+                        .form-control {
+                            font-size: 12px;
+                            color: #272727;
+                            border: 1px solid #ebebeb;
+                            &:focus {
+                                box-shadow: none;
+                                border-color: #ed1e3c;
+                            }
+                        }
+                        a {
+                            text-decoration: none;
+                            color: #222222;
+                            font-weight: 400;
+                            letter-spacing: 0.4px;
+                            font-size: 14px;
+                            line-height: 20px;
+                            transition: 0.4s linear;
+                            &:hover {
+                                color: #ed1e3c;
+                            }
+                        }
+                    }
+
+                    .btn {
+                        color: white;
+                        background-color: #ed1e3c;
+                        border-color: #ed1e3c;
+                        transition: 0.4s linear;
+                        // margin-top: 5px;
+                        height: 34px;
+
+                        font-size: 14px;
+
+                        margin-bottom: 15px;
+                        &:hover {
+                            background-color: #333333;
+                            border-color: #333333;
+                        }
+                        &:focus {
+                            box-shadow: none;
+                        }
+                    }
+                }
+            }
+            // end of login page css
+            #accTable {
+                margin-top: 20px;
+                tr{
+                    background-color: white;
+                    td{
+                        padding: 8px 12px;
+                        font-size: 14px;
+                        a {
+                            text-decoration: none;
+                            color: #272727;
+                            letter-spacing: 0.4px;
+                            transition: 0.4s linear;
+                            text-transform: capitalize;
+                            &:hover {
+                                color: #ed1e3c;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // end of account registration and login pages css
+
         // companies only in Home Page
         #companies {
             background-color: white;
