@@ -1,17 +1,26 @@
 $(document).ready(function () {
 
-    $("#accordion .header").click(function(){
+    $("#accordion .header").click(function () {
 
-        $(this).next().toggleClass( "active" );
+        $(this).next().toggleClass("active");
 
+    })
+
+    // for dropright in catagiries
+    $("#categories li").mouseenter(function () {
+        $(this).children(".btn-group").addClass("show");
+        $(".btn-group .btn-secondary", this).attr("aria-expanded", true);
+        $(".btn-group .btn-secondary", this).next().addClass("show");
+    })
+
+    $("#categories li").mouseleave(function () {
+        $(this).children(".btn-group").removeClass("show");
+        $(".btn-group .btn-secondary", this).attr("aria-expanded", false);
+        $(".btn-group .btn-secondary", this).next().removeClass("show");
     })
 
 
 
-   
-
-
- 
 
 
     // hot deals owl in left side navbar
@@ -239,22 +248,22 @@ $(document).ready(function () {
 
     // on related owl
     $('#productDetails #related .sliderProducts .owl-carousel').owlCarousel({
-            loop: true,
-            margin: 10,
-            nav: true,
-            items: 4,
-            dots: false,
-            responsive: {
-                0: {
-                    items: 4
-                },
-                600: {
-                    items: 4
-                },
-                1000: {
-                    items: 4
-                }
+        loop: true,
+        margin: 10,
+        nav: true,
+        items: 4,
+        dots: false,
+        responsive: {
+            0: {
+                items: 4
+            },
+            600: {
+                items: 4
+            },
+            1000: {
+                items: 4
             }
+        }
     })
 
 

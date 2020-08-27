@@ -126,6 +126,8 @@
 
     main {
         #categories {
+            box-shadow: 0px 1px 4px 0 rgba(0, 0, 0, 0.09);
+
             .title {
                 h1 {
                     font-size: 15px;
@@ -144,12 +146,12 @@
                 list-style: none;
                 padding: 0;
                 background-color: white;
-                padding: 0 15px;
+                padding: 0px;
                 hr {
                     margin: 0;
                 }
                 li {
-                    padding: 15px;
+                    padding: 15px 30px 15px 30px;
                     line-height: 1.25;
                     height: 54px;
                     .image {
@@ -201,14 +203,168 @@
                             border: 0;
                         }
                     }
+                    .dropright {
+                        .dropdown-menu {
+                            margin-left: 0;
+                            padding: 12px 0;
+                            border: 0px;
+                            box-shadow: 0 0px 5px rgba(0, 0, 0, 0.175);
+
+                            top: -17px;
+                            left: 195px;
+                            a {
+                                padding: 3px 20px;
+                                line-height: 20px;
+                                color: #272727;
+                                text-transform: capitalize;
+                                font-size: 14px;
+                                letter-spacing: 1px;
+                                font-weight: 600;
+                                transition: 0.4s linear;
+                                &:hover{
+                                    color: #ed1e3c;
+                                }
+                            }
+                        }
+                    }
                     a {
                         font-size: 14px;
                         color: #272727;
                         text-decoration: none;
+                        transition: 0.4s linear;
+                    }
+                    &:hover {
+                        a {
+                            color: #ed1e3c;
+                        }
+                        .btn-secondary {
+                            color: #ed1e3c;
+                        }
                     }
                 }
             }
         }
+
+        // filter section css in left side
+        #filter {
+            background-color: #fff;
+            padding: 15px 20px 10px 20px;
+            h2 {
+                font-size: 16px;
+                color: #ed1e3c;
+                margin-bottom: 10px;
+            }
+            hr {
+                margin-top: 0px;
+                margin-bottom: 0px;
+                margin-left: -10px;
+                margin-right: -10px;
+            }
+            .choose {
+                .myHeader {
+                    padding: 10px 0;
+                    display: flex;
+                    justify-content: space-between;
+
+                    .title {
+                        text-transform: uppercase;
+                        font-size: 14px;
+                        color: #272727;
+                        margin-bottom: 0;
+                        letter-spacing: 0.4px;
+                        line-height: 20px;
+                        padding: 5px 0;
+                    }
+                    i {
+                        font-size: 14px;
+                        margin-top: 8px;
+                    }
+                }
+                .title {
+                    text-transform: uppercase;
+                    font-size: 14px;
+                    color: #272727;
+                    margin-bottom: 0;
+                    letter-spacing: 0.4px;
+                    line-height: 20px;
+                    padding: 5px 0;
+                }
+                .price {
+                }
+                .brand {
+                    margin-bottom: 10px;
+                    .brandOption {
+                        display: flex;
+                        justify-content: space-between;
+                        padding: 2px 0;
+
+                        .brandQuantity {
+                            width: 19px;
+                            height: 15px;
+                            background-color: #d9534f;
+                            background-color: #5bc0de;
+
+                            font-size: 11px;
+                            text-align: center;
+                            border-radius: 4px;
+                            span {
+                                color: white;
+                                margin-top: 3px;
+                                font-weight: 700;
+                            }
+                        }
+
+                        .form-check {
+                            margin-bottom: 0;
+                            .form-check-input {
+                                width: 14px;
+                                height: 14px;
+                            }
+                            .form-check-label {
+                                font-size: 13px;
+                            }
+                        }
+                    }
+                }
+                .stock {
+                    .stockOption {
+                        display: flex;
+                        justify-content: space-between;
+                        padding: 2px 0;
+
+                        .brandQuantity {
+                            width: 19px;
+                            height: 16px;
+                            background-color: #5bc0de;
+                            background-color: #d9534f;
+
+                            font-size: 11px;
+                            text-align: center;
+                            border-radius: 4px;
+                            span {
+                                color: white;
+                                margin-top: 3px;
+                                font-weight: 700;
+                            }
+                        }
+
+                        .form-check {
+                            margin-bottom: 0;
+                            .form-check-input {
+                                width: 12px;
+                                height: 12px;
+
+                                margin-top: 6px;
+                            }
+                            .form-check-label {
+                                font-size: 13px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         #hotDeals {
             margin-top: 40px;
             background-color: white;
@@ -388,6 +544,8 @@
                 }
             }
         }
+
+        // latest and bestSeller section css are same
         #latest {
             margin-top: 40px;
             padding: 20px;
@@ -3470,7 +3628,7 @@
                             color: #f00;
                             font-weight: bold;
                         }
-                        legend{
+                        legend {
                             display: flex;
                             justify-content: flex-end;
                         }
@@ -3540,14 +3698,14 @@
                     }
                 }
             }
-            #newUser{
+            #newUser {
                 padding-top: 35px;
                 background-color: #f6f6f6;
                 border: 1px solid #eaeaea;
                 padding-left: 20px;
                 padding-right: 20px;
                 margin-bottom: 20px;
-            
+
                 h2 {
                     font-size: 27px;
                     color: #333;
@@ -3561,7 +3719,7 @@
                     margin-bottom: 10px;
                     font-weight: 700;
                 }
-                p{
+                p {
                     font-weight: 400;
                     color: #272727;
                     letter-spacing: 0.4px;
@@ -3569,7 +3727,7 @@
                     line-height: 20px;
                     margin-bottom: 10px;
                 }
-                a{
+                a {
                     text-decoration: none;
                     .btn {
                         color: white;
@@ -3595,7 +3753,7 @@
                 border: 1px solid #eaeaea;
                 padding-left: 20px;
                 padding-right: 20px;
-            
+
                 h2 {
                     font-size: 27px;
                     color: #333;
@@ -3661,11 +3819,13 @@
                 }
             }
             // end of login page css
+
+            // Account table css
             #accTable {
                 margin-top: 20px;
-                tr{
+                tr {
                     background-color: white;
-                    td{
+                    td {
                         padding: 8px 12px;
                         font-size: 14px;
                         a {
@@ -3681,6 +3841,7 @@
                     }
                 }
             }
+            // end of Account table
         }
         // end of account registration and login pages css
 
