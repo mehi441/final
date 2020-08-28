@@ -20,9 +20,6 @@ $(document).ready(function () {
     })
 
 
-
-
-
     // hot deals owl in left side navbar
     $('#hotDeals .owl-carousel').owlCarousel({
         loop: true,
