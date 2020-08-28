@@ -1,0 +1,321 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- Checkout  page -->
+<div class="col-lg-9 col-sm-8" id="checkout">
+    <div id="breadcrumb">
+        <div class="icon">
+            <a href="#">
+                <i class="fa fa-home"></i>
+            </a>
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        <a href="#">Shopping Cart</a>
+        <div class="icon">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        <a href="#">Checkout</a>
+    </div>
+    <h2 class="title">Checkout</h2>
+
+    <!-- Accordion -->
+    <div id="accordion">
+        <!-- Checkout Options  -->
+        <div class="header">
+            <h1 class="accordionTitle">Step 1: Checkout Options</h1>
+            <i class="fas fa-caret-down"></i>
+        </div>
+        <div class="row content">
+            <div class="col-lg-6">
+                <div class="newCostumer">
+                    <h2>New Customer</h2>
+                    <h4>Checkout Options:</h4>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios"
+                               id="exampleRadios1" value="option1" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                            Register Account
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios"
+                               id="exampleRadios2" value="option2">
+                        <label class="form-check-label" for="exampleRadios2">
+                            Guest Checkout
+                        </label>
+                    </div>
+                    <p>
+                        By creating an account you will be able to shop faster, be up to date on an
+                        order's
+                        status, and keep track of the orders you have previously made.
+                    </p>
+                    <button class="btn">Continue</button>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="returnCostumer">
+                    <h2>Returning Customer</h2>
+                    <h4>I am a returning customer</h4>
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">E-Mail</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                   aria-describedby="emailHelp" placeholder="E-Mail">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1"
+                                   placeholder="Password">
+                            <a href="#">Forgetten password</a>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Billing details  -->
+        <div class="header">
+            <h1 class="accordionTitle">Step 2: Billing Details</h1>
+            <i class="fas fa-caret-down"></i>
+        </div>
+        <div class="row content">
+            <div class="col-lg-6">
+                <div class="personalInfo">
+                    <h3>Your Personal Details</h3>
+                    <hr>
+                    <div class="form-group">
+                        <label class="requr" for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1"
+                               aria-describedby="emailHelp" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <label class="requr" for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1"
+                               placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <label class="requr" for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1"
+                               aria-describedby="emailHelp" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <label class="requr" for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1"
+                               placeholder="Name">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="addressInfo">
+                    <h3>Your Address</h3>
+                    <hr>
+                    <div class="form-group">
+                        <label class="requr" for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1"
+                               aria-describedby="emailHelp" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1"
+                               placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <label class="requr" for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1"
+                               aria-describedby="emailHelp" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1"
+                               placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1"
+                               placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <label class="requr" for="exampleFormControlSelect1">Example select</label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <option selected>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Example select</label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <option selected>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <button class="btn">Continue</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delivery Method -->
+        <div class="header">
+            <h1 class="accordionTitle">Step 3: Delivery Method </h1>
+            <i class="fas fa-caret-down"></i>
+        </div>
+        <div class="row content">
+            <div class="col-lg-12">
+                <div class="deliveryMethod">
+                    <h4>
+                        Please select the preferred shipping method to use on this order.
+                    </h4>
+                    <h1>Free Shipping</h1>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios"
+                               id="exampleRadios1" value="option1">
+                        <label class="form-check-label" for="exampleRadios1">
+                            Register Account
+                        </label>
+                    </div>
+                    <h1>Flat Rate</h1>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios"
+                               id="exampleRadios2" value="option2">
+                        <label class="form-check-label" for="exampleRadios2">
+                            Guest Checkout
+                        </label>
+                    </div>
+                    <h1>Add Comments About Your Order</h1>
+                    <div class="form-group">
+                        <textarea class="form-control" id="exampleFormControlTextarea1"
+                                  rows="3"></textarea>
+                    </div>
+                    <button class="btn">Continue</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment Method  -->
+        <div class="header">
+            <h1 class="accordionTitle">Step 4: Payment Method</h1>
+            <i class="fas fa-caret-down"></i>
+        </div>
+        <div class="row content">
+            <div class="col-lg-12">
+                <div class="paymentMethod">
+                    <h2>Please select the preferred shipping method to use on this order.</h2>
+                    <div class="firstCheck form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios"
+                               id="exampleRadios1" value="option1" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                            Cash On Delivery
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">
+                            Add Comments About Your
+                            Order
+                        </label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1"
+                                  rows="3"></textarea>
+                    </div>
+                    <div class="cekbox">
+                        <p>
+                            I have read and agree to the
+                            <a href="#">Terms & Conditions</a>
+                        </p>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value=""
+                                   id="defaultCheck1">
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Confirm Order -->
+        <div class="header">
+            <h1 class="accordionTitle">Step 5: Confirm Order</h1>
+            <i class="fas fa-caret-down"></i>
+        </div>
+        <div class="row content">
+            <div class="col-lg-12">
+                <div class="confirmOrder">
+                    <table class="table table-bordered">
+                        <colgroup>
+                            <col style="width: 219px;">
+                            <col style="width: 172px;">
+                            <col style="width: 145px;">
+                            <col style="width: 159px;">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <td>Product Name</td>
+                                <td>Model</td>
+                                <td class="price">Quantity</td>
+                                <td class="price">Unit Price</td>
+                                <td class="price">Total</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="#">
+                                        asasd
+                                    </a>
+                                </td>
+                                <td>
+                                    asasfas
+                                </td>
+                                <td class="price">
+                                    product 11
+                                </td>
+                                <td class="price">
+                                    asfasfa
+                                </td>
+                                <td class="price">$123.20</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#">iPhone</a>
+                                </td>
+                                <td>
+                                    asdaf
+                                </td>
+                                <td class="price">
+                                    product 11
+                                </td>
+                                <td class="price">asfas</td>
+                                <td class="price">$2.00</td>
+                            </tr>
+                            <tr>
+                                <th colspan="4" class="price">Sub-Total:</th>
+                                <td class="price">45$</td>
+                            </tr>
+                            <tr>
+                                <th colspan="4" class="price">Free Shipping:</th>
+                                <td class="price">45$</td>
+                            </tr>
+                            <tr>
+                                <th colspan="4" class="price">Total:</th>
+                                <td class="price">45$</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="myButton">
+                        <button class="btn">Confirm Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- End of Accordion -->
+
+</div>
+<!-- end of checkout page -->
