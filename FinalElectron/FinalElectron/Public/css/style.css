@@ -166,9 +166,11 @@
           color: #ed1e3c; }
         #wrapper main #categories ul li:hover .btn-secondary {
           color: #ed1e3c; }
-  #wrapper main #filter {
-    background-color: #fff;
-    padding: 15px 20px 10px 20px; }
+    #wrapper main #filter {
+        background-color: #fff;
+        margin-top: 40px;
+        padding: 15px 20px 10px 20px;
+    }
     #wrapper main #filter h2 {
       font-size: 16px;
       color: #ed1e3c;

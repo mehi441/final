@@ -77,3 +77,9 @@ C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron
 C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron.csproj.CopyComplete
 C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron.dll
 C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron.pdb
+C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\bin\EntityFramework.dll
+C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\bin\EntityFramework.SqlServer.dll
+C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\bin\EntityFramework.xml
+C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\bin\EntityFramework.SqlServer.xml
+C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron.Migrations.init.resources
+C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron.csproj.GenerateResource.cache

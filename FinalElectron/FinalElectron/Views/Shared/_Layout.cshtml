@@ -237,6 +237,8 @@
 
 
                         </div>
+                        @RenderSection("Filter", false)
+
                         <div id="hotDeals">
                             <div class="title">
                                 <h1>hot deals</h1>
@@ -980,91 +982,8 @@
                 </div>
             </div>
 
-            <!-- only home page section  -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div id="companies">
-                            <div class="owl-carousel owl-theme">
-                                <div class="item">
-                                    <div class="company">
-                                        <div class="image">
-                                            <a href="#">
-                                                <img src="~/Public/img/companies/1-166x110.png" alt="phone">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="company">
-                                        <div class="image">
-                                            <img src="~/Public/img/companies/2-166x110.png" alt="phone">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="company">
-                                        <div class="image">
-                                            <img src="~/Public/img/companies/brand-3-166x110.png" alt="phone">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="company">
-                                        <div class="image">
-                                            <img src="~/Public/img/companies/brand-4-166x110.png" alt="phone">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="company">
-                                        <div class="image">
-                                            <img src="~/Public/img/companies/brand-5-166x110.png" alt="phone">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="company">
-                                        <div class="image">
-                                            <img src="~/Public/img/companies/brand-58-166x110 (1).png"
-                                                 alt="phone">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="company">
-                                        <div class="image">
-                                            <img src="~/Public/img/companies/brand-58-166x110.png" alt="phone">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="company">
-                                        <div class="image">
-                                            <img src="~/Public/img/companies/brand-6-166x110.png" alt="phone">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="company">
-                                        <div class="image">
-                                            <img src="~/Public/img/companies/brand-7-166x110.png" alt="phone">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="company">
-                                        <div class="image">
-                                            <img src="~/Public/img/companies/brand-8-166x110.png" alt="phone">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end of companies carousel  -->
+            @RenderSection("Companies", false)
+
         </main>
 
         <footer>
