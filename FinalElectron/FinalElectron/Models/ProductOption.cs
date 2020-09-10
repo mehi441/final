@@ -28,19 +28,27 @@ namespace FinalElectron.Models
         public int ColorId { get; set; }
         public Color Color { get; set; }
 
-        [ForeignKey("Size")]
-        public int SizeId { get; set; }
-        public Size Size { get; set; }
+        //[ForeignKey("Size")]
+        //public int SizeId { get; set; }
+        //public Size Size { get; set; }
 
         [ForeignKey("Product")]
         public int ProductId { get; set; }
         public Product Product { get; set; }
-         
+
         public List<OrderItem> OrderItems { get; set; }
 
         public List<Specification> Specifications { get; set; }
-         
+
         public List<HotDeal> HotDeals { get; set; }
 
+        [NotMapped]
+        public int[] ColorIds { get; set; }
+
+        [NotMapped]
+        public int[] Quantities { get; set; }
+
+        [NotMapped]
+        public int[] Prices { get; set; }
     }
 }

@@ -83,3 +83,11 @@ C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\bin\EntityFramework.xml
 C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\bin\EntityFramework.SqlServer.xml
 C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron.Migrations.init.resources
 C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron.csproj.GenerateResource.cache
+C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron.Migrations.init2.resources
+C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron.Migrations.init3.resources
+C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron.Migrations.removeAddedDateFromSize.resources
+C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron.Migrations.removeSize.resources
+C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron.Migrations.a.resources
+C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron.Migrations.sd.resources
+C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron.Migrations.sds.resources
+C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron.Migrations.addhoverimage.resources

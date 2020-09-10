@@ -22,6 +22,14 @@ namespace FinalElectron.Models
         [Column(TypeName = "bit")]
         public bool IsSpecial { get; set; }
 
+        // hover image 
+        [MaxLength(200)]
+        public string HoverImage { get; set; }
+
+        [NotMapped]
+        public HttpPostedFileBase HoverImageFile { get; set; }
+        // end hover img
+         
         public DateTime AddedDate { get; set; }
 
         [ForeignKey("SubCategory")]
@@ -42,5 +50,8 @@ namespace FinalElectron.Models
 
         [NotMapped]
         public HttpPostedFileBase[] ImageFile { get; set; }
+
+        [NotMapped]
+        public Description Description { get; set; }
     }
 }
