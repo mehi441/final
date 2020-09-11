@@ -1,4 +1,5 @@
-﻿
+﻿@model FinalElectron.ViewModels.VmDetail
+
 @{
     ViewBag.Title = "Index";
 }
@@ -11,79 +12,66 @@
                 </a>
                 <i class="fas fa-chevron-right"></i>
             </div>
-            <a href="#">Apple Cinema 30"</a>
+            <a href="#"> @Model.Product.Model.Name @Model.Product.Name  @Model.Color.Name</a>
         </div>
         <!-- images and general info  -->
         <div class="row product">
             <div class="col-lg-6 col-md-6 col-xs-12">
                 <div class="images">
                     <div class="mainImage">
-                        <img src="~/Public/img/products/connect.jpg" alt="connect">
+                        <img src="~/Uploads/@Model.ProductImage.Name" alt="main image">
                     </div>
                     <div class="owl-carousel owl-theme">
-                        <div class="item">
-                            <img src="~/Public/img/products/airpod samsung.jpg" alt="">
-                        </div>
-                        <div class="item">
-                            <img src="~/Public/img/products/camera.jpg" alt="">
-                        </div>
-                        <div class="item">
-                            <img src="~/Public/img/products/connect.jpg" alt="">
-                        </div>
-                        <div class="item">
-                            <img src="~/Public/img/products/dinamik.jpg" alt="">
-                        </div>
-                        <div class="item">
-                            <img src="~/Public/img/products/dinamik2.jpg" alt="">
-                        </div>
-                        <div class="item">
-                            <img src="~/Public/img/products/notbuk.jpg" alt="">
-                        </div>
-                        <div class="item">
-                            <img src="~/Public/img/products/phone.jpg" alt="">
-                        </div>
+                        @foreach (var item in Model.Product.ProductImages)
+                        {
+                            <div class="item">
+                                <img src="~/Uploads/@item.Name" alt="image">
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-xs-12">
                 <div class="proInfo">
-                    <h1> samsung galaxy s6</h1>
+                    <h1>@Model.Product.Model.Brand.Name  @Model.Product.Model.Name @Model.Product.Name  @Model.Color.Name</h1>
                     <hr>
                     <ul class="name">
                         <li>
-                            Brand: <h3><a href="#">Samsung</a></h3>
+                            Brand: <h3><a href="#">@Model.Product.Model.Brand.Name</a></h3>
                         </li>
                         <li>
-                            Product Code: <h3>kl23</h3>
+                            Product Code: <h3> @Model.Code </h3>
                         </li>
                         <li>
-                            Availability: <h3>In Stock</h3>
+                            Availability: <h3>@(Model.ProOption.Quantity>0?"Is Stock":"Out of Stock")</h3>
                         </li>
                     </ul>
                     <hr>
-                    <h6>$110.00</h6>
+                    <h6>@Model.ProOption.Price.ToString("#.##") $</h6>
                     <hr>
                     <ul class="list-unstyled">
                         <li>
-                            10 or more $107.60
+                            10 or more $ @((Model.ProOption.Price * 93 / 100).ToString("#.##"))
                         </li>
                         <li>
-                            20 or more $94.40
+                            20 or more $ @((Model.ProOption.Price * 88 / 100).ToString("#.##"))
                         </li>
                         <li>
-                            30 or more $81.20
+                            30 or more $@((Model.ProOption.Price * 80 / 100).ToString("#.##"))
                         </li>
                     </ul>
                     <hr>
                     <h1>Available Options</h1>
-                    <h5>select</h5>
+                    <h5>Colors</h5>
                     <form>
                         <div class="input-group mb-3">
                             <select class="custom-select" id="inputGroupSelect01">
-                                <option selected>-- Please Select --</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option value="0" selected>-- Please Select --</option>
+
+                                @foreach (var item in Model.ProductOptions)
+                                {
+                                    <option value="@item.Id">@item.Color.Name</option>
+                                }
                             </select>
                         </div>
                     </form>
@@ -95,7 +83,7 @@
                             <span>-</span>
                         </div>
                         <div class="form-group">
-                            <input type="number" value="1">
+                            <input type="number" id="Qty" value="1" min="1" max="200">
                         </div>
                         <div class="dizayn nextBtn">
                             <span>+</span>
@@ -148,36 +136,9 @@
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
                              aria-labelledby="nav-home-tab">
-                            <p>
-                                The 30-inch Apple Cinema HD Display delivers an amazing 2560 x 1600 pixel
-                                resolution. Designed specifically for the creative professional, this
-                                display provides more space for easier access to all the tools and
-                                palettes needed to edit, format and composite your work. Combine this
-                                display with a Mac Pro, MacBook Pro, or PowerMac G5 and there's no limit
-                                to what you can achieve.
-                            </p>
-                            <p>
-                                The Cinema HD features an active-matrix liquid crystal display that
-                                produces flicker-free images that deliver twice the brightness, twice
-                                the sharpness and twice the contrast ratio of a typical CRT display.
-                                Unlike other flat panels, it's designed with a pure digital interface to
-                                deliver distortion-free images that never need adjusting. With over 4
-                                million digital pixels, the display is uniquely suited for scientific
-                                and technical applications such as visualizing molecular structures or
-                                analyzing geological data.
-                            </p>
-                            <p>
-                                Housed in a new aluminum design, the display has a very thin bezel that
-                                enhances visual accuracy. Each display features two FireWire 400 ports
-                                and two USB 2.0 ports, making attachment of desktop peripherals, such as
-                                iSight, iPod, digital and still cameras, hard drives, printers and
-                                scanners, even more accessible and convenient. Taking advantage of the
-                                much thinner and lighter footprint of an LCD, the new displays support
-                                the VESA (Video Electronics Standards Association) mounting interface
-                                standard. Customers with the optional Cinema Display VESA Mount Adapter
-                                kit gain the flexibility to mount their display in locations most
-                                appropriate for their work environment.
-                            </p>
+
+                            @(Html.Raw(Model.Product.Content))
+
                         </div>
                         <div class="tab-pane fade" id="nav-profile" role="tabpanel"
                              aria-labelledby="nav-profile-tab">
@@ -185,40 +146,21 @@
                                 <colgroup>
                                     <col style="width: 50%;">
                                 </colgroup>
-                                <thead>
-
-                                    <tr>
-                                        <th colspan="2" class="title">Product Details</th>
-                                    </tr>
-                                    <tr>
-                                        <td>Product</td>
-                                        <td>
-                                            pro1
-                                        </td>
-                                    </tr>
-                                </thead>
+                               
                                 <tbody>
+                                    @foreach (var specification in Model.Specifications)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @specification.Title
+                                            </td>
+                                            <td>
+                                                @specification.Content
+                                            </td>
 
-                                    <tr>
-                                        <td>Price</td>
-                                        <td>
-                                            789$
-                                        </td>
+                                        </tr>
+                                    }
 
-                                    </tr>
-                                    <tr>
-                                        <td>rating</td>
-                                        <td>
-
-                                            <h6>Based on 1 reviews.</h6>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="5">Processor</th>
-                                    </tr>
-                                    <tr>
-                                        <td>Model</td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -228,92 +170,74 @@
                                 <colgroup>
                                     <col style="width: 50%;">
                                 </colgroup>
-                                <thead>
-                                    <tr>
-                                        <th>Product Details</th>
-                                        <td class="date">Product Details</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td colspan="2">
-                                            Encapsulate an ultimate look, wearing these
-                                            sneakers from Sparx. This pair is designed to ensure that
-                                            every nerve in your feet can relax on its comfortable rubber
-                                            sole.<div class="stars">
-                                                <ul>
-                                                    <li> <i class="fa fa-star"></i> </li>
-                                                    <li> <i class="fa fa-star"></i> </li>
-                                                    <li> <i class="fa fa-star"></i> </li>
-                                                    <li> <i class="fa fa-star sade"></i> </li>
-                                                    <li> <i class="fa fa-star sade"></i> </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                                <thead>
-                                    <tr>
-                                        <th>Product Details</th>
-                                        <td class="date">Product Details</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td colspan="2">
-                                            Encapsulate an ultimate look, wearing these
-                                            sneakers from Sparx. This pair is designed to ensure that
-                                            every nerve in your feet can relax on its comfortable rubber
-                                            sole.<div class="stars">
-                                                <ul>
-                                                    <li> <i class="fa fa-star"></i> </li>
-                                                    <li> <i class="fa fa-star"></i> </li>
-                                                    <li> <i class="fa fa-star"></i> </li>
-                                                    <li> <i class="fa fa-star sade"></i> </li>
-                                                    <li> <i class="fa fa-star sade"></i> </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                @foreach (var itemReview in Model.Product.Reviews)
+                                {
+                                    <thead>
+                                        <tr>
+                                            <th>@itemReview.Name</th>
+                                            <td class="date">@itemReview.AddedDate.ToString("MM/dd/yyyy")</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="2">
+                                                @itemReview.Content
+                                                <div class="stars">
+                                                    <ul>
+                                                        <li> <i class="fa fa-star"></i> </li>
+                                                        <li> <i class="fa fa-star"></i> </li>
+                                                        <li> <i class="fa fa-star"></i> </li>
+                                                        <li> <i class="fa fa-star sade"></i> </li>
+                                                        <li> <i class="fa fa-star sade"></i> </li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                }
+
+
+                                
                             </table>
                             <h4>Write A Review</h4>
-                            <form>
+                            <form action="@Url.Action("writeReview","Detail")">
                                 <div class="form-group">
-                                    <label for="exampleFormControlInput1">Email address</label>
-                                    <input type="email" class="form-control"
-                                           id="exampleFormControlInput1">
+                                    <label>Your Name</label>
+                                    <input type="text" class="form-control" name="Name"
+                                           id="inputName">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleFormControlTextarea1">Example textarea</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1"
+                                    <label>Your Review</label>
+                                    <textarea class="form-control" id="inputContent" name="Content"
                                               rows="3"></textarea>
                                 </div>
                                 <label for="rating">Rating</label>
                                 <h3>Bad</h3>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio"
-                                           name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                           name="Star" id="inputStars" value="1">
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio"
-                                           name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                           name="Star" id="inputStars" value="2">
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio"
-                                           name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                           name="Star" id="inputStars" value="3">
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio"
-                                           name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                           name="Star" id="inputStars" value="4">
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio"
-                                           name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                           name="Star" id="inputStars" value="5">
                                 </div>
+                                <input type="hidden" name="ProductId" value="@Model.Product.Id" />
+
                                 <h3>Good</h3>
                                 <br>
-                                <button class="btn btn-primary" type="submit">Continue</button>
+                                <button class="btn btn-primary" id="addReview" type="submit">Continue</button>
                             </form>
                         </div>
                     </div>

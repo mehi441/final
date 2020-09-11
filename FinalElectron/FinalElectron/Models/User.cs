@@ -37,5 +37,16 @@ namespace FinalElectron.Models
         public DateTime AddedDate { get; set; }
 
         public List<UserAddress> UserAddresses { get; set; }
+
+        [NotMapped]
+        public string RePassword { get; set; }
+
+
+        [NotMapped]
+        public string Newsletter { get; set; }
+
+        [NotMapped]
+        [Required]
+        public bool IsAgree { get; set; }
     }
 }

@@ -28,5 +28,10 @@ namespace FinalElectron.Models
         [ForeignKey("Product")]
         public int ProductId { get; set; }
         public Product Product { get; set; }
+
+        [NotMapped]
+        [Required]
+        public string StarsValue { get; set; }
+         
     }
 }

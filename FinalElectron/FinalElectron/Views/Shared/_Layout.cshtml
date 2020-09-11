@@ -49,13 +49,12 @@
                                             <a class="btn btn-secondary dropdown-toggle" href="#" role="button"
                                                id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
                                                aria-expanded="false">
-                                                Dropdown link
+                                                My Account
                                             </a>
 
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                <a class="dropdown-item" href="#">Action</a>
-                                                <a class="dropdown-item" href="#">Another action</a>
-                                                <a class="dropdown-item" href="#">Something else here</a>
+                                                <a class="dropdown-item" href="@Url.Action("Index","Login")">Login</a>
+                                                <a class="dropdown-item" href="@Url.Action("Index","Register")">Register</a>
                                             </div>
                                         </div>
                                     </li>
@@ -133,105 +132,35 @@
                                 </h1>
                             </div>
                             <ul>
-                                <hr>
-                                <li>
 
-                                    <div class="image">
-                                        <img src="~/Public/img/catagory/pc1.png" alt="catagory image">
-                                    </div>
-                                    <div class="onlyCategory">
-                                        <a href="#">Software</a>
-                                    </div>
-                                </li>
-                                <hr>
-                                <li>
+                                @foreach (var item in ViewBag.Categories)
+                                {
+                                    if (item.SubCategories.Count > 0)
+                                    {
+                                        <hr>
+                                        <li>
+                                            <div class="image">
+                                                <img src="~/Uploads/@item.Image" alt="catagory image">
+                                            </div>
+                                            <div class="btn-group dropright">
 
-                                    <div class="image">
-                                        <img src="~/Public/img/catagory/pc2.png" alt="catagory image">
-                                    </div>
-                                    <div class="onlyCategory">
-                                        <a href="#">Phone and pads</a>
-                                    </div>
-                                </li>
-                                <hr>
-                                <li>
 
-                                    <div class="image">
-                                        <img src="~/Public/img/catagory/phone-black.png" alt="catagory image">
-                                    </div>
-                                    <div class="btn-group dropright">
-                                        <button type="button" class="btn btn-secondary dropdown-toggle"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Accessories
-                                        </button>
-                                        <div class="dropdown-menu">
+                                                    <button type="button" class="btn btn-secondary dropdown-toggle"
+                                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        @item.Name
+                                                    </button>
 
-                                            <a class="dropdown-item" href="#">PC(4)</a>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <hr>
-                                <li>
+                                                <div class="dropdown-menu">
 
-                                    <div class="image">
-                                        <img src="~/Public/img/catagory/saat.png" alt="catagory image">
-                                    </div>
-                                    <div class="btn-group dropright">
-                                        <button type="button" class="btn btn-secondary dropdown-toggle"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Desktops
-                                        </button>
-                                        <div class="dropdown-menu">
-
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-
-                                        </div>
-                                    </div>
-                                </li>
-                                <hr>
-                                <li>
-
-                                    <div class="image">
-                                        <img src="~/Public/img/catagory/t.png" alt="catagory image">
-                                    </div>
-                                    <div class="btn-group dropright">
-                                        <button type="button" class="btn btn-secondary dropdown-toggle"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Laptops
-                                        </button>
-                                        <div class="dropdown-menu">
-
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-
-                                        </div>
-                                    </div>
-                                </li>
-                                <hr>
-                                <li>
-
-                                    <div class="image">
-                                        <img src="~/Public/img/catagory/table.png" alt="catagory image">
-                                    </div>
-                                    <div class="btn-group dropright">
-                                        <button type="button" class="btn btn-secondary dropdown-toggle"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            components
-                                        </button>
-                                        <div class="dropdown-menu">
-
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-
-                                        </div>
-                                    </div>
-                                </li>
+                                                    @foreach (var itemSub in item.SubCategories)
+                                                    {
+                                                        <a class="dropdown-item" href="@Url.Action("Index","Special")">@itemSub.Name</a>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </li>
+                                    }
+                                }
                             </ul>
 
 

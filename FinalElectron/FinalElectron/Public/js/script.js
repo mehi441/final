@@ -106,6 +106,9 @@ $(document).ready(function () {
         margin: 10,
         nav: false,
         items: 4,
+        //autoplay: true,
+        //autoplayTimeout: 3000,
+        //autoplayHoverPause: true,
         dots: false,
         responsive: {
             0: {
@@ -122,7 +125,7 @@ $(document).ready(function () {
 
     // shop by categories >> for products
     $('#home #shopByCategory .sliderProducts .owl-carousel').owlCarousel({
-        loop: true,
+        loop: false,
         margin: 10,
         nav: true,
         items: 4,
@@ -182,7 +185,7 @@ $(document).ready(function () {
 
     // latest products owl 
     $('#home #latestProduct .sliderProducts .owl-carousel').owlCarousel({
-        loop: true,
+        loop: false,
         margin: 10,
         nav: true,
         items: 4,
@@ -222,7 +225,7 @@ $(document).ready(function () {
 
     // product details images owl only home page
     $('#productDetails .images .owl-carousel').owlCarousel({
-        loop: true,
+        loop: false,
         margin: 25,
         nav: false,
         items: 4,
@@ -262,6 +265,52 @@ $(document).ready(function () {
             }
         }
     })
+
+    $(".nextBtn").click(function () {
+        var quantity = $('#Qty').val();
+        var qty = parseInt(quantity);
+        qty += 1;
+        $('#Qty').val(qty)
+    })
+
+    $(".prevBtn").click(function () {
+        var quantity = $('#Qty').val();
+        var qty = parseInt(quantity);
+        qty -= 1;
+        $('#Qty').val(qty)
+    })
+
+    // add review by ajax
+
+    //$("#productDetails #addReview").click(function () {
+
+    //    var name = $('#productDetails #inputName').val();
+    //    var content = $('#productDetails #inputContent').val();
+    //    var stars = $('#productDetails #inputStars').val();
+    //    var id = $('#productDetails #inputId').val();
+
+    //    console.log(name + content + stars + id);
+    //    $.ajax({
+
+    //        url: '<%: Url.Action("writeReview")%>',
+    //        data: { 'name': name, 'content': content, 'stars': stars, 'id': id  },
+
+    //        type: "post",
+    //        cache: false,
+
+    //        //dataType: "html",
+
+    //        success: function (response) {
+
+    //            $("#colorContainer").append(response);
+
+    //        },
+
+    //        error: function (error) {
+    //            console.log(error);
+    //        }
+    //    });
+    //});
 
 
 

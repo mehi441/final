@@ -109,7 +109,7 @@ namespace FinalElectron.Areas.Admin.Controllers
                 }
 
 
-                return RedirectToAction("Create");
+                return RedirectToAction("Index");
             }
 
 

@@ -1,4 +1,6 @@
-﻿
+﻿@model FinalElectron.Models.User
+
+
 @{
     ViewBag.Title = "Index";
 }
@@ -26,79 +28,105 @@
                 <p>If you already have an account with us, please login at the login page.</p>
                 <h3>Your Personal Details</h3>
                 <hr>
-                <form>
-                    <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-3 forRecuired col-form-label">Email</label>
-                        <div class="col-sm-9">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="name">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-3 forRecuired col-form-label">Email</label>
-                        <div class="col-sm-9">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="Surame">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-3 forRecuired col-form-label">Email</label>
-                        <div class="col-sm-9">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="name">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-3 forRecuired col-form-label">Email</label>
-                        <div class="col-sm-9">
-                            <input type="email" class="form-control" id="inputEmail3">
-                        </div>
-                    </div>
 
-                    <h3>Your Personal Details</h3>
-                    <hr>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
 
-                    <div class="form-group row">
-                        <label for="inputPassword3" class="col-sm-3 forRecuired col-form-label">Password</label>
-                        <div class="col-sm-9">
-                            <input type="password" class="form-control" id="inputPassword3">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputPassword3" class="col-sm-3 forRecuired col-form-label">Password Confirm</label>
-                        <div class="col-sm-9">
-                            <input type="password" class="form-control" id="inputPassword3">
-                        </div>
-                    </div>
 
-                    <h3>Your Personal Details</h3>
-                    <hr>
-
-                    <fieldset class="form-group">
-                        <div class="row">
-                            <legend class="col-form-label col-sm-3 pt-0">Radios</legend>
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "col-sm-3 forRecuired col-form-label" })
                             <div class="col-sm-9">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">yes</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">no</label>
-                                </div>
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Name" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                             </div>
                         </div>
-                    </fieldset>
-                    <div class="cekbox">
-                        <p>
-                            I have read and agree to the
-                            <a href="#">Terms & Conditions</a>
-                        </p>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value=""
-                                   id="defaultCheck1">
-                        </div>
-                        <button type="submit" class="btn btn-primary mb-2">Continue</button>
-                    </div>
 
-                </form>
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Surname, htmlAttributes: new { @class = "col-sm-3 forRecuired col-form-label" })
+                            <div class="col-sm-9">
+                                @Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "form-control", @placeholder = "Surname" } })
+                                @Html.ValidationMessageFor(model => model.Surname, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "col-sm-3 forRecuired col-form-label" })
+                            <div class="col-sm-9">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @type = "email", @placeholder = "Email" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "col-sm-3 forRecuired col-form-label" })
+                            <div class="col-sm-9">
+                                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", @placeholder = "Phone" } })
+                                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <h3>Your Personal Details</h3>
+                        <hr>
+
+
+
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "col-sm-3 forRecuired col-form-label" })
+                            <div class="col-sm-9">
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @type = "password", @placeholder = "Password" } })
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="inputPassword3" class="col-sm-3 forRecuired col-form-label">Password Confirm</label>
+                            <div class="col-sm-9">
+                                @Html.EditorFor(model => model.RePassword, new { htmlAttributes = new { @class = "form-control", @type = "password", @placeholder = "Password Confirm" } })
+                                @Html.ValidationMessageFor(model => model.RePassword, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <h3>Newsletter</h3>
+                        <hr>
+
+
+                        <input type="hidden" name="AddedDate" value="@DateTime.Now" />
+
+
+                        <fieldset class="form-group">
+                            <div class="row">
+                                <legend class="col-form-label col-sm-3 pt-0">Newsletter</legend>
+                                <div class="col-sm-9">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="Newsletter" value="yes">
+                                        <label class="form-check-label" for="inlineRadio2">yes</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="Newsletter" value="no" checked>
+                                        <label class="form-check-label">no</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="cekbox">
+                            <p>
+                                I have read and agree to the
+                                <a href="#">Terms & Conditions</a>
+                            </p>
+                            <div class="form-check mr-1">
+                                @Html.EditorFor(model => model.IsAgree)
+                                @*@Html.ValidationMessageFor(model => model.IsAgree, "", new { @class = "text-danger" })*@
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-2">Continue</button>
+                        </div>
+
+                    </div>
+                }
+
             </div>
             <!-- end of register page -->
         </div>

@@ -13,5 +13,7 @@ namespace FinalElectron.Areas.Admin.Controllers
         {
             return View();
         }
+
+
     }
 }

@@ -134,7 +134,10 @@
     <Compile Include="Areas\Admin\Controllers\ColorsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ReviewsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SpecificationsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SubCategoriesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\CompareController.cs" />
@@ -213,6 +216,8 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserAddress.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\VmDetail.cs" />
+    <Compile Include="ViewModels\VmHome.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Public\css\app-dark-rtl.min.css" />
@@ -920,6 +925,21 @@
     <Content Include="Areas\Admin\Views\BrandModels\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Products\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Products\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Reviews\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Reviews\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Reviews\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Reviews\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Reviews\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Specifications\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Specifications\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Specifications\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Specifications\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Specifications\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Public\css\style.css.map" />
     <Content Include="Views\Special\Index.cshtml" />
