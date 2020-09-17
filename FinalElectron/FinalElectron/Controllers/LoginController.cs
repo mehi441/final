@@ -19,5 +19,14 @@ namespace FinalElectron.Controllers
             ViewBag.Testimonials = db.Testimonials.OrderByDescending(p => p.Id).Take(6).ToList();
             return View();
         }
+
+        //[HttpPost]
+        //public ActionResult Index()
+        //{
+        //    ViewBag.Categories = db.Categories.Include("SubCategories").ToList();
+        //    ViewBag.LatestProS = db.Products.OrderByDescending(p => p.Id).Take(21).ToList();
+        //    ViewBag.Testimonials = db.Testimonials.OrderByDescending(p => p.Id).Take(6).ToList();
+        //    return View();
+        //}
     }
 }

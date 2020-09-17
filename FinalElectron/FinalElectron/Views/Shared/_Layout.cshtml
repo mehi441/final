@@ -87,14 +87,16 @@
                         </div>
                         <div class="col-lg-2">
                             <div class="navSebet">
-                                <button>
-                                    <div class="icon">
-                                        <i class="fas fa-shopping-bag"></i>
-                                    </div>
-                                    <div class="price">
-                                        <span>0 Items / $0.00</span>
-                                    </div>
-                                </button>
+                                <a href="@Url.Action("Index","Cart")" style="color:inherit; text-decoration:none">
+                                    <button>
+                                        <div class="icon">
+                                            <i class="fas fa-shopping-bag"></i>
+                                        </div>
+                                        <div class="price">
+                                              <span>@ViewBag.CartCountPrice.Key Items / $@ViewBag.CartCountPrice.Value.ToString("#.00")</span>
+                                        </div>
+                                    </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -154,7 +156,7 @@
 
                                                     @foreach (var itemSub in item.SubCategories)
                                                     {
-                                                        <a class="dropdown-item" href="@Url.Action("Index","Special")">@itemSub.Name</a>
+                                                        <a class="dropdown-item" href="@Url.Action("Index","Filter")">@itemSub.Name</a>
                                                     }
                                                 </div>
                                             </div>

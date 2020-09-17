@@ -51,7 +51,7 @@
                     <hr>
                     <ul class="list-unstyled">
                         <li>
-                            10 or more $ @((Model.ProOption.Price * 93 / 100).ToString("#.##"))
+                            10 or more $ @((Model.ProOption.Price * 95 / 100).ToString("#.##"))
                         </li>
                         <li>
                             20 or more $ @((Model.ProOption.Price * 88 / 100).ToString("#.##"))
@@ -65,12 +65,12 @@
                     <h5>Colors</h5>
                     <form>
                         <div class="input-group mb-3">
-                            <select class="custom-select" id="inputGroupSelect01">
-                                <option value="0" selected>-- Please Select --</option>
+                            <select class="custom-select" id="inputDetailSelect">
+                                @*<option value="0" selected>-- Please Select --</option>*@
 
                                 @foreach (var item in Model.ProductOptions)
                                 {
-                                    <option value="@item.Id">@item.Color.Name</option>
+                                    <option value="@item.Id" @(Model.ProOption.Id == item.Id ? "selected" : "")>@item.Color.Name @item.Price.ToString("#.00") $</option>
                                 }
                             </select>
                         </div>
@@ -91,11 +91,11 @@
                     </div>
                     <hr>
                     <div class="choose">
-                        <button class="btn">Add to Cart</button>
-                        <button class="btn">
+                        <button class="btn addToCardBtn" data-id="@Model.ProOption.Id">Add to Cart</button>
+                        <button class="btn addToWishBtn">
                             <i class="fa fa-heart"></i>
                         </button>
-                        <button class="btn">
+                        <button class="btn addToCompareBtn">
                             <i class="fas fa-compress-alt"></i>
                         </button>
                     </div>

@@ -106,9 +106,9 @@ $(document).ready(function () {
         margin: 10,
         nav: false,
         items: 4,
-        //autoplay: true,
-        //autoplayTimeout: 3000,
-        //autoplayHoverPause: true,
+        autoplay: true,
+        autoplaytimeout: 2000,
+        autoplayhoverpause: true,
         dots: false,
         responsive: {
             0: {
@@ -266,6 +266,8 @@ $(document).ready(function () {
         }
     })
 
+    // detail product quantity plus
+
     $(".nextBtn").click(function () {
         var quantity = $('#Qty').val();
         var qty = parseInt(quantity);
@@ -273,12 +275,56 @@ $(document).ready(function () {
         $('#Qty').val(qty)
     })
 
+    // detail product quantity minus
+
     $(".prevBtn").click(function () {
         var quantity = $('#Qty').val();
         var qty = parseInt(quantity);
-        qty -= 1;
-        $('#Qty').val(qty)
+
+        if (qty <= 1) {
+            $('#Qty').val(qty)
+        }
+        else {
+            qty -= 1;
+            $('#Qty').val(qty)
+        }
     })
+
+
+    // detail product select change event 
+
+    $("#inputDetailSelect").change(function () {
+
+        var value = $("#inputDetailSelect").val();
+
+        var valInt=parseInt(value);
+
+        window.location.href = '/Detail/Index/' + valInt;
+
+        //$.ajax({
+        //    url: "/Detail/Index/" + valInt,
+        //    type: "get",
+        //    dataType: "json",
+        //    success: function (response) {
+        //        console.log(response);
+        //    },
+        //    error: function (error) {
+        //        console.log(error);
+        //    }
+        //});
+
+    });
+
+    // details image to  bigger/main
+
+    $("#productDetails .item img").click(function () {
+
+        var sorce = $(this).attr('src');
+        console.log(sorce);
+
+        $("#productDetails .mainImage img").attr('src', sorce);
+    });
+
 
     // add review by ajax
 
@@ -311,6 +357,153 @@ $(document).ready(function () {
     //        }
     //    });
     //});
+
+
+    // details add to card button
+    $("#productDetails .choose .addToCardBtn").click(function () {
+
+        Id = parseInt($(this).data("id"));
+        Count =  parseInt($("#productDetails #Qty").val());
+
+        refreshCart(Id, Count);
+    });
+
+
+    // home page add to cart button
+    $("#home .choose .addCardBtn").click(function () {
+
+        Id = parseInt($(this).data("id"));
+        Count = 1;
+
+        refreshCart(Id, Count);
+    });
+
+
+    // product Count Change 
+    $("#soppingCart .addCardInput").change(function () {
+
+        // refresc Cart cookie
+        var Id = parseInt($(this).data("id"));
+        var Count = parseInt($(this).val());
+        refreshCart(Id, Count);
+
+        var price = parseFloat($(this).data("price"));
+
+        if (Count > 0 && Count < 10) {
+            // own unit price
+            $('#soppingCart #products *[data-proId=' + Id + ']').text("$" + price.toFixed(2));
+            // own total price
+            $('#soppingCart #products *[data-ownTotal=' + Id + ']').text("$" + (price * Count).toFixed(2));
+        }
+        else if (Count >= 10 && Count < 20) {  // 5%
+            // own unit price
+            $('#soppingCart #products *[data-proId=' + Id + ']').text("$" + (price * 95 / 100 ).toFixed(2));
+            // own total price
+            $('#soppingCart #products *[data-ownTotal=' + Id + ']').text("$" + (price * 95 / 100 * Count).toFixed(2));
+            // for old price not decrise
+            $('#soppingCart #products *[data-proId=' + Id + ']').append("<br />");
+            $('#soppingCart #products *[data-proId=' + Id + ']').append("<span style='text - decoration: line - through'>$"+ price.toFixed(2)+ "</span>");
+        }
+        else if (Count >= 20 && Count < 30) {  // 12%
+            // own unit price
+            $('#soppingCart #products *[data-proId=' + Id + ']').text("$" + (price * 88 / 100).toFixed(2));
+            // own total price
+            $('#soppingCart #products *[data-ownTotal=' + Id + ']').text("$" + (price * 88 / 100 * Count).toFixed(2));
+            // for old price not decrise
+            $('#soppingCart #products *[data-proId=' + Id + ']').append("<br />");
+            $('#soppingCart #products *[data-proId=' + Id + ']').append("<span style='text - decoration: line - through'>$" + price.toFixed(2) + "</span>");
+        }
+        else if (Count >= 30 ) {  // 20%
+            // own unit price
+            $('#soppingCart #products *[data-proId=' + Id + ']').text("$" + (price * 80 / 100).toFixed(2));
+            // own total price
+            $('#soppingCart #products *[data-ownTotal=' + Id + ']').text("$" + (price * 80 / 100 * Count).toFixed(2));
+            // for old price not decrise in span tag
+            $('#soppingCart #products *[data-proId=' + Id + ']').append("<br />");
+            $('#soppingCart #products *[data-proId=' + Id + ']').append("<span style='text - decoration: line - through'>$" + price.toFixed(2) + "</span>");
+        }
+
+        // Total price of produsts
+        var SumTotalPrices = 0;
+
+        $("#soppingCart #products .forSumTotal").each(function (index) {
+            SumTotalPrices += parseFloat($(this).text().substring(1));
+        });
+
+        // sub Total price of products 82%
+        $('#soppingCart #total .allSubTotal').text("$" + (SumTotalPrices * 82 / 100).toFixed(2));
+        // EDV price 18%
+        $('#soppingCart #total .allTotalVat').text("$" + (SumTotalPrices * 18 / 100).toFixed(2));
+        // TOTAL Price  100 %
+        $('#soppingCart #total .allTotalPrice').text("$" + SumTotalPrices.toFixed(2));
+        
+    });
+
+    // remove product from cart
+    $("#soppingCart #products .miqdar .removeCardBtn").click(function () {
+
+        Id = parseInt($(this).data("id"));
+        var thisTotalPrice = parseFloat($('#soppingCart #products *[data-ownTotal=' + Id + ']').text().substring(1));
+        $(this).parent().parent().parent().remove();
+
+        //Decrease Total price
+        var TotalPrice = parseFloat($('#soppingCart #total .allTotalPrice').text().substring(1));
+        TotalPrice -= thisTotalPrice
+
+
+
+        // sub Total price of products 82%
+        $('#soppingCart #total .allSubTotal').text("$" + (TotalPrice * 82 / 100).toFixed(2));
+        // EDV price 18%
+        $('#soppingCart #total .allTotalVat').text("$" + (TotalPrice * 18 / 100).toFixed(2));
+        // TOTAL Price  100 %
+        $('#soppingCart #total .allTotalPrice').text("$" + TotalPrice.toFixed(2));
+
+
+        //Remove from cookie
+        $.ajax({
+            url: "/Cart/RemoveFromCart/" + Id,
+            type: "get",
+            dataType: "json",
+            success: function (response) {
+                console.log(response);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    });
+
+
+
+
+    function refreshCart(Id, Count) {
+        var cartElem = {
+            id: Id,
+            count: Count
+        };
+
+        $.ajax({
+            url: "/Cart/AddToCart/",
+            type: "get",
+            dataType: "json",
+            data: cartElem,
+            success: function (response) {
+
+                // jsonda count ve price  almmaq  
+
+                //if (response === "success-true") {
+                //    var oldCountTrue = parseInt($(".cartCount").text());
+                //    oldCountTrue++;
+                //    $(".cartCount").text(oldCountTrue);
+                //}
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+
 
 
 

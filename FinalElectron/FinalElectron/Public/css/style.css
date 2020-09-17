@@ -48,7 +48,15 @@
         font-size: 14px;
         border: 0;
         width: 54px; }
-    #wrapper header #myNavbar .navSebet {
+      
+      /*it is new added css after scss*/
+
+        #wrapper header #myNavbar .navSebet button:focus {
+            outline: 0px;
+        }
+
+
+            #wrapper header #myNavbar .navSebet {
       padding: 6.5px 0; }
       #wrapper header #myNavbar .navSebet button {
         border: 0;
