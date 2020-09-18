@@ -1,0 +1,147 @@
+﻿@model FinalElectron.Models.UserAddress
+
+@{
+    ViewBag.Title = "AddAddress";
+}
+
+<!-- Register  page -->
+<div class="col-lg-9 col-sm-8" id="account">
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- register page -->
+            <div id="register">
+                <div id="breadcrumb">
+                    <div class="icon">
+                        <a href="@Url.Action("Index","Home")">
+                            <i class="fa fa-home"></i>
+                        </a>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <a href="@Url.Action("Index","Account")">Account</a>
+                    <div class="icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <a href="@Url.Action("Address","Account")">Address Book</a>
+                    <div class="icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <a href="@Url.Action("AddAddress","Account")">Add Address</a>
+                </div>
+                <h2 class="title">Add Address</h2>
+                <form method="post">
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "col-sm-3 forRecuired col-form-label" })
+                        <div class="col-sm-9">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Name" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.Surname, htmlAttributes: new { @class = "col-sm-3 forRecuired col-form-label" })
+                        <div class="col-sm-9">
+                            @Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "form-control", @placeholder = "Surname" } })
+                            @Html.ValidationMessageFor(model => model.Surname, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.Company, htmlAttributes: new { @class = "col-sm-3 col-form-label" })
+                        <div class="col-sm-9">
+                            @Html.EditorFor(model => model.Company, new { htmlAttributes = new { @class = "form-control", @placeholder = "Company" } })
+                            @Html.ValidationMessageFor(model => model.Company, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 forRecuired col-form-label">Address 1</label>
+                        <div class="col-sm-9">
+                            @Html.EditorFor(model => model.AddressFirst, new { htmlAttributes = new { @class = "form-control", @placeholder = "Address 1" } })
+                            @Html.ValidationMessageFor(model => model.AddressFirst, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label">Address 2</label>
+                        <div class="col-sm-9">
+                            @Html.EditorFor(model => model.AddressSecond, new { htmlAttributes = new { @class = "form-control", @placeholder = "Address 2" } })
+                            @Html.ValidationMessageFor(model => model.AddressSecond, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "col-sm-3 forRecuired col-form-label" })
+                        <div class="col-sm-9">
+                            @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control", @placeholder = "City" } })
+                            @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.PostCode, htmlAttributes: new { @class = "col-sm-3 forRecuired col-form-label" })
+                        <div class="col-sm-9">
+                            @Html.EditorFor(model => model.PostCode, new { htmlAttributes = new { @class = "form-control", @placeholder = "PostCode" } })
+                            @Html.ValidationMessageFor(model => model.PostCode, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "col-sm-3 forRecuired col-form-label" })
+                        <div class="col-sm-9">
+                            @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control", @placeholder = "Country" } })
+                            @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 forRecuired col-form-label">Region / State</label>
+                        <div class="col-sm-9">
+                            @Html.EditorFor(model => model.Region, new { htmlAttributes = new { @class = "form-control", @placeholder = "Region" } })
+                            @Html.ValidationMessageFor(model => model.Region, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <fieldset class="form-group">
+                        <div class="row">
+                            <legend class="col-form-label col-sm-3 pt-0">Default Address</legend>
+                            <div class="col-sm-9">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="isDefaultString" value="yes">
+                                    <label class="form-check-label" for="inlineRadio2">yes</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="isDefaultString" value="no" checked>
+                                    <label class="form-check-label">no</label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="cekbox pt-2" style="justify-content: space-between;">
+                        <a href="@Url.Action("Address","Account")" class="btn btn-primary">Back</a>
+                        <button type="submit" class="btn btn-primary">Continue</button>
+                    </div>
+
+                </form>
+            </div>
+            <!-- end of register page -->
+        </div>
+        <div class="col-lg-4">
+            <div id="accTable">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <td><a href="#">Login</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Register</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Wish List</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Order History</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Newsletter</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end of Register page -->

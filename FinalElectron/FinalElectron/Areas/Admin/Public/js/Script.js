@@ -41,7 +41,6 @@
 
     $("#AddColor").click(function () {
 
-        console.log("toom");
         $.ajax({
 
             url: "GetColors",

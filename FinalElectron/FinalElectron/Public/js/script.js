@@ -379,6 +379,7 @@ $(document).ready(function () {
     });
 
 
+
     // product Count Change 
     $("#soppingCart .addCardInput").change(function () {
 
@@ -477,6 +478,135 @@ $(document).ready(function () {
 
 
 
+
+    // remove Addres from user address list and database
+    $("#account #register #addressList .btnDelete").click(function () {
+
+        Id = parseInt($(this).data("id"));
+        $(this).parent().parent().remove();
+
+        //Remove from baza
+        $.ajax({
+            url: "/Account/RemoveFromBaza/" + Id,
+            type: "get",
+            dataType: "json",
+            success: function (response) {
+                console.log(response);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    });
+
+
+
+
+    // remove wish from Wishlis list and database
+    $("#account #register #addressList .btnDeleteWish").click(function () {
+
+        Id = parseInt($(this).data("id"));
+        $(this).parent().parent().remove();
+
+        //Remove from baza
+        $.ajax({
+            url: "/Account/RemoveWish/" + Id,
+            type: "get",
+            dataType: "json",
+            success: function (response) {
+
+
+                var oldCountTrue = parseInt($(".wishListCount").text());
+                oldCountTrue--;
+                $(".wishListCount").text(oldCountTrue);
+
+                console.log(response);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    });
+
+   
+
+     //add Wish List 
+
+    $(".addWishBtn").click(function () {
+
+        id = parseInt($(this).data("id"));
+
+        $.ajax({
+            //url: "/Cart/AddToWishList/" + id,
+            url: "/Cart/AddWishToUser/" + id,
+            type: "get",
+            dataType: "html",
+            success: function (response) {
+                if (response === "success-true") {
+                    var oldCountTrue = parseInt($(".wishListCount").text());
+                    oldCountTrue++;
+                    $(".wishListCount").text(oldCountTrue);
+                } else if (response === "success-false") {
+                     // send to login for wish
+                    window.location.href = '/Login/Index';
+                }
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    });
+
+
+    // add product to card cookie from wish list
+    $("#account #register #addressList .btnToCardWish").click(function () {
+
+        Id = parseInt($(this).data("id"));
+        Count = 1;
+
+        refreshCart(Id, Count);
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     function refreshCart(Id, Count) {
         var cartElem = {
             id: Id,
@@ -503,10 +633,6 @@ $(document).ready(function () {
             }
         });
     }
-
-
-
-
 
 
 

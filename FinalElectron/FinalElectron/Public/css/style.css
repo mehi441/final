@@ -2803,8 +2803,110 @@
           #wrapper footer #copyright h2 a span:hover {
             color: #ed1e3c; }
 
+
+
+          /* add addressbook page css new 17.09.2020*/
+
+
+
+#account #register #addressList {
+    background-color: white;
+    transition: 0.2s linear;
+}
+
+    #account #register #addressList:hover {
+        background-color: inherit
+    }
+
+#account #register .buttonsDiv {
+    display: flex;
+    justify-content: space-between;
+}
+
+    #account #register .buttonsDiv .btn {
+        height: 34px;
+        margin-right: 10px;
+        color: white;
+        font-size: 14px;
+        background-color: #ed1e3c;
+        transition: 0.4s linear;
+    }
+
+        #account #register .buttonsDiv .btn:hover {
+            background-color: #222;
+        }
+
+#account #register #addressList .ForRightSide {
+    display: flex;
+    border: 0;
+    border-top: 1px solid #dee2e6;
+    justify-content: flex-end;
+}
+
+#account #register #addressList .btn {
+    height: 34px;
+    margin-right: 10px;
+    color: white;
+    transition: 0.4s linear;
+    font-size: 14px;
+}
+
+#account #register #addressList .btnEdit {
+    background-color: #ed1e3c;
+}
+
+    #account #register #addressList .btnEdit:hover {
+        background-color: #222222;
+    }
+
+#account #register #addressList .btnDelete {
+    background-color: #222;
+}
+
+    #account #register #addressList .btnDelete:hover {
+        background-color: #ed1e3c;
+    }
+
+
+#account #register .wishTd td {
+    font-size:14px;
+    padding-top:4px;
+    padding-bottom:4px;
+}
+
+#account #register .wishTd .WishA {
+    text-transform:capitalize;
+    text-decoration:none;
+    color: #222;
+    transition: 0.4s linear;
+}
+
+    #account #register .wishTd .WishA:hover {
+        text-transform: capitalize;
+        color: #ed1e3c;
+        transition: 0.4s linear;
+    }
+
+#account #register #addressList .btnDeleteWish {
+    background-color: #222;
+}
+    #account #register #addressList .btnDeleteWish:hover {
+        background-color: #ed1e3c;
+    }
+
+#account #register #addressList .btnToCardWish {
+    background-color: #ed1e3c;
+}
+
+    #account #register #addressList .btnToCardWish:hover {
+        background-color: #222;
+    }
+
+
+
+
 @keyframes topbarTitle {
-  0% {
+    0% {
     color: #ffffff; }
   50% {
     color: #fdd922; }

@@ -1,0 +1,85 @@
+﻿@model List<FinalElectron.Models.UserAddress>
+
+@{
+    ViewBag.Title = "Address";
+}
+
+<!-- Register  page -->
+<div class="col-lg-9 col-sm-8" id="account">
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- register page -->
+            <div id="register">
+                <div id="breadcrumb">
+                    <div class="icon">
+                        <a href="@Url.Action("Index","Home")">
+                            <i class="fa fa-home"></i>
+                        </a>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <a href="@Url.Action("Index","Account")">Account</a>
+                    <div class="icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <a href="@Url.Action("Address","Account")">Address Book</a>
+
+                </div>
+                <h2 class="title">Address Book Entries</h2>
+                <table class="table table-bordered">
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr id="addressList">
+                                <td>
+                                    <p class="mb-0">@item.Name</p>
+                                    <p class="mb-0">@item.Surname</p>
+                                    <p class="mb-0">@item.Company</p>
+                                    <p class="mb-0">@item.AddressFirst</p>
+                                    <p class="mb-0">@item.AddressSecond</p>
+                                    <p class="mb-0">@item.City</p>
+                                    <p class="mb-0">@item.PostCode</p>
+                                    <p class="mb-0">@item.Country</p>
+                                    <p class="mb-0">@item.Region</p>
+                                </td>
+                                <td class="ForRightSide">
+                                    <a href="#" class="btn btnEdit">Edit</a>
+                                    <button data-id="@item.Id" class="btn btnDelete">Delete</button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <div class="buttonsDiv">
+                    <a href="@Url.Action("Index","Account")" class="btn">Back</a>
+                    <a href="@Url.Action("AddAddress","Account")" class="btn">New Addres</a>
+                </div>
+            </div>
+            <!-- end of register page -->
+        </div>
+        <div class="col-lg-4">
+            <div id="accTable">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <td><a href="#">Login</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Register</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Wish List</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Order History</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Newsletter</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end of Register page -->

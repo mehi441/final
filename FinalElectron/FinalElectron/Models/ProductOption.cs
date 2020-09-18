@@ -42,6 +42,9 @@ namespace FinalElectron.Models
 
         public List<HotDeal> HotDeals { get; set; }
 
+        public List<Wishlist> Wishlists { get; set; }
+
+
         [NotMapped]
         public int[] ColorIds { get; set; }
 

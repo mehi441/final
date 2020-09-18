@@ -40,6 +40,7 @@ namespace FinalElectron.DAL
         public DbSet<Testimonial> Testimonials { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserAddress> UserAddresses { get; set; }
+        public DbSet<Wishlist> Wishlists { get; set; }
 
 
     }

@@ -37,6 +37,8 @@ namespace FinalElectron.Models
         public DateTime AddedDate { get; set; }
 
         public List<UserAddress> UserAddresses { get; set; }
+        public List<Wishlist> Wishlists { get; set; }
+         
 
         [NotMapped]
         public string RePassword { get; set; }

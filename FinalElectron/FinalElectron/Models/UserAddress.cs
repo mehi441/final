@@ -57,5 +57,9 @@ namespace FinalElectron.Models
 
         public List<Order> Orders { get; set; }
 
+         
+        [NotMapped]
+        public string isDefaultString { get; set; }
+
     }
 }

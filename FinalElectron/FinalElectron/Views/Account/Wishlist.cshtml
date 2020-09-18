@@ -1,0 +1,110 @@
+﻿@model List<FinalElectron.Models.Wishlist>
+
+@{
+    ViewBag.Title = "Wishlist";
+}
+
+<!-- Register  page -->
+<div class="col-lg-9 col-sm-8" id="account">
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- register page -->
+            <div id="register">
+                <div id="breadcrumb">
+                    <div class="icon">
+                        <a href="@Url.Action("Index","Home")">
+                            <i class="fa fa-home"></i>
+                        </a>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <a href="@Url.Action("Index","Account")">Account</a>
+                    <div class="icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <a href="@Url.Action("Wishlist","Account")">My Wish List</a>
+
+                </div>
+                <h2 class="title">My Wish List</h2>
+                <table class="table table-bordered">
+                    <thead style="background-color:white">
+
+                        <tr class="wishTd">
+                            <td>Image</td>
+                            <td>Product Name</td>
+                            <td>Model</td>
+                            <td>Stock</td>
+                            <td>Unit Price</td>
+                            <td>Action</td>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+
+                   @foreach (var item in Model)
+                        {
+
+                        <tr id="addressList" class="wishTd">
+                            <td>
+                                <a href="@Url.Action("Index","Detail" ,new { id=item.ProductOption.Id})">
+                                    <img src="~/Uploads/@item.ProductOption.Product.ProductImages.FirstOrDefault().Name" width="45" alt="Alternate Text" />
+                                </a>
+                            </td>
+
+                            <td>
+                                <a class="WishA" href="@Url.Action("Index","Detail" ,new { id=item.ProductOption.Id})">
+                                    @item.ProductOption.Product.Model.Name @item.ProductOption.Product.Name
+                                </a>
+                                <br /> @item.ProductOption.Color.Name
+                            </td>
+
+                            <td style="text-transform:capitalize">
+                                @item.ProductOption.Product.Model.Brand.Name
+                            </td>
+                            <td>
+                                @(item.ProductOption.Quantity>0? "In Stock":"Out of Stock")
+                            </td>
+                            <td class="text-sm-right">
+                                $@item.ProductOption.Price.ToString("#.00")
+                            </td>
+                            <td class="ForRightSide">
+                                <button data-id="@item.ProductOption.Id" style="width:37px" class="btn btnToCardWish mr-1"><i class="fa fa-shopping-cart" style="margin-left:-3px"></i></button>
+                                <button data-id="@item.Id" style="width:37px" class="btn btnDeleteWish mr-0"><i class="fa fa-times"></i></button>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <div class="buttonsDiv">
+                    <div></div>
+                    <a href="@Url.Action("Index","Home")" class="btn">Continue</a>
+                </div>
+            </div>
+            <!-- end of register page -->
+        </div>
+        <div class="col-lg-4">
+            <div id="accTable">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <td><a href="#">Login</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Register</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Wish List</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Order History</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Newsletter</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end of Register page -->

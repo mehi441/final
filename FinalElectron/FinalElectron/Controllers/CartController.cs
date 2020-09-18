@@ -72,6 +72,17 @@ namespace FinalElectron.Controllers
             ViewBag.CartCountPrice = cartCountPrice;
             #endregion
 
+            #region Wish list
+            if (Session["User"] != null)
+            {
+                int userIdSession = (int)Session["UserId"];
+                ViewBag.WishListCount = db.Wishlists.Where(w=> w.UserId==userIdSession).ToList().Count ;
+            }
+            else
+            {
+                ViewBag.WishListCount = 0;
+            }
+            #endregion
 
 
             VmCart vmCart = new VmCart();
@@ -184,6 +195,58 @@ namespace FinalElectron.Controllers
 
             return Json(response, JsonRequestBehavior.AllowGet);
         }
+
+
+        // add wish to user
+        public ActionResult AddWishToUser(int? id)
+        {
+            string response = "";
+
+            if (Session["User"] == null)
+            {
+                response = "success-false";
+                return Content(response);
+            }
+
+            if (id!=null)
+            {
+                int userIdSession = (int)Session["UserId"];
+                int proId = (int)id;
+                 
+                if (db.Wishlists.FirstOrDefault(w => w.UserId == userIdSession && w.ProductOptionId ==proId ) == null)
+                {
+                    Wishlist wishlist = new Wishlist();
+                    wishlist.ProductOptionId = proId;
+                    wishlist.UserId = userIdSession;
+
+                    db.Wishlists.Add(wishlist);
+                    db.SaveChanges();
+                    response = "success-true";
+                    return Content(response);
+                }
+                else
+                {
+                    response = "error";
+                }
+            }
+            else
+            {
+                response = "error";
+            }
+
+            return Content(response);
+        }
+
+
+
+
+
+
+
+
+
+
+      
 
 
 

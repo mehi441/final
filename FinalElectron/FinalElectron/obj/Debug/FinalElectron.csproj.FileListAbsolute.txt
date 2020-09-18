@@ -91,3 +91,4 @@ C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron
 C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron.Migrations.sd.resources
 C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron.Migrations.sds.resources
 C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron.Migrations.addhoverimage.resources
+C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron.Migrations.addwishlist.resources

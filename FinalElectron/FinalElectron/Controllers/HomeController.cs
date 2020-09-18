@@ -92,6 +92,17 @@ namespace FinalElectron.Controllers
             KeyValuePair<int, decimal> cartCountPrice = new KeyValuePair<int, decimal>(cartCount, cartPrice);
             ViewBag.CartCountPrice = cartCountPrice;
             #endregion
+            #region Wish list
+            if (Session["User"] != null)
+            {
+                int userIdSession = (int)Session["UserId"];
+                ViewBag.WishListCount = db.Wishlists.Where(w => w.UserId == userIdSession).ToList().Count;
+            }
+            else
+            {
+                ViewBag.WishListCount = 0;
+            }
+            #endregion
 
             ViewBag.Categories = db.Categories.Include("SubCategories").ToList();
             ViewBag.LatestProS = db.Products.OrderByDescending(p => p.Id).Take(21).ToList();

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -11,18 +11,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
 
     <!-- google font -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
-          rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+        rel="stylesheet">
 
     <!-- owl carusel css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 
     <!-- esas css-- -->
-    <link rel="stylesheet" href="~/Public/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 
-    <title>Electron</title>
+    <title>Document</title>
 </head>
 
 <body>
@@ -41,30 +42,21 @@
                             <div class="navbarTop">
                                 <ul>
                                     <li>
-                                        <a href="@Url.Action("Wishlist","Account")">Wish list(<span class="wishListCount">@ViewBag.WishListCount</span>)</a>
+                                        <a href="#">Wish list(2)</a>
                                     </li>
                                     <li style="color: white; font-size: 13px;">|</li>
                                     <li>
                                         <div class="dropdown">
                                             <a class="btn btn-secondary dropdown-toggle" href="#" role="button"
-                                               id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                                               aria-expanded="false">
-                                                My Account
+                                                id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                                Dropdown link
                                             </a>
 
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-
-                                                @if (Session["User"] == null)
-                                                {
-                                                    <a class="dropdown-item" href="@Url.Action("Index","Register")">Register</a>
-                                                    <a class="dropdown-item" href="@Url.Action("Index","Login")">Login</a>
-                                                }
-                                                else
-                                                {
-                                                    <a class="dropdown-item" href="@Url.Action("Index","Account")">My Account</a>
-                                                    <a class="dropdown-item" href="@Url.Action("Index","Register")">Order History</a>
-                                                    <a class="dropdown-item" href="@Url.Action("Logout","Login")">Logout</a>
-                                                }
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
                                             </div>
                                         </div>
                                     </li>
@@ -79,14 +71,14 @@
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="navImg">
-                                <img src="~/Public/img/logo/logo-new.png" alt="logo">
+                                <img src="../FinalProject/img/logo/logo-new.png" alt="logo">
                             </div>
                         </div>
                         <div class="col-lg-7">
                             <div class="navSearch">
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Search"
-                                           aria-label="Recipient's username" aria-describedby="button-addon2">
+                                        aria-label="Recipient's username" aria-describedby="button-addon2">
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-secondary" type="button" id="button-addon2">
                                             <i class="fas fa-search"></i>
@@ -97,16 +89,14 @@
                         </div>
                         <div class="col-lg-2">
                             <div class="navSebet">
-                                <a href="@Url.Action("Index","Cart")" style="color:inherit; text-decoration:none">
-                                    <button>
-                                        <div class="icon">
-                                            <i class="fas fa-shopping-bag"></i>
-                                        </div>
-                                        <div class="price">
-                                              <span>@ViewBag.CartCountPrice.Key Items / $@ViewBag.CartCountPrice.Value.ToString("#.00")</span>
-                                        </div>
-                                    </button>
-                                </a>
+                                <button>
+                                    <div class="icon">
+                                        <i class="fas fa-shopping-bag"></i>
+                                    </div>
+                                    <div class="price">
+                                        <span>0 Items / $0.00</span>
+                                    </div>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -118,10 +108,10 @@
                         <div class="col-lg-12">
                             <div class="menu">
                                 <ul>
-                                    <li><a href="@Url.Action("Index","Home")">Home</a></li>
-                                    <li><a href="@Url.Action("Index","Special")">Specials Offers</a></li>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="specials.html">Specials Offers</a></li>
                                     <li><a href="#">Contact</a></li>
-                                    <li><a href="@Url.Action("Index","Sitemap")">Sitemap</a></li>
+                                    <li><a href="#">Sitemap</a></li>
                                     <li><a href="#">Brands</a></li>
                                 </ul>
                             </div>
@@ -144,42 +134,132 @@
                                 </h1>
                             </div>
                             <ul>
+                                <hr>
+                                <li>
 
-                                @foreach (var item in ViewBag.Categories)
-                                {
-                                    if (item.SubCategories.Count > 0)
-                                    {
-                                        <hr>
-                                        <li>
-                                            <div class="image">
-                                                <img src="~/Uploads/@item.Image" alt="catagory image">
-                                            </div>
-                                            <div class="btn-group dropright">
+                                    <div class="image">
+                                        <img src="../FinalProject/img/catagory/pc1.png" alt="catagory image">
+                                    </div>
+                                    <div class="onlyCategory">
+                                        <a href="#">Software</a>
+                                    </div>
+                                </li>
+                                <hr>
+                                <li>
 
+                                    <div class="image">
+                                        <img src="../FinalProject/img/catagory/pc2.png" alt="catagory image">
+                                    </div>
+                                    <div class="onlyCategory">
+                                        <a href="#">Phone and pads</a>
+                                    </div>
+                                </li>
+                                <hr>
+                                <li>
 
-                                                    <button type="button" class="btn btn-secondary dropdown-toggle"
-                                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        @item.Name
-                                                    </button>
+                                    <div class="image">
+                                        <img src="../FinalProject/img/catagory/phone-black.png" alt="catagory image">
+                                    </div>
+                                    <div class="btn-group dropright">
+                                        <button type="button" class="btn btn-secondary dropdown-toggle"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Accessories
+                                        </button>
+                                        <div class="dropdown-menu">
 
-                                                <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <a class="dropdown-item" href="#">Something else here</a>
 
-                                                    @foreach (var itemSub in item.SubCategories)
-                                                    {
-                                                        <a class="dropdown-item" href="@Url.Action("Index","Filter")">@itemSub.Name</a>
-                                                    }
-                                                </div>
-                                            </div>
-                                        </li>
-                                    }
-                                }
+                                        </div>
+                                    </div>
+                                </li>
+                                <hr>
+                                <li>
+
+                                    <div class="image">
+                                        <img src="../FinalProject/img/catagory/saat.png" alt="catagory image">
+                                    </div>
+                                    <div class="btn-group dropright">
+                                        <button type="button" class="btn btn-secondary dropdown-toggle"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Desktops
+                                        </button>
+                                        <div class="dropdown-menu">
+
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+
+                                        </div>
+                                    </div>
+                                </li>
+                                <hr>
+                                <li>
+
+                                    <div class="image">
+                                        <img src="../FinalProject/img/catagory/t.png" alt="catagory image">
+                                    </div>
+                                    <div class="btn-group dropright">
+                                        <button type="button" class="btn btn-secondary dropdown-toggle"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Laptops
+                                        </button>
+                                        <div class="dropdown-menu">
+
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+
+                                        </div>
+                                    </div>
+                                </li>
+                                <hr>
+                                <li>
+
+                                    <div class="image">
+                                        <img src="../FinalProject/img/catagory/table.png" alt="catagory image">
+                                    </div>
+                                    <div class="btn-group dropright">
+                                        <button type="button" class="btn btn-secondary dropdown-toggle"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            components
+                                        </button>
+                                        <div class="dropdown-menu">
+
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+
+                                        </div>
+                                    </div>
+                                </li>
+                                <hr>
+                                <li>
+
+                                    <div class="image">
+                                        <img src="../../Downloads/Oyun-300x187.png" alt="catagory image">
+                                    </div>
+                                    <div class="btn-group dropright">
+                                        <button type="button" class="btn btn-secondary dropdown-toggle"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Tablets
+                                        </button>
+                                        <div class="dropdown-menu">
+
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+
+                                        </div>
+                                    </div>
+                                </li>
+
                             </ul>
 
 
 
                         </div>
-                        @RenderSection("Filter", false)
-
                         <div id="hotDeals">
                             <div class="title">
                                 <h1>hot deals</h1>
@@ -188,7 +268,7 @@
                             <div class="owl-carousel owl-theme">
                                 <div class="item">
                                     <div class="image">
-                                        <img src="~/Public/img/Watch.jpg" alt="Watch sale">
+                                        <img src="../FinalProject/img/Watch.jpg" alt="Watch sale">
                                     </div>
                                     <div class="timer">
                                         <ul>
@@ -253,7 +333,7 @@
                                 </div>
                                 <div class="item">
                                     <div class="image">
-                                        <img src="~/Public/img/phone.jpg" alt="Watch sale">
+                                        <img src="../FinalProject/img/phone.jpg" alt="Watch sale">
                                     </div>
                                     <div class="timer">
                                         <ul>
@@ -328,10 +408,10 @@
                                 <div class="item">
                                     <div class="product">
                                         <div class="image">
-                                            <img src="~/Public/img/products/phone.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/phone.jpg" alt="phone">
                                         </div>
                                         <div class="overlay">
-                                            <img src="~/Public/img/products/camera.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/camera.jpg" alt="phone">
                                         </div>
                                         <div class="content">
                                             <h4>apple iphone</h4>
@@ -349,10 +429,10 @@
                                     </div>
                                     <div class="product">
                                         <div class="image">
-                                            <img src="~/Public/img/products/notbuk.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/notbuk.jpg" alt="phone">
                                         </div>
                                         <div class="overlay">
-                                            <img src="~/Public/img/products/tv.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/tv.jpg" alt="phone">
                                         </div>
                                         <div class="content">
                                             <h4>apple macbook</h4>
@@ -370,10 +450,10 @@
                                     </div>
                                     <div class="product">
                                         <div class="image">
-                                            <img src="~/Public/img/products/tv.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/tv.jpg" alt="phone">
                                         </div>
                                         <div class="overlay">
-                                            <img src="~/Public/img/products/connect.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/connect.jpg" alt="phone">
                                         </div>
                                         <div class="content">
                                             <h4>apple tv</h4>
@@ -393,10 +473,10 @@
                                 <div class="item">
                                     <div class="product">
                                         <div class="image">
-                                            <img src="~/Public/img/products/phone.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/phone.jpg" alt="phone">
                                         </div>
                                         <div class="overlay">
-                                            <img src="~/Public/img/products/camera.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/camera.jpg" alt="phone">
                                         </div>
                                         <div class="content">
                                             <h4>apple iphone</h4>
@@ -414,10 +494,10 @@
                                     </div>
                                     <div class="product">
                                         <div class="image">
-                                            <img src="~/Public/img/products/notbuk.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/notbuk.jpg" alt="phone">
                                         </div>
                                         <div class="overlay">
-                                            <img src="~/Public/img/products/tv.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/tv.jpg" alt="phone">
                                         </div>
                                         <div class="content">
                                             <h4>apple macbook</h4>
@@ -435,10 +515,10 @@
                                     </div>
                                     <div class="product">
                                         <div class="image">
-                                            <img src="~/Public/img/products/tv.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/tv.jpg" alt="phone">
                                         </div>
                                         <div class="overlay">
-                                            <img src="~/Public/img/products/connect.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/connect.jpg" alt="phone">
                                         </div>
                                         <div class="content">
                                             <h4>apple iphone</h4>
@@ -458,10 +538,10 @@
                                 <div class="item">
                                     <div class="product">
                                         <div class="image">
-                                            <img src="~/Public/img/products/phone.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/phone.jpg" alt="phone">
                                         </div>
                                         <div class="overlay">
-                                            <img src="~/Public/img/products/camera.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/camera.jpg" alt="phone">
                                         </div>
                                         <div class="content">
                                             <h4>apple iphone</h4>
@@ -479,10 +559,10 @@
                                     </div>
                                     <div class="product">
                                         <div class="image">
-                                            <img src="~/Public/img/products/notbuk.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/notbuk.jpg" alt="phone">
                                         </div>
                                         <div class="overlay">
-                                            <img src="~/Public/img/products/tv.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/tv.jpg" alt="phone">
                                         </div>
                                         <div class="content">
                                             <h4>apple macbook</h4>
@@ -500,10 +580,10 @@
                                     </div>
                                     <div class="product">
                                         <div class="image">
-                                            <img src="~/Public/img/products/tv.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/tv.jpg" alt="phone">
                                         </div>
                                         <div class="overlay">
-                                            <img src="~/Public/img/products/connect.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/connect.jpg" alt="phone">
                                         </div>
                                         <div class="content">
                                             <h4>apple iphone</h4>
@@ -523,10 +603,10 @@
                                 <div class="item">
                                     <div class="product">
                                         <div class="image">
-                                            <img src="~/Public/img/products/phone.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/phone.jpg" alt="phone">
                                         </div>
                                         <div class="overlay">
-                                            <img src="~/Public/img/products/camera.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/camera.jpg" alt="phone">
                                         </div>
                                         <div class="content">
                                             <h4>apple iphone</h4>
@@ -544,10 +624,10 @@
                                     </div>
                                     <div class="product">
                                         <div class="image">
-                                            <img src="~/Public/img/products/notbuk.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/notbuk.jpg" alt="phone">
                                         </div>
                                         <div class="overlay">
-                                            <img src="~/Public/img/products/tv.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/tv.jpg" alt="phone">
                                         </div>
                                         <div class="content">
                                             <h4>apple macbook</h4>
@@ -565,10 +645,10 @@
                                     </div>
                                     <div class="product">
                                         <div class="image">
-                                            <img src="~/Public/img/products/tv.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/tv.jpg" alt="phone">
                                         </div>
                                         <div class="overlay">
-                                            <img src="~/Public/img/products/connect.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/connect.jpg" alt="phone">
                                         </div>
                                         <div class="content">
                                             <h4>apple iphone</h4>
@@ -597,10 +677,10 @@
                                 <div class="item">
                                     <div class="product">
                                         <div class="image">
-                                            <img src="~/Public/img/products/tv.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/tv.jpg" alt="phone">
                                         </div>
                                         <div class="overlay">
-                                            <img src="~/Public/img/products/notbuk.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/notbuk.jpg" alt="phone">
                                         </div>
                                         <div class="content">
                                             <h4>sony tv</h4>
@@ -618,10 +698,10 @@
                                     </div>
                                     <div class="product">
                                         <div class="image">
-                                            <img src="~/Public/img/products/phone.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/phone.jpg" alt="phone">
                                         </div>
                                         <div class="overlay">
-                                            <img src="~/Public/img/products/connect.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/connect.jpg" alt="phone">
                                         </div>
                                         <div class="content">
                                             <h4>samsun S10</h4>
@@ -639,10 +719,10 @@
                                     </div>
                                     <div class="product">
                                         <div class="image">
-                                            <img src="~/Public/img/products/connect.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/connect.jpg" alt="phone">
                                         </div>
                                         <div class="overlay">
-                                            <img src="~/Public/img/products/phone.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/phone.jpg" alt="phone">
                                         </div>
                                         <div class="content">
                                             <h4>apple tv</h4>
@@ -662,10 +742,10 @@
                                 <div class="item">
                                     <div class="product">
                                         <div class="image">
-                                            <img src="~/Public/img/products/phone.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/phone.jpg" alt="phone">
                                         </div>
                                         <div class="overlay">
-                                            <img src="~/Public/img/products/camera.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/camera.jpg" alt="phone">
                                         </div>
                                         <div class="content">
                                             <h4>apple iphone</h4>
@@ -683,10 +763,10 @@
                                     </div>
                                     <div class="product">
                                         <div class="image">
-                                            <img src="~/Public/img/products/notbuk.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/notbuk.jpg" alt="phone">
                                         </div>
                                         <div class="overlay">
-                                            <img src="~/Public/img/products/tv.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/tv.jpg" alt="phone">
                                         </div>
                                         <div class="content">
                                             <h4>apple macbook</h4>
@@ -704,10 +784,10 @@
                                     </div>
                                     <div class="product">
                                         <div class="image">
-                                            <img src="~/Public/img/products/tv.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/tv.jpg" alt="phone">
                                         </div>
                                         <div class="overlay">
-                                            <img src="~/Public/img/products/connect.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/connect.jpg" alt="phone">
                                         </div>
                                         <div class="content">
                                             <h4>apple iphone</h4>
@@ -727,10 +807,10 @@
                                 <div class="item">
                                     <div class="product">
                                         <div class="image">
-                                            <img src="~/Public/img/products/phone.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/phone.jpg" alt="phone">
                                         </div>
                                         <div class="overlay">
-                                            <img src="~/Public/img/products/camera.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/camera.jpg" alt="phone">
                                         </div>
                                         <div class="content">
                                             <h4>apple iphone</h4>
@@ -748,10 +828,10 @@
                                     </div>
                                     <div class="product">
                                         <div class="image">
-                                            <img src="~/Public/img/products/notbuk.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/notbuk.jpg" alt="phone">
                                         </div>
                                         <div class="overlay">
-                                            <img src="~/Public/img/products/tv.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/tv.jpg" alt="phone">
                                         </div>
                                         <div class="content">
                                             <h4>apple macbook</h4>
@@ -769,10 +849,10 @@
                                     </div>
                                     <div class="product">
                                         <div class="image">
-                                            <img src="~/Public/img/products/tv.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/tv.jpg" alt="phone">
                                         </div>
                                         <div class="overlay">
-                                            <img src="~/Public/img/products/connect.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/connect.jpg" alt="phone">
                                         </div>
                                         <div class="content">
                                             <h4>apple iphone</h4>
@@ -792,10 +872,10 @@
                                 <div class="item">
                                     <div class="product">
                                         <div class="image">
-                                            <img src="~/Public/img/products/phone.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/phone.jpg" alt="phone">
                                         </div>
                                         <div class="overlay">
-                                            <img src="~/Public/img/products/camera.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/camera.jpg" alt="phone">
                                         </div>
                                         <div class="content">
                                             <h4>apple iphone</h4>
@@ -813,10 +893,10 @@
                                     </div>
                                     <div class="product">
                                         <div class="image">
-                                            <img src="~/Public/img/products/notbuk.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/notbuk.jpg" alt="phone">
                                         </div>
                                         <div class="overlay">
-                                            <img src="~/Public/img/products/tv.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/tv.jpg" alt="phone">
                                         </div>
                                         <div class="content">
                                             <h4>apple macbook</h4>
@@ -834,10 +914,10 @@
                                     </div>
                                     <div class="product">
                                         <div class="image">
-                                            <img src="~/Public/img/products/tv.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/tv.jpg" alt="phone">
                                         </div>
                                         <div class="overlay">
-                                            <img src="~/Public/img/products/connect.jpg" alt="phone">
+                                            <img src="../FinalProject/img/products/connect.jpg" alt="phone">
                                         </div>
                                         <div class="content">
                                             <h4>apple iphone</h4>
@@ -866,7 +946,7 @@
                                 <form>
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="inputAddress"
-                                               placeholder="Your email address">
+                                            placeholder="Your email address">
                                     </div>
                                     <button type="submit" class="btn btn-primary">SUBSCRIBE</button>
                                 </form>
@@ -876,7 +956,7 @@
                             <div class="owl-carousel owl-theme">
                                 <div class="item">
                                     <div class="image">
-                                        <img src="~/Public/img/testimonial/testi1.png" alt="">
+                                        <img src="../FinalProject/img/testimonial/testi1.png" alt="">
                                     </div>
                                     <h3>orando bloom</h3>
                                     <div class="content">
@@ -889,7 +969,7 @@
                                 </div>
                                 <div class="item">
                                     <div class="image">
-                                        <img src="~/Public/img/testimonial/testi2.png" alt="">
+                                        <img src="../FinalProject/img/testimonial/testi2.png" alt="">
                                     </div>
                                     <h3>orando bloom</h3>
                                     <div class="content">
@@ -902,7 +982,7 @@
                                 </div>
                                 <div class="item">
                                     <div class="image">
-                                        <img src="~/Public/img/testimonial/testi3.png" alt="">
+                                        <img src="../FinalProject/img/testimonial/testi3.png" alt="">
                                     </div>
                                     <h3>orando bloom</h3>
                                     <div class="content">
@@ -919,12 +999,224 @@
 
                     </div>
                     <!-- render -->
-                    @RenderBody()
+
+                    <!-- Register  page -->
+                    <div class="col-lg-9 col-sm-8" id="account">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <!-- register page -->
+                                <div id="register">
+                                    <div id="breadcrumb">
+                                        <div class="icon">
+                                            <a href="#">
+                                                <i class="fa fa-home"></i>
+                                            </a>
+                                            <i class="fas fa-chevron-right"></i>
+                                        </div>
+                                        <a href="#">Account</a>
+                                        <div class="icon">
+                                            <i class="fas fa-chevron-right"></i>
+                                        </div>
+                                        <a href="#">Register</a>
+                                    </div>
+                                    <h2 class="title">Add Address</h2>
+                                    <!-- <p>If you already have an account with us, please login at the login page.</p>
+                                    <h3>Your Personal Details</h3> -->
+                                    <!-- <hr> -->
+                                    <form>
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-3 forRecuired col-form-label">Email</label>
+                                            <div class="col-sm-9">
+                                                <input type="email" class="form-control" id="inputEmail3" placeholder="name">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-3 forRecuired col-form-label">Email</label>
+                                            <div class="col-sm-9">
+                                                <input type="email" class="form-control" id="inputEmail3" placeholder="Surame">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-3 forRecuired col-form-label">Email</label>
+                                            <div class="col-sm-9">
+                                                <input type="email" class="form-control" id="inputEmail3" placeholder="Surame">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-3 forRecuired col-form-label">Email</label>
+                                            <div class="col-sm-9">
+                                                <input type="email" class="form-control" id="inputEmail3" placeholder="Surame">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-3 forRecuired col-form-label">Email</label>
+                                            <div class="col-sm-9">
+                                                <input type="email" class="form-control" id="inputEmail3" placeholder="Surame">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-3 forRecuired col-form-label">Email</label>
+                                            <div class="col-sm-9">
+                                                <input type="email" class="form-control" id="inputEmail3" placeholder="Surame">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-3 forRecuired col-form-label">Email</label>
+                                            <div class="col-sm-9">
+                                                <input type="email" class="form-control" id="inputEmail3" placeholder="Surame">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-3 forRecuired col-form-label">Email</label>
+                                            <div class="col-sm-9">
+                                                <input type="email" class="form-control" id="inputEmail3" placeholder="name">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-3 forRecuired col-form-label">Email</label>
+                                            <div class="col-sm-9">
+                                                <input type="email" class="form-control" id="inputEmail3">
+                                            </div>
+                                        </div>
+
+                                        <fieldset class="form-group">
+                                            <div class="row">
+                                                <legend class="col-form-label col-sm-3 pt-0">Default Address</legend>
+                                                <div class="col-sm-9">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                                        <label class="form-check-label" for="inlineRadio2">yes</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                                        <label class="form-check-label" for="inlineRadio2">no</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                        <div class="cekbox" style="justify-content: space-between;">
+                                            <a href="#" class="btn btn-primary">Back</a>
+                                            <button type="submit" class="btn btn-primary">Continue</button>
+                                        </div>
+                                        
+                                    </form>
+                                </div>
+                                <!-- end of register page -->
+                            </div>
+                            <div class="col-lg-4">
+                                <div id="accTable">
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                          <tr>
+                                            <td><a href="#">Login</a></td>
+                                          </tr>
+                                          <tr>
+                                            <td><a href="#">Register</a></td>
+                                          </tr>
+                                          <tr>
+                                            <td><a href="#">Wish List</a></td>
+                                          </tr>
+                                          <tr>
+                                              <td><a href="#">Order History</a></td>
+                                          </tr>
+                                          <tr>
+                                              <td><a href="#">Newsletter</a></td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end of Register page -->
                 </div>
             </div>
 
-            @RenderSection("Companies", false)
-
+            <!-- only home page section  -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div id="companies">
+                            <div class="owl-carousel owl-theme">
+                                <div class="item">
+                                    <div class="company">
+                                        <div class="image">
+                                            <a href="#">
+                                                <img src="../FinalProject/img/companies/1-166x110.png" alt="phone">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="company">
+                                        <div class="image">
+                                            <img src="../FinalProject/img/companies/2-166x110.png" alt="phone">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="company">
+                                        <div class="image">
+                                            <img src="../FinalProject/img/companies/brand-3-166x110.png" alt="phone">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="company">
+                                        <div class="image">
+                                            <img src="../FinalProject/img/companies/brand-4-166x110.png" alt="phone">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="company">
+                                        <div class="image">
+                                            <img src="../FinalProject/img/companies/brand-5-166x110.png" alt="phone">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="company">
+                                        <div class="image">
+                                            <img src="../FinalProject/img/companies/brand-58-166x110 (1).png"
+                                                alt="phone">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="company">
+                                        <div class="image">
+                                            <img src="../FinalProject/img/companies/brand-58-166x110.png" alt="phone">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="company">
+                                        <div class="image">
+                                            <img src="../FinalProject/img/companies/brand-6-166x110.png" alt="phone">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="company">
+                                        <div class="image">
+                                            <img src="../FinalProject/img/companies/brand-7-166x110.png" alt="phone">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="company">
+                                        <div class="image">
+                                            <img src="../FinalProject/img/companies/brand-8-166x110.png" alt="phone">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end of companies carousel  -->
         </main>
 
         <footer>
@@ -1035,7 +1327,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <!-- owl js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <script src="~/Public/js/script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
