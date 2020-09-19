@@ -66,7 +66,6 @@
                     <form>
                         <div class="input-group mb-3">
                             <select class="custom-select" id="inputDetailSelect">
-                                @*<option value="0" selected>-- Please Select --</option>*@
 
                                 @foreach (var item in Model.ProductOptions)
                                 {
@@ -102,15 +101,26 @@
                     <hr>
                     <div class="stars">
                         <ul>
-                            <li> <i class="fa fa-star"></i> </li>
-                            <li> <i class="fa fa-star"></i> </li>
-                            <li> <i class="fa fa-star"></i> </li>
-                            <li> <i class="fa fa-star sade"></i> </li>
-                            <li> <i class="fa fa-star sade"></i> </li>
+                            @if (Model.Product.Reviews.Count > 0)
+                            {
+                                for (int i = 0; i < 5; i++)
+                                {
+                                    <li><i class="fa fa-star @( (Model.Product.Reviews.Sum(p=> p.Star)/Model.Product.Reviews.Count)<=i? "sade":"") "></i></li>
+
+                                }
+                            }
+                            else
+                            {
+                                <li> <i class="fa fa-star sade"></i> </li>
+                                <li> <i class="fa fa-star sade"></i> </li>
+                                <li> <i class="fa fa-star sade"></i> </li>
+                                <li> <i class="fa fa-star sade"></i> </li>
+                                <li> <i class="fa fa-star sade"></i> </li>
+                            }
                         </ul>
                     </div>
                     <h3 class="reviewCount">
-                        <a href="#">1 review(s)</a>
+                        <a href="#">@Model.Product.Reviews.Count review(s)</a>
                         <a href="#">Write a review</a>
                     </h3>
                 </div>
@@ -130,7 +140,7 @@
                                aria-selected="false">Specifiation</a>
                             <a class="nav-link" id="nav-contact-tab" data-toggle="tab"
                                href="#nav-contact" role="tab" aria-controls="nav-contact"
-                               aria-selected="false">Reviews (1)</a>
+                               aria-selected="false">Reviews (@Model.Product.Reviews.Count)</a>
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
@@ -170,7 +180,7 @@
                                 <colgroup>
                                     <col style="width: 50%;">
                                 </colgroup>
-                                @foreach (var itemReview in Model.Product.Reviews)
+                                @foreach (var itemReview in Model.Product.Reviews.OrderByDescending(r=>r.Id).Take(10))
                                 {
                                     <thead>
                                         <tr>
@@ -184,11 +194,11 @@
                                                 @itemReview.Content
                                                 <div class="stars">
                                                     <ul>
-                                                        <li> <i class="fa fa-star"></i> </li>
-                                                        <li> <i class="fa fa-star"></i> </li>
-                                                        <li> <i class="fa fa-star"></i> </li>
-                                                        <li> <i class="fa fa-star sade"></i> </li>
-                                                        <li> <i class="fa fa-star sade"></i> </li>
+                                                            @for (int i = 0; i < 5; i++)
+                                                            {
+                                                                <li><i class="fa fa-star @( itemReview.Star<=i? "sade":"") "></i></li>
+
+                                                            }
                                                     </ul>
                                                 </div>
                                             </td>

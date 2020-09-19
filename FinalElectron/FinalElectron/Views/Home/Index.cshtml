@@ -90,15 +90,22 @@
                                 <h5>$ @item.ProductOptions.FirstOrDefault().Price.ToString("#.00")<span>@(item.ProductOptions.FirstOrDefault().OldPrice!=0?("$ "+ item.ProductOptions.FirstOrDefault().OldPrice.ToString("#.00")):"")</span></h5>
                                 <div class="stars">
                                     <ul>
+                                        @if (item.Reviews.Count > 0)
+                                        {
+                                            for (int i = 0; i < 5; i++)
+                                            {
+                                                <li><i class="fa fa-star @( (item.Reviews.Sum(p=> p.Star)/item.Reviews.Count)<=i? "sade":"") "></i></li>
 
-                                       
-
-
-                                        <li> <i class="fa fa-star"></i> </li>
-                                        <li> <i class="fa fa-star"></i> </li>
-                                        <li> <i class="fa fa-star"></i> </li>
-                                        <li> <i class="fa fa-star"></i> </li>
-                                        <li> <i class="fa fa-star sade"></i> </li>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <li> <i class="fa fa-star sade"></i> </li>
+                                            <li> <i class="fa fa-star sade"></i> </li>
+                                            <li> <i class="fa fa-star sade"></i> </li>
+                                            <li> <i class="fa fa-star sade"></i> </li>
+                                            <li> <i class="fa fa-star sade"></i> </li>
+                                        }
                                     </ul>
                                 </div>
                             </div>

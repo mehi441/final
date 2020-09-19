@@ -124,16 +124,12 @@ namespace FinalElectron.Controllers
         [HttpPost]
         public ActionResult writeReview( string Name, string Content, string Star, int ProductId)
         {
-
-
             Review review1 = new Review();
 
             review1.Name = Name;
             review1.Content = Content;
             review1.ProductId = ProductId;
             review1.AddedDate = DateTime.Now;
-
-
 
             if (Star=="1")
             {

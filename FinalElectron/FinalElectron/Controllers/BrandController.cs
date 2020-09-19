@@ -1,4 +1,6 @@
 ﻿using FinalElectron.DAL;
+using FinalElectron.Models;
+using FinalElectron.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +9,29 @@ using System.Web.Mvc;
 
 namespace FinalElectron.Controllers
 {
-    public class FilterController : Controller
+    public class BrandController : Controller
     {
-        // GET: Filter
+        // GET: Brand
         private ElectronContex db = new ElectronContex();
 
         public ActionResult Index()
         {
+
+            List<Brand> brands = db.Brands.OrderBy(b=>b.Name).ToList();
+
+            List<string> chars = new List<string>();
+
+            foreach (var item in brands)
+            {
+                if (!chars.Contains(item.Name.ToUpper()[0].ToString()))
+                {
+                    chars.Add(item.Name.ToUpper()[0].ToString());
+                }
+            }
+
+            VmBrand vmBrand = new VmBrand();
+            vmBrand.Brands = brands;
+            vmBrand.Chars = chars;
 
             #region Cart list
 
@@ -73,11 +91,11 @@ namespace FinalElectron.Controllers
             }
             #endregion
 
-
             ViewBag.Categories = db.Categories.Include("SubCategories").ToList();
             ViewBag.LatestProS = db.Products.OrderByDescending(p => p.Id).Take(21).ToList();
             ViewBag.Testimonials = db.Testimonials.OrderByDescending(p => p.Id).Take(6).ToList();
-            return View();
+
+            return View(vmBrand);
         }
     }
 }

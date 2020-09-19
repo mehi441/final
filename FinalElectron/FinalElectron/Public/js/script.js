@@ -366,16 +366,33 @@ $(document).ready(function () {
         Count =  parseInt($("#productDetails #Qty").val());
 
         refreshCart(Id, Count);
+
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Product added to Cart',
+            showConfirmButton: false,
+            timer: 1200
+        })
     });
 
 
     // home page add to cart button
-    $("#home .choose .addCardBtn").click(function () {
+    $(".choose .addCardBtn").click(function () {
 
         Id = parseInt($(this).data("id"));
         Count = 1;
 
         refreshCart(Id, Count);
+
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Product added to Cart',
+            showConfirmButton: false,
+            timer: 1200
+        })
+
     });
 
 
@@ -546,9 +563,26 @@ $(document).ready(function () {
                     var oldCountTrue = parseInt($(".wishListCount").text());
                     oldCountTrue++;
                     $(".wishListCount").text(oldCountTrue);
+
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Product added to Wish List',
+                        showConfirmButton: false,
+                        timer: 1200
+                    })
+
                 } else if (response === "success-false") {
                      // send to login for wish
                     window.location.href = '/Login/Index';
+                } else if (response==="error") {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Product added to Wish List',
+                        showConfirmButton: false,
+                        timer: 1200
+                    })
                 }
             },
             error: function (error) {
@@ -565,6 +599,16 @@ $(document).ready(function () {
         Count = 1;
 
         refreshCart(Id, Count);
+    });
+
+    // change scroll positiuon by char selected
+
+    $(".OurBrand .BrandChar").click(function () {
+        var clikedChar = $(this).data("char")
+        console.log(clikedChar);
+
+        var slCharTop = $('#register .SelectData  *[data-charTop=' + clikedChar + ']').position().top;
+        window.scrollTo(0, slCharTop + 200);
     });
 
 

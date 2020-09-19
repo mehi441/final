@@ -103,7 +103,7 @@
                                             <i class="fas fa-shopping-bag"></i>
                                         </div>
                                         <div class="price">
-                                              <span>@ViewBag.CartCountPrice.Key Items / $@ViewBag.CartCountPrice.Value.ToString("#.00")</span>
+                                            <span>@ViewBag.CartCountPrice.Key Items / $@ViewBag.CartCountPrice.Value.ToString("#.00")</span>
                                         </div>
                                     </button>
                                 </a>
@@ -120,9 +120,9 @@
                                 <ul>
                                     <li><a href="@Url.Action("Index","Home")">Home</a></li>
                                     <li><a href="@Url.Action("Index","Special")">Specials Offers</a></li>
-                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="@Url.Action("Index","Contact")">Contact</a></li>
                                     <li><a href="@Url.Action("Index","Sitemap")">Sitemap</a></li>
-                                    <li><a href="#">Brands</a></li>
+                                    <li><a href="@Url.Action("Index","Brand")">Brand</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -157,10 +157,10 @@
                                             <div class="btn-group dropright">
 
 
-                                                    <button type="button" class="btn btn-secondary dropdown-toggle"
-                                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        @item.Name
-                                                    </button>
+                                                <button type="button" class="btn btn-secondary dropdown-toggle"
+                                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    @item.Name
+                                                </button>
 
                                                 <div class="dropdown-menu">
 
@@ -1035,6 +1035,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <!-- owl js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <!-- owl js -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.2.0/dist/sweetalert2.all.min.js"></script>
+
+
+
     <script src="~/Public/js/script.js"></script>
 </body>
 

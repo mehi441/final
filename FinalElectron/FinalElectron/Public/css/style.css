@@ -2905,6 +2905,36 @@
 
 
 
+
+#register .OurBrand .BrandChar {
+    transition: 0.4s linear;
+    cursor:pointer;
+    color:#222;
+}
+
+    #register .OurBrand .BrandChar:hover {
+        color: #ed1e3c;
+    }
+
+#register .OurBrandChar{
+    color:#333;
+}
+
+#register .OurBrandName{
+    color:#222;
+    font-size:14px;
+    text-transform:capitalize;
+    transition:0.4s linear;
+}
+    #register .OurBrandName:hover {
+        color: #ed1e3c;
+    }
+
+
+
+
+
+
 @keyframes topbarTitle {
     0% {
     color: #ffffff; }
