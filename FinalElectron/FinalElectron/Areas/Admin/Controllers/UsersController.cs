@@ -48,6 +48,12 @@ namespace FinalElectron.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+        // user address
+         public ActionResult AddressUser()
+            {
+              return View(db.UserAddresses.Include("User").ToList());
+          }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

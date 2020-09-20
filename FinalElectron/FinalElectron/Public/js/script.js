@@ -267,7 +267,6 @@ $(document).ready(function () {
     })
 
     // detail product quantity plus
-
     $(".nextBtn").click(function () {
         var quantity = $('#Qty').val();
         var qty = parseInt(quantity);
@@ -276,7 +275,6 @@ $(document).ready(function () {
     })
 
     // detail product quantity minus
-
     $(".prevBtn").click(function () {
         var quantity = $('#Qty').val();
         var qty = parseInt(quantity);
@@ -292,27 +290,10 @@ $(document).ready(function () {
 
 
     // detail product select change event 
-
     $("#inputDetailSelect").change(function () {
-
         var value = $("#inputDetailSelect").val();
-
         var valInt=parseInt(value);
-
         window.location.href = '/Detail/Index/' + valInt;
-
-        //$.ajax({
-        //    url: "/Detail/Index/" + valInt,
-        //    type: "get",
-        //    dataType: "json",
-        //    success: function (response) {
-        //        console.log(response);
-        //    },
-        //    error: function (error) {
-        //        console.log(error);
-        //    }
-        //});
-
     });
 
     // details image to  bigger/main
@@ -324,39 +305,6 @@ $(document).ready(function () {
 
         $("#productDetails .mainImage img").attr('src', sorce);
     });
-
-
-    // add review by ajax
-
-    //$("#productDetails #addReview").click(function () {
-
-    //    var name = $('#productDetails #inputName').val();
-    //    var content = $('#productDetails #inputContent').val();
-    //    var stars = $('#productDetails #inputStars').val();
-    //    var id = $('#productDetails #inputId').val();
-
-    //    console.log(name + content + stars + id);
-    //    $.ajax({
-
-    //        url: '<%: Url.Action("writeReview")%>',
-    //        data: { 'name': name, 'content': content, 'stars': stars, 'id': id  },
-
-    //        type: "post",
-    //        cache: false,
-
-    //        //dataType: "html",
-
-    //        success: function (response) {
-
-    //            $("#colorContainer").append(response);
-
-    //        },
-
-    //        error: function (error) {
-    //            console.log(error);
-    //        }
-    //    });
-    //});
 
 
     // details add to card button
@@ -485,6 +433,8 @@ $(document).ready(function () {
             dataType: "json",
             success: function (response) {
                 console.log(response);
+                GetProCount();
+                GetProPrice();
             },
             error: function (error) {
                 console.log(error);
@@ -602,7 +552,6 @@ $(document).ready(function () {
     });
 
     // change scroll positiuon by char selected
-
     $(".OurBrand .BrandChar").click(function () {
         var clikedChar = $(this).data("char")
         console.log(clikedChar);
@@ -612,6 +561,166 @@ $(document).ready(function () {
     });
 
 
+    // add Newsletter
+    $("#myNewsletter").submit(function (event) {
+        event.preventDefault(); //prevent default action 
+        var post_url = $(this).attr("action"); //get form action url
+        var request_method = $(this).attr("method"); //get form GET/POST method
+        var form_data = $(this).serialize(); //Encode form elements for submission
+
+        $.ajax({
+            url: post_url,
+            type: request_method,
+            data: form_data
+        }).done(function (response) { //
+            if (response=="sucs") {
+                Swal.fire('You have successfully subscribed to this newsletter.')
+            } else if (response=="error") {
+                Swal.fire({
+                    icon: 'error',
+                    text: 'This email address is already registered.!',
+                    //footer: '<a href>Why do I have this issue?</a>'
+                })
+            }
+        });
+    });
+
+
+    // add review by ajax 
+    $("#myReview").submit(function (event) {
+        event.preventDefault(); //prevent default action 
+        var post_url = $(this).attr("action"); //get form action url
+        var request_method = $(this).attr("method"); //get form GET/POST method
+        var form_data = $(this).serialize(); //Encode form elements for submission
+
+        $.ajax({
+            url: post_url,
+            type: request_method,
+            data: form_data
+        }).done(function (response) { //
+            if (response == "sucs") {
+                $(".revErrorStar").html("");
+                Swal.fire('You have successfully added review.')
+            } else if (response == "error") {
+                Swal.fire({
+                    icon: 'error',
+                    text: 'fill all.!',
+                })
+            } else if (response == "error-name") {
+                $(".revErrorName").html("Name max 70 ");
+            } else if (response == "error-content") {
+                $(".revErrorName").html("");
+                $(".revErrorContent").html("Name max 500  min 10");
+            } else if (response == "error-star") {
+                $(".revErrorName").html("");
+                $(".revErrorContent").html("");
+                $(".revErrorStar").html("You must add review");
+            }
+        });
+    });
+
+    // pass to write review 
+    $(".reviewCount .PassReview").click(function (e) {
+        e.preventDefault();
+
+        $("#nav-tab .nav-link").removeClass("active");
+        $("#nav-tab .nav-link").attr("aria-selected", "false");
+
+        $("#nav-tab .nav-contact-tab").addClass("active");
+        $("#nav-tab .nav-contact-tab").attr("aria-selected", "true");
+
+        $(".tab-content .tab-pane").removeClass("active");
+        $(".tab-content .tab-pane").removeClass("show");
+
+        $(".tab-content #nav-contact").addClass("active");
+        $(".tab-content #nav-contact").addClass("show");
+
+
+        var slCharTop = $('#myReview').position().top;
+        console.log(slCharTop);
+        window.scrollTo(0, slCharTop+750);
+    });
+
+
+    // add to compare cookie 
+    $(".choose .addCompareBtn").click(function (e) {
+        e.preventDefault();
+
+        var id = parseInt($(this).data("id"));
+        $.ajax({
+            url: "/Compare/AddCompare/" + id,
+            type: "get",
+            dataType: "json",
+            success: function (response) {
+                if (response === "success-true") {
+
+                    var oldCompareCount = parseInt($(".CompareProCount").text());
+                    oldCompareCount++;
+                    $(".CompareProCount").text(oldCompareCount);
+
+                    Swal.fire({
+                        position: 'top',
+                        icon: 'success',
+                        title: 'You have added product to comparison',
+                        showConfirmButton: false,
+                        timer: 1200
+                    })
+                } else if (response === "success-false") {
+                    Swal.fire({
+                        position: 'top',
+                        icon: 'success',
+                        title: 'You have added product to comparison',
+                        showConfirmButton: false,
+                        timer: 1200
+                    })
+                }
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    });
+
+    // send to filer page  depends category id
+    //$(".choose .addCompareBtn").click(function (e) {
+    //    e.preventDefault();
+
+        
+
+    //    var id = parseInt($(this).data("id"));
+    //    $.ajax({
+    //        url: "/Compare/AddCompare/" + id,
+    //        type: "get",
+    //        dataType: "json",
+    //        success: function (response) {
+    //            if (response === "success-true") {
+
+    //                var oldCompareCount = parseInt($(".CompareProCount").text());
+    //                oldCompareCount++;
+    //                $(".CompareProCount").text(oldCompareCount);
+
+    //                Swal.fire({
+    //                    position: 'top',
+    //                    icon: 'success',
+    //                    title: 'You have added product to comparison',
+    //                    showConfirmButton: false,
+    //                    timer: 1200
+    //                })
+    //            } else if (response === "success-false") {
+    //                Swal.fire({
+    //                    position: 'top',
+    //                    icon: 'success',
+    //                    title: 'You have added product to comparison',
+    //                    showConfirmButton: false,
+    //                    timer: 1200
+    //                })
+    //            }
+    //        },
+    //        error: function (error) {
+    //            console.log(error);
+    //        }
+    //    });
+    //});
 
 
 
@@ -650,6 +759,20 @@ $(document).ready(function () {
 
 
 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+     // refresh cart cookie
 
     function refreshCart(Id, Count) {
         var cartElem = {
@@ -663,14 +786,40 @@ $(document).ready(function () {
             dataType: "json",
             data: cartElem,
             success: function (response) {
+                GetProCount();
+                GetProPrice();
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
 
-                // jsonda count ve price  almmaq  
+    // get products count for nav
+    function GetProCount() {
+        $.ajax({
+            url: "/Home/GetProCount",
+            type: "get",
+            dataType: "json",
+            success: function (response) {
+                console.log(response);
+                $("#nav-Count").text(response);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
 
-                //if (response === "success-true") {
-                //    var oldCountTrue = parseInt($(".cartCount").text());
-                //    oldCountTrue++;
-                //    $(".cartCount").text(oldCountTrue);
-                //}
+    // get products prices for nav
+    function GetProPrice() {
+        $.ajax({
+            url: "/Home/GetProPrice",
+            type: "get",
+            dataType: "json",
+            success: function (response) {
+                console.log(response);
+                $("#nav-Price").text(response);
             },
             error: function (error) {
                 console.log(error);

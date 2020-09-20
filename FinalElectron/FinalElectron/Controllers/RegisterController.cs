@@ -78,7 +78,21 @@ namespace FinalElectron.Controllers
                 ViewBag.WishListCount = 0;
             }
             #endregion
+            #region Compare list
+            HttpCookie cookie = Request.Cookies["CompareList"];
+            if (cookie != null)
+            {
+                List<string> CompList = cookie.Value.Split(',').ToList();
 
+                CompList.RemoveAt(CompList.Count - 1);
+
+                ViewBag.CompareListCount = CompList.Count;
+            }
+            else
+            {
+                ViewBag.CompareListCount = 0;
+            }
+            #endregion
 
 
             ViewBag.Categories = db.Categories.Include("SubCategories").ToList();

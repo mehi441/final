@@ -71,7 +71,21 @@ namespace FinalElectron.Controllers
             KeyValuePair<int, decimal> cartCountPrice = new KeyValuePair<int, decimal>(cartCount,cartPrice);
             ViewBag.CartCountPrice = cartCountPrice;
             #endregion
+            #region Compare list
+            HttpCookie cookie = Request.Cookies["CompareList"];
+            if (cookie != null)
+            {
+                List<string> CompList = cookie.Value.Split(',').ToList();
 
+                CompList.RemoveAt(CompList.Count - 1);
+
+                ViewBag.CompareListCount = CompList.Count;
+            }
+            else
+            {
+                ViewBag.CompareListCount = 0;
+            }
+            #endregion
             #region Wish list
             if (Session["User"] != null)
             {

@@ -79,7 +79,7 @@
                                          <div class="addWishBtn" data-id="@item.ProductOptions.FirstOrDefault().Id"><i class="far fa-heart"></i></div>
                                     </li>
                                     <li>
-                                         <div class="addCompareBtn"><i class="far fa-chart-bar"></i></div>
+                                         <div class="addCompareBtn" data-id="@item.ProductOptions.FirstOrDefault().Id"><i class="far fa-chart-bar"></i></div>
                                     </li>
                                 </ul>
                             </div>
@@ -507,7 +507,7 @@
                     <div class="col-lg-4">
                         <div class="item">
                             <div class="product">
-                                <a href="#">
+                                <a href="@Url.Action("Index","Detail" ,new { id=item.ProductOptions.FirstOrDefault().Id})" style="text-decoration:none">
                                     <div class="image">
                                         <img src="~/Uploads/@item.ProductImages.FirstOrDefault().Name" alt="phone">
                                     </div>
@@ -521,16 +521,27 @@
                                 </a>
                                 <div class="content">
                                     <a href="@Url.Action("Index","Detail" ,new { id=item.ProductOptions.FirstOrDefault().Id})" style="text-decoration:none">
-                                        <h4>@item.Model.Name @item.Name @item.ProductOptions.FirstOrDefault().Color.Name</h4>
+                                        <h4>@item.Model.Name @item.Name</h4>
                                     </a>
                                     <h5>$ @item.ProductOptions.FirstOrDefault().Price.ToString("#.00")<span>@(item.ProductOptions.FirstOrDefault().OldPrice!=0?("$ "+ item.ProductOptions.FirstOrDefault().OldPrice.ToString("#.00")):"")</span></h5>
                                     <div class="stars">
                                         <ul>
-                                            <li> <i class="fa fa-star"></i> </li>
-                                            <li> <i class="fa fa-star"></i> </li>
-                                            <li> <i class="fa fa-star"></i> </li>
-                                            <li> <i class="fa fa-star"></i> </li>
-                                            <li> <i class="fa fa-star sade"></i> </li>
+                                            @if (item.Reviews.Count > 0)
+                                            {
+                                                for (int i = 0; i < 5; i++)
+                                                {
+                                                    <li><i class="fa fa-star @( (item.Reviews.Sum(p=> p.Star)/item.Reviews.Count)<=i? "sade":"") "></i></li>
+
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <li> <i class="fa fa-star sade"></i> </li>
+                                                <li> <i class="fa fa-star sade"></i> </li>
+                                                <li> <i class="fa fa-star sade"></i> </li>
+                                                <li> <i class="fa fa-star sade"></i> </li>
+                                                <li> <i class="fa fa-star sade"></i> </li>
+                                            }
                                         </ul>
                                     </div>
                                 </div>
@@ -683,19 +694,13 @@
                             <div class="choose">
                                 <ul>
                                     <li>
-                                        <a href="#">
-                                            <div><i class="fas fa-shopping-cart"></i></div>
-                                        </a>
+                                        <div class="addCardBtn" data-id="@item.ProductOptions.FirstOrDefault().Id"><i class="fas fa-shopping-cart"></i></div>
                                     </li>
                                     <li>
-                                        <a href="#">
-                                            <div><i class="far fa-heart"></i></div>
-                                        </a>
+                                        <div class="addWishBtn" data-id="@item.ProductOptions.FirstOrDefault().Id"><i class="far fa-heart"></i></div>
                                     </li>
                                     <li>
-                                        <a href="#">
-                                            <div><i class="far fa-chart-bar"></i></div>
-                                        </a>
+                                        <div class="addCompareBtn" data-id="@item.ProductOptions.FirstOrDefault().Id"><i class="far fa-chart-bar"></i></div>
                                     </li>
                                 </ul>
                             </div>
@@ -706,11 +711,21 @@
                                 <h5>$ @item.ProductOptions.FirstOrDefault().Price.ToString("#.00")<span>@(item.ProductOptions.FirstOrDefault().OldPrice!=0?("$ "+ item.ProductOptions.FirstOrDefault().OldPrice.ToString("#.00")):"")</span></h5>
                                 <div class="stars">
                                     <ul>
-                                        <li> <i class="fa fa-star"></i> </li>
-                                        <li> <i class="fa fa-star"></i> </li>
-                                        <li> <i class="fa fa-star"></i> </li>
-                                        <li> <i class="fa fa-star"></i> </li>
-                                        <li> <i class="fa fa-star sade"></i> </li>
+                                        @if (item.Reviews.Count > 0)
+                                        {
+                                            for (int i = 0; i < 5; i++)
+                                            {
+                                                <li><i class="fa fa-star @( (item.Reviews.Sum(p=> p.Star)/item.Reviews.Count)<=i? "sade":"") "></i></li>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <li> <i class="fa fa-star sade"></i> </li>
+                                            <li> <i class="fa fa-star sade"></i> </li>
+                                            <li> <i class="fa fa-star sade"></i> </li>
+                                            <li> <i class="fa fa-star sade"></i> </li>
+                                            <li> <i class="fa fa-star sade"></i> </li>
+                                        }
                                     </ul>
                                 </div>
                             </div>

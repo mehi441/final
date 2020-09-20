@@ -41,6 +41,10 @@
                             <div class="navbarTop">
                                 <ul>
                                     <li>
+                                        <a href="@Url.Action("Index","Compare")">Compare(<span class="CompareProCount">@ViewBag.CompareListCount</span>)</a>
+                                    </li>
+                                    <li style="color: white; font-size: 13px;">|</li>
+                                    <li>
                                         <a href="@Url.Action("Wishlist","Account")">Wish list(<span class="wishListCount">@ViewBag.WishListCount</span>)</a>
                                     </li>
                                     <li style="color: white; font-size: 13px;">|</li>
@@ -103,7 +107,7 @@
                                             <i class="fas fa-shopping-bag"></i>
                                         </div>
                                         <div class="price">
-                                            <span>@ViewBag.CartCountPrice.Key Items / $@ViewBag.CartCountPrice.Value.ToString("#.00")</span>
+                                            <span><span id="nav-Count">@ViewBag.CartCountPrice.Key</span> Items / $<span id="nav-Price">@ViewBag.CartCountPrice.Value.ToString("#.00")</span></span>
                                         </div>
                                     </button>
                                 </a>
@@ -863,9 +867,9 @@
                             <hr>
                             <h3>Sign Up For Our Newsletter</h3>
                             <div class="myForm">
-                                <form>
+                                <form action="@Url.Action("AddNewsletter","Home")" method="post" id="myNewsletter">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="inputAddress"
+                                        <input type="email" class="form-control" name="email" 
                                                placeholder="Your email address">
                                     </div>
                                     <button type="submit" class="btn btn-primary">SUBSCRIBE</button>

@@ -92,3 +92,5 @@ C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron
 C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron.Migrations.sds.resources
 C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron.Migrations.addhoverimage.resources
 C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron.Migrations.addwishlist.resources
+C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron.Migrations.changeendtime.resources
+C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron.Migrations.removerequiredfromaddeddate.resources

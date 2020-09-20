@@ -20,5 +20,56 @@ namespace FinalElectron.Controllers
             ViewBag.Testimonials = db.Testimonials.OrderByDescending(p => p.Id).Take(6).ToList();
             return View();
         }
+
+
+        public JsonResult AddCompare(int? id)
+        {
+            string response = "";
+            if (id != null)
+            {
+                if (Request.Cookies["CompareList"] != null)
+                {
+                    string oldList = Request.Cookies["CompareList"].Value;
+                    HttpCookie cookie = new HttpCookie("CompareList");
+                    cookie.Value = oldList;
+
+                    if (!oldList.Contains(id.ToString()))
+                    {
+                        cookie.Value += id + ",";
+                        Request.Cookies["CompareList"].Expires = DateTime.Now.AddYears(1);
+                        Response.Cookies.Add(cookie);
+                        response = "success-true";
+                    }
+                    else
+                    {
+                        response = "success-false";
+                    }
+
+                }
+                else
+                {
+                    HttpCookie cookie = new HttpCookie("CompareList");
+
+                    cookie.Expires = DateTime.Now.AddYears(1);
+                    cookie.Value += id + ",";
+                    Response.Cookies.Add(cookie);
+                    response = "success-true";
+                }
+            }
+            else
+            {
+                response = "error";
+            }
+
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+
+
+
+
+
     }
 }

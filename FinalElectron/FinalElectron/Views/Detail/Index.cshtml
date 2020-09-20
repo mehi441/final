@@ -94,7 +94,7 @@
                         <button class="btn addToWishBtn">
                             <i class="fa fa-heart"></i>
                         </button>
-                        <button class="btn addToCompareBtn">
+                        <button class="btn addCompareBtn" data-id="@Model.ProOption.Id">
                             <i class="fas fa-compress-alt"></i>
                         </button>
                     </div>
@@ -121,7 +121,7 @@
                     </div>
                     <h3 class="reviewCount">
                         <a href="#">@Model.Product.Reviews.Count review(s)</a>
-                        <a href="#">Write a review</a>
+                        <a href="#" class="PassReview">Write a review</a>
                     </h3>
                 </div>
             </div>
@@ -210,42 +210,44 @@
                                 
                             </table>
                             <h4>Write A Review</h4>
-                            <form action="@Url.Action("writeReview","Detail")">
+                            <form action="@Url.Action("writeReview","Detail")" method="post" id="myReview">
                                 <div class="form-group">
                                     <label>Your Name</label>
-                                    <input type="text" class="form-control" name="Name"
-                                           id="inputName">
+                                    <input type="text" class="form-control" name="Name">
+                                    <p class="revErrorName mb-0" style="color:red"></p>
                                 </div>
                                 <div class="form-group">
                                     <label>Your Review</label>
-                                    <textarea class="form-control" id="inputContent" name="Content"
-                                              rows="3"></textarea>
+                                    <textarea class="form-control" name="Content" rows="3"></textarea>
+                                    <p class="revErrorContent mb-0" style="color:red"></p>
                                 </div>
+
                                 <label for="rating">Rating</label>
                                 <h3>Bad</h3>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio"
-                                           name="Star" id="inputStars" value="1">
+                                           name="Star" value="1">
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio"
-                                           name="Star" id="inputStars" value="2">
+                                           name="Star" value="2">
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio"
-                                           name="Star" id="inputStars" value="3">
+                                           name="Star" value="3">
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio"
-                                           name="Star" id="inputStars" value="4">
+                                           name="Star" value="4">
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio"
-                                           name="Star" id="inputStars" value="5">
+                                           name="Star" value="5">
                                 </div>
                                 <input type="hidden" name="ProductId" value="@Model.Product.Id" />
 
                                 <h3>Good</h3>
+                                <p class="revErrorStar mb-0" style="color:red"></p>
                                 <br>
                                 <button class="btn btn-primary" id="addReview" type="submit">Continue</button>
                             </form>

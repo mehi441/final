@@ -101,6 +101,32 @@ namespace FinalElectron.Controllers
             KeyValuePair<int, decimal> cartCountPrice = new KeyValuePair<int, decimal>(cartCount, cartPrice);
             ViewBag.CartCountPrice = cartCountPrice;
             #endregion
+            #region Wish list
+            if (Session["User"] != null)
+            {
+                int userIdSession = (int)Session["UserId"];
+                ViewBag.WishListCount = db.Wishlists.Where(w => w.UserId == userIdSession).ToList().Count;
+            }
+            else
+            {
+                ViewBag.WishListCount = 0;
+            }
+            #endregion
+            #region Compare list
+            HttpCookie cookie = Request.Cookies["CompareList"];
+            if (cookie != null)
+            {
+                List<string> CompList = cookie.Value.Split(',').ToList();
+
+                CompList.RemoveAt(CompList.Count - 1);
+
+                ViewBag.CompareListCount = CompList.Count;
+            }
+            else
+            {
+                ViewBag.CompareListCount = 0;
+            }
+            #endregion
 
             ViewBag.Categories = db.Categories.Include("SubCategories").ToList();
             ViewBag.LatestProS = db.Products.OrderByDescending(p => p.Id).Take(21).ToList();
@@ -108,54 +134,30 @@ namespace FinalElectron.Controllers
             return View(vmDetail);
         }
 
-        //[HttpPost]
-        //public ActionResult writeReview(string name, string content, string stars , int id)
-        //{
-
-        //    Review review = new Review();
-
-        //    review.Name = name;
-        //    review.Content = content;
-        //    review.ProductId = id;
-
-        //    return Content("Index");
-        //}
 
         [HttpPost]
-        public ActionResult writeReview( string Name, string Content, string Star, int ProductId)
+        public ActionResult writeReview( Review review )
         {
-            Review review1 = new Review();
-
-            review1.Name = Name;
-            review1.Content = Content;
-            review1.ProductId = ProductId;
-            review1.AddedDate = DateTime.Now;
-
-            if (Star=="1")
+            if (review.Name==null|| review.Name.Length==0 || review.Name.Length >70)
             {
-                review1.Star = 1;
+                 return Content("error-name");
             }
-            else if (Star == "2")
+            if (review.Content == null || review.Content.Length < 10 || review.Content.Length > 500)
             {
-                review1.Star = 2;
+                return Content("error-content");
             }
-            else if (Star == "3")
+            if (review.Star == 0)
             {
-                review1.Star = 3;
+                return Content("error-star");
             }
-            else if (Star == "4")
+            if (ModelState.IsValid)
             {
-                review1.Star = 4;
+                review.AddedDate = DateTime.Now;
+                db.Reviews.Add(review);
+                db.SaveChanges();
+                return Content("sucs");
             }
-            else if(Star == "5")
-            {
-                review1.Star = 5;
-            }
-
-            db.Reviews.Add(review1);
-            db.SaveChanges();
-
-            return View("Index");
+            return Content("error");
         }
 
 
