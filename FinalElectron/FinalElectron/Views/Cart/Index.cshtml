@@ -57,8 +57,6 @@
                                 <a href="@Url.Action("Index", "Detail", new { id = Model.ProductOptions.FirstOrDefault(p => p.Id == item.Key).Id })">@Model.ProductOptions.FirstOrDefault(p => p.Id == item.Key).Product.Model.Name @Model.ProductOptions.FirstOrDefault(p => p.Id == item.Key).Product.Name</a>
                                 <br />
                                 @(Model.ProductOptions.FirstOrDefault(p => p.Id == item.Key).ColorId != 0 ? Model.ProductOptions.FirstOrDefault(p => p.Id == item.Key).Color.Name : "")
-
-
                             </td>
                             <td style="text-transform:capitalize">
                                 @(Model.ProductOptions.FirstOrDefault(p => p.Id == item.Key).Product.Model.Brand.Name)

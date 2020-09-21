@@ -120,6 +120,17 @@ namespace FinalElectron.Controllers
             }
             #endregion
 
+
+            ViewBag.HotDeals = db.HotDeals.Include("ProductOption")
+                                          .Include("ProductOption.Color")
+                                          .Include("ProductOption.Product")
+                                          .Include("ProductOption.Product.Model")
+                                          .Include("ProductOption.Product.Model.Brand")
+                                          .Include("ProductOption.Product.ProductImages")
+                                          .Include("ProductOption.Product.Reviews")
+                                          .ToList();
+
+
             ViewBag.Categories = db.Categories.Include("SubCategories").ToList();
             ViewBag.LatestProS = db.Products.OrderByDescending(p => p.Id).Take(21).ToList();
             ViewBag.Testimonials = db.Testimonials.OrderByDescending(p => p.Id).Take(6).ToList();

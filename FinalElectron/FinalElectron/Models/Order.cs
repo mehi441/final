@@ -22,12 +22,15 @@ namespace FinalElectron.Models
         public decimal ShippingPrice { get; set; }
 
         [MaxLength(1000)]
-        [Required]
         public string Note { get; set; }
 
         [Column(TypeName = "bit")]
         public bool PeymentMethod { get; set; }
 
+
+        [Column(TypeName = "bit")]
+        public bool IsReady { get; set; }
+         
         public DateTime AddedDate { get; set; }
 
         [ForeignKey("Address")]
@@ -35,5 +38,10 @@ namespace FinalElectron.Models
         public UserAddress Address { get; set; }
 
         public List<OrderItem> OrderItems { get; set; }
+
+        [NotMapped]
+        public string IsShipString { get; set; }
+
+
     }
 }

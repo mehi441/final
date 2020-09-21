@@ -1,10 +1,14 @@
+//import { request } from "d3-request";
+
 $(document).ready(function () {
 
-    $("#accordion .header").click(function () {
-
+    //$("#accordion .header").click(function () {
+    //    $(this).next().toggleClass("active");
+    //})
+    $(".BILHead").click(function () {
         $(this).next().toggleClass("active");
-
     })
+
 
     // for dropright in catagiries
     $("#categories li").mouseenter(function () {
@@ -22,7 +26,7 @@ $(document).ready(function () {
 
     // hot deals owl in left side navbar
     $('#hotDeals .owl-carousel').owlCarousel({
-        loop: true,
+        loop: false,
         margin: 10,
         nav: true,
         dots: false,
@@ -288,7 +292,6 @@ $(document).ready(function () {
         }
     })
 
-
     // detail product select change event 
     $("#inputDetailSelect").change(function () {
         var value = $("#inputDetailSelect").val();
@@ -297,7 +300,6 @@ $(document).ready(function () {
     });
 
     // details image to  bigger/main
-
     $("#productDetails .item img").click(function () {
 
         var sorce = $(this).attr('src');
@@ -305,7 +307,6 @@ $(document).ready(function () {
 
         $("#productDetails .mainImage img").attr('src', sorce);
     });
-
 
     // details add to card button
     $("#productDetails .choose .addToCardBtn").click(function () {
@@ -323,7 +324,6 @@ $(document).ready(function () {
             timer: 1200
         })
     });
-
 
     // home page add to cart button
     $(".choose .addCardBtn").click(function () {
@@ -345,7 +345,7 @@ $(document).ready(function () {
 
 
 
-    // product Count Change 
+    // product Count Change in cart
     $("#soppingCart .addCardInput").change(function () {
 
         // refresc Cart cookie
@@ -444,8 +444,6 @@ $(document).ready(function () {
 
 
 
-
-
     // remove Addres from user address list and database
     $("#account #register #addressList .btnDelete").click(function () {
 
@@ -466,9 +464,6 @@ $(document).ready(function () {
         });
     });
 
-
-
-
     // remove wish from Wishlis list and database
     $("#account #register #addressList .btnDeleteWish").click(function () {
 
@@ -481,8 +476,6 @@ $(document).ready(function () {
             type: "get",
             dataType: "json",
             success: function (response) {
-
-
                 var oldCountTrue = parseInt($(".wishListCount").text());
                 oldCountTrue--;
                 $(".wishListCount").text(oldCountTrue);
@@ -495,10 +488,7 @@ $(document).ready(function () {
         });
     });
 
-   
-
-     //add Wish List 
-
+    // add Wish List 
     $(".addWishBtn").click(function () {
 
         id = parseInt($(this).data("id"));
@@ -541,7 +531,6 @@ $(document).ready(function () {
         });
     });
 
-
     // add product to card cookie from wish list
     $("#account #register #addressList .btnToCardWish").click(function () {
 
@@ -559,7 +548,6 @@ $(document).ready(function () {
         var slCharTop = $('#register .SelectData  *[data-charTop=' + clikedChar + ']').position().top;
         window.scrollTo(0, slCharTop + 200);
     });
-
 
     // add Newsletter
     $("#myNewsletter").submit(function (event) {
@@ -584,7 +572,6 @@ $(document).ready(function () {
             }
         });
     });
-
 
     // add review by ajax 
     $("#myReview").submit(function (event) {
@@ -641,7 +628,6 @@ $(document).ready(function () {
         window.scrollTo(0, slCharTop+750);
     });
 
-
     // add to compare cookie 
     $(".choose .addCompareBtn").click(function (e) {
         e.preventDefault();
@@ -681,59 +667,166 @@ $(document).ready(function () {
         });
     });
 
-    // send to filer page  depends category id
-    //$(".choose .addCompareBtn").click(function (e) {
-    //    e.preventDefault();
+    // Check boc yollari 
+    //add Address to order 
+    $("#addAddressOrder").submit(function (event) {
+        event.preventDefault(); //prevent default action 
+        var post_url = $(this).attr("action"); //get form action url
+        var request_method = $(this).attr("method"); //get form GET/POST method
+        var form_data = $(this).serialize(); //Encode form elements for submission
 
-        
+        $.ajax({
+            url: post_url,
+            type: request_method,
+            data: form_data
+        }).done(function (response) { //
 
-    //    var id = parseInt($(this).data("id"));
-    //    $.ajax({
-    //        url: "/Compare/AddCompare/" + id,
-    //        type: "get",
-    //        dataType: "json",
-    //        success: function (response) {
-    //            if (response === "success-true") {
-
-    //                var oldCompareCount = parseInt($(".CompareProCount").text());
-    //                oldCompareCount++;
-    //                $(".CompareProCount").text(oldCompareCount);
-
-    //                Swal.fire({
-    //                    position: 'top',
-    //                    icon: 'success',
-    //                    title: 'You have added product to comparison',
-    //                    showConfirmButton: false,
-    //                    timer: 1200
-    //                })
-    //            } else if (response === "success-false") {
-    //                Swal.fire({
-    //                    position: 'top',
-    //                    icon: 'success',
-    //                    title: 'You have added product to comparison',
-    //                    showConfirmButton: false,
-    //                    timer: 1200
-    //                })
-    //            }
-    //        },
-    //        error: function (error) {
-    //            console.log(error);
-    //        }
-    //    });
-    //});
+            if (response!="error") {
+                var id = parseInt(response);
+                $("#ForAddOrderId input").val(id);
+                $("#EndBtn").data("id", id);
+                $("#DLVmet").addClass("active");
+            }
 
 
+        });
+    });
+
+    // add is ship to order
+    $("#AddShipToOrder").submit(function (event) {
+        event.preventDefault(); //prevent default action 
+        var post_url = $(this).attr("action"); //get form action url
+        var request_method = $(this).attr("method"); //get form GET/POST method
+        var form_data = $(this).serialize(); //Encode form elements for submission
+
+        $.ajax({
+            url: post_url,
+            type: request_method,
+            data: form_data
+        }).done(function (response) { //
+
+            if (response === "Sucses") {
+                $("#PYMmet").addClass("active");
+            }
+            
+            console.log(response);
+
+        });
+    });
 
 
+    // add pay to order
+    $("#AddPayToOrder").submit(function (event) {
+        event.preventDefault(); //prevent default action 
+        var post_url = $(this).attr("action"); //get form action url
+        var request_method = $(this).attr("method"); //get form GET/POST method
+        var form_data = $(this).serialize(); //Encode form elements for submission
+
+        $.ajax({
+            url: post_url,
+            type: request_method,
+            data: form_data
+        }).done(function (response) { //
+
+            if (response === "Sucses-false") {
+                $("#forMustCheck").text("You have to agree");
+            } else if (response === "Sucses") {
+                $("#CFRMOrd").addClass("active");
+                console.log("Sucss");
+            } else if (response==="error") {
+                console.log("tom");
+
+            }
+        });
+    });
 
 
+    // inut clik show cart inputs for paying
+    $(".inpR").change(function () {
+
+        if ($("#in4").prop("checked") == true) {
+            $("#ForAddCartInput").css("display", "block");
+        } else {
+            $("#ForAddCartInput").css("display", "none");
+        }
+    });
 
 
+    // home shipping change eveti 
+    $(".inpShip").change(function () {
+
+        if ($("#in2").prop("checked") == true) {
+            $(".ForShipPrice").text("$13.00");
+
+            var SumTotalPrices = 0;
+
+            $(".ForTotPr").each(function (index) {
+                SumTotalPrices += parseFloat($(this).text().substring(1));
+            });
+            $("#TotPrCh").text("$"+SumTotalPrices);
+
+        } else {
+            $(".ForShipPrice").text("$0.00");
+            var SumTotalPrices = 0;
+
+            $(".ForTotPr").each(function (index) {
+                SumTotalPrices += parseFloat($(this).text().substring(1));
+            });
+            $("#TotPrCh").text("$"+SumTotalPrices);
+        }
+    });
 
 
+    // End Btn click
+    $("#EndBtn").click(function (e) {
+        e.preventDefault();
+        Id = parseInt($(this).data("id"));
+
+        $.ajax({
+            url: "/Checkout/AddItemOToOrder/" + Id,
+            type: "get",
+            dataType: "json",
+            success: function (response) {
+                console.log(response);
+                if (response ==="sucses") {
+                    Swal.fire("Your order has been placed! Your order has been successfully processed! You can view your order history by going to the my account page and by clicking on history. If your purchase has an associated download, you can go to the account downloads page to view them.Please direct any questions you have to the store owner.Thanks for shopping with us online!")
+
+                    setInterval(function () { window.location.href = '/Home/Index/'; }, 3000);
+                }
+
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    });
 
 
+    //// login user in checkbox page
+    $("#CheckLogin").submit(function (event) {
+        event.preventDefault(); //prevent default action 
+        var post_url = $(this).attr("action"); //get form action url
+        var request_method = $(this).attr("method"); //get form GET/POST method
+        var form_data = $(this).serialize(); //Encode form elements for submission
 
+        $.ajax({
+            url: post_url,
+            type: request_method,
+            data: form_data
+        }).done(function (response) { //
+            if (response ==="Sucses") {
+                window.location.href = '/Checkout/Index/';
+            }else if (response === "error-password") {
+                $("#errPassword").text("Password is wrong");
+                $("#errEmail").text("");
+            } else if (response === "error-email") {
+                $("#errEmail").text("Email is wrong");
+                $("#errPassword").text("");
+            } else if (response === "error") {
+                console.log("tom");
+            }
+        });
+    });
 
 
 
@@ -772,8 +865,7 @@ $(document).ready(function () {
 
 
 
-     // refresh cart cookie
-
+    // refresh cart cookie
     function refreshCart(Id, Count) {
         var cartElem = {
             id: Id,

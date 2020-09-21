@@ -205,6 +205,14 @@
     <Compile Include="Migrations\202009201206060_remove required from addeddate.designer.cs">
       <DependentUpon>202009201206060_remove required from addeddate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009201903159_check required.cs" />
+    <Compile Include="Migrations\202009201903159_check required.designer.cs">
+      <DependentUpon>202009201903159_check required.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009201923575_add isReady to order.cs" />
+    <Compile Include="Migrations\202009201923575_add isReady to order.designer.cs">
+      <DependentUpon>202009201923575_add isReady to order.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdFooter.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -1022,6 +1030,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009201206060_remove required from addeddate.resx">
       <DependentUpon>202009201206060_remove required from addeddate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009201903159_check required.resx">
+      <DependentUpon>202009201903159_check required.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009201923575_add isReady to order.resx">
+      <DependentUpon>202009201923575_add isReady to order.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

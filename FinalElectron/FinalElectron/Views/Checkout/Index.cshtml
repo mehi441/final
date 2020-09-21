@@ -1,4 +1,5 @@
-﻿
+﻿@model FinalElectron.ViewModels.VmCart
+
 @{
     ViewBag.Title = "Index";
 }
@@ -23,7 +24,7 @@
     <!-- Accordion -->
     <div id="accordion">
         <!-- Checkout Options  -->
-        <div class="header">
+        <div class="header BILHead">
             <h1 class="accordionTitle">Step 1: Checkout Options</h1>
             <i class="fas fa-caret-down"></i>
         </div>
@@ -31,53 +32,58 @@
         @if (Session["User"] == null)
         {
             <div class="row content">
-            <div class="col-lg-6">
-                <div class="newCostumer">
-                    <h2>New Customer</h2>
-                    <h4>Checkout Options:</h4>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios"
-                               id="exampleRadios1" value="option1" checked>
-                        <label class="form-check-label" for="exampleRadios1">
-                            Register Account
-                        </label>
+                <div class="col-lg-6">
+                    <div class="newCostumer">
+                        <h2>New Customer</h2>
+                        @*it is for check guest or register account*@
+                        @*  it will be open when to choose guest or register user *@
+                        @*<h4>Checkout Options:</h4>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios"
+                                       id="exampleRadios1" value="option1" checked>
+                                <label class="form-check-label" for="exampleRadios1">
+                                    Register Account
+                                </label>
+                             </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios"
+                                       id="exampleRadios2" value="option2">
+                                <label class="form-check-label" for="exampleRadios2">
+                                    Guest Checkout
+                                </label>
+                            </div>*@
+                        <p>
+                            By creating an account you will be able to shop faster, be up to date on an
+                            order's
+                            status, and keep track of the orders you have previously made.
+                        </p>
+                        <a href="@Url.Action("Index","Register")" class="btn">Register</a>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios"
-                               id="exampleRadios2" value="option2">
-                        <label class="form-check-label" for="exampleRadios2">
-                            Guest Checkout
-                        </label>
+                </div>
+                <div class="col-lg-6">
+                    <div class="returnCostumer">
+                        <h2>Returning Customer</h2>
+                        <h4>I am a returning customer</h4>
+                        <form action="@Url.Action("CheckLogin","Checkout")" method="post" id="CheckLogin">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">E-Mail</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1"
+                                       name="Email" placeholder="E-Mail">
+                                <p class="mb-0" style="color:red;font-size:14px" id="errEmail"></p>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1"
+                                     name="Password"  placeholder="Password">
+                                <p class="mb-0" style="color:red;font-size:14px" id="errPassword"></p>
+                                <a href="#">Forgetten password</a>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </form>
                     </div>
-                    <p>
-                        By creating an account you will be able to shop faster, be up to date on an
-                        order's
-                        status, and keep track of the orders you have previously made.
-                    </p>
-                    <button class="btn">Continue</button>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <div class="returnCostumer">
-                    <h2>Returning Customer</h2>
-                    <h4>I am a returning customer</h4>
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">E-Mail</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                   aria-describedby="emailHelp" placeholder="E-Mail">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1"
-                                   placeholder="Password">
-                            <a href="#">Forgetten password</a>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Login</button>
-                    </form>
-                </div>
-            </div>
-             </div>
         }
         else
         {
@@ -85,124 +91,144 @@
         }
 
         <!-- Billing details  -->
-        <div class="header">
+        <div class="header BILHead">
             <h1 class="accordionTitle">Step 2: Billing Details</h1>
             <i class="fas fa-caret-down"></i>
         </div>
-        <div class="row content">
-            <div class="col-lg-6">
-                <div class="personalInfo">
-                    <h3>Your Personal Details</h3>
-                    <hr>
-                    <div class="form-group">
-                        <label class="requr" for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1"
-                               aria-describedby="emailHelp" placeholder="Name">
-                    </div>
-                    <div class="form-group">
-                        <label class="requr" for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1"
-                               placeholder="Name">
-                    </div>
-                    <div class="form-group">
-                        <label class="requr" for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1"
-                               aria-describedby="emailHelp" placeholder="Name">
-                    </div>
-                    <div class="form-group">
-                        <label class="requr" for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1"
-                               placeholder="Name">
+        @if (Session["User"] != null)
+        {
+            <div class="row content">
+                <div class="col-lg-12">
+                    <div class="addressInfo">
+                        <h3>Select your address</h3>
+                        <form action="@Url.Action("AddAddressToOrder","Checkout")" method="post" id="addAddressOrder">
+                            <div class="form-group">
+                                <select class="form-control" name="AddressId">
+                                    <option value="0" selected> Select</option>
+                                    @if (ViewBag.UserAddresses != null)
+                                    {
+                                        foreach (var item in ViewBag.UserAddresses)
+                                        {
+                                            <option value="@item.Id">@item.AddressFirst,@item.City, @item.Country, @item.Region </option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                            <a href="@Url.Action("AddAddress","Account")" style="font-size:14px; color:#222; text-decoration:none">I want to use a new address</a>
+                            <button type="submit" class="btn">Continue</button>
+                        </form>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <div class="addressInfo">
-                    <h3>Your Address</h3>
-                    <hr>
-                    <div class="form-group">
-                        <label class="requr" for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1"
-                               aria-describedby="emailHelp" placeholder="Name">
+        }
+        else
+        {
+            <div></div>
+             
+            //i will open it after pres
+            @*<div class="row content active">
+                <div class="col-lg-6">
+                    <div class="personalInfo">
+                        <h3>Your Personal Details</h3>
+                        <hr>
+                        <div class="form-group">
+                             <label class="requr" for="exampleInputEmail1">Name</label>
+                            <input type="text" class="form-control"
+                                   aria-describedby="emailHelp" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <label class="requr" for="exampleInputPassword1">Surname</label>
+                            <input type="text" class="form-control"
+                                   placeholder="Surname">
+                        </div>
+                        <div class="form-group">
+                            <label class="requr" for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control"
+                                   aria-describedby="emailHelp" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <label class="requr" for="exampleInputPassword1">Phone</label>
+                            <input type="text" class="form-control"
+                                   placeholder="Phone">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1"
-                               placeholder="Name">
-                    </div>
-                    <div class="form-group">
-                        <label class="requr" for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1"
-                               aria-describedby="emailHelp" placeholder="Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1"
-                               placeholder="Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1"
-                               placeholder="Name">
-                    </div>
-                    <div class="form-group">
-                        <label class="requr" for="exampleFormControlSelect1">Example select</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
-                            <option selected>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Example select</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
-                            <option selected>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-                    <button class="btn">Continue</button>
                 </div>
-            </div>
-        </div>
+                <div class="col-lg-6">
+                    <div class="addressInfo">
+                        <h3>Your Address</h3>
+                        <hr>
+                        <div class="form-group">
+                            <label class="requr" for="exampleInputEmail1">Company</label>
+                            <input type="text" class="form-control" placeholder="Company">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Address 1</label>
+                            <input type="text" class="form-control" placeholder="Address 1">
+                        </div>
+                        <div class="form-group">
+                            <label class="requr" for="exampleInputEmail1">Address 2</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1"
+                                   aria-describedby="emailHelp" placeholder="Address 2">
+                        </div>
+                        <div class="form-group">
+                            <label class="requr" for="exampleInputPassword1">City</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1"
+                                   placeholder="City">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Post Code</label>
+                            <input type="text" class="form-control" placeholder="Post Code">
+                        </div>
+                        <div class="form-group">
+                            <label class="requr" for="exampleInputPassword1">Country</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1"
+                                   placeholder="Country">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Region / State</label>
+                            <input type="text" class="form-control" placeholder="Region / State">
+                        </div>
+                        <button class="btn">Continue</button>
+                    </div>
+                </div>
+            </div>*@
+        }
 
         <!-- Delivery Method -->
         <div class="header">
             <h1 class="accordionTitle">Step 3: Delivery Method </h1>
             <i class="fas fa-caret-down"></i>
         </div>
-        <div class="row content">
+        <div class="row content"  id="DLVmet">
             <div class="col-lg-12">
                 <div class="deliveryMethod">
                     <h4>
                         Please select the preferred shipping method to use on this order.
                     </h4>
                     <h1>Free Shipping</h1>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios"
-                               id="exampleRadios1" value="option1">
-                        <label class="form-check-label" for="exampleRadios1">
-                            Register Account
-                        </label>
-                    </div>
-                    <h1>Flat Rate</h1>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios"
-                               id="exampleRadios2" value="option2">
-                        <label class="form-check-label" for="exampleRadios2">
-                            Guest Checkout
-                        </label>
-                    </div>
-                    <h1>Add Comments About Your Order</h1>
-                    <div class="form-group">
-                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                  rows="3"></textarea>
-                    </div>
-                    <button class="btn">Continue</button>
+                    <form action="@Url.Action("AddShipToOrder","Checkout")" method="post" id="AddShipToOrder">
+                        <div class="form-check">
+                            <input class="form-check-input inpShip" id="in1" type="radio" name="IsShipString" value="no" checked>
+                            <label class="form-check-label" for="in1">
+                                Free Shipping - $0.00
+                            </label>
+                        </div>
+                        <h1>Flat Rate</h1>
+                        <div class="form-check">
+                            <input class="form-check-input inpShip" id="in2" type="radio" name="IsShipString" value="yes">
+                            <label class="form-check-label" for="in2">
+                                Flat Shipping Rate - $13.00
+                            </label>
+                        </div>
+                        <div id="ForAddOrderId">
+                            <input type="hidden" name="Id" value="0" />
+                        </div>
+                        <h1>Add Comments About Your Order</h1>
+                        <div class="form-group">
+                            <textarea class="form-control" name="Note" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Continue</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -212,36 +238,60 @@
             <h1 class="accordionTitle">Step 4: Payment Method</h1>
             <i class="fas fa-caret-down"></i>
         </div>
-        <div class="row content">
+        <div class="row content" id="PYMmet"> 
             <div class="col-lg-12">
                 <div class="paymentMethod">
                     <h2>Please select the preferred shipping method to use on this order.</h2>
-                    <div class="firstCheck form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios"
-                               id="exampleRadios1" value="option1" >
-                        <label class="form-check-label" for="exampleRadios1">
-                            Cash On Delivery
-                        </label>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">
-                            Add Comments About Your
-                            Order
-                        </label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                  rows="3"></textarea>
-                    </div>
-                    <div class="cekbox">
-                        <p>
-                            I have read and agree to the
-                            <a href="#">Terms & Conditions</a>
-                        </p>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value=""
-                                   id="defaultCheck1">
+                    <form action="@Url.Action("AddPayToOrder","Checkout")" method="post" id="AddPayToOrder">
+
+                        <div class="firstCheck form-check">
+                            <input class="form-check-input inpR" type="radio" name="IsShipString" id="in3" value="yes" checked>
+                            <label class="form-check-label" for="in3">
+                                Cash On Delivery
+                            </label>
                         </div>
-                        <button type="submit" class="btn btn-primary mb-2">Continue</button>
-                    </div>
+                        <div class="firstCheck form-check">
+                            <input class="form-check-input inpR" type="radio" name="IsShipString" id="in4" value="no">
+                            <label class="form-check-label" for="in4">
+                                Pay now
+                            </label>
+                        </div>
+
+                        <div id="ForAddCartInput">
+                            <div class="form-group">
+                                <label class="col-md-2 font-weight-normal">Code(16)</label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-2 d-inline-block">
+                                <label class=" font-weight-normal">End Date</label>
+                                <div class="">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-2 d-inline-block">
+                                <label class="font-weight-normal">Code</label>
+                                <div class="">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="ForAddOrderId">
+                            <input type="hidden" name="Id" value="0" />
+                        </div>
+                        <div class="cekbox">
+                            <p>
+                                <label for="in5">I have read and agree to the</label>
+                                <a href="#">Terms & Conditions</a>
+                            </p>
+                            <div class="form-check">
+                                <input class="form-check-input" name="IsReady" id="in5" type="checkbox">
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-2">Continue</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -251,7 +301,7 @@
             <h1 class="accordionTitle">Step 5: Confirm Order</h1>
             <i class="fas fa-caret-down"></i>
         </div>
-        <div class="row content">
+        <div class="row content" id="CFRMOrd">
             <div class="col-lg-12">
                 <div class="confirmOrder">
                     <table class="table table-bordered">
@@ -264,59 +314,87 @@
                         <thead>
                             <tr>
                                 <td>Product Name</td>
-                                <td>Model</td>
+                                <td>Brand</td>
                                 <td class="price">Quantity</td>
                                 <td class="price">Unit Price</td>
                                 <td class="price">Total</td>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    <a href="#">
-                                        asasd
-                                    </a>
-                                </td>
-                                <td>
-                                    asasfas
-                                </td>
-                                <td class="price">
-                                    product 11
-                                </td>
-                                <td class="price">
-                                    asfasfa
-                                </td>
-                                <td class="price">$123.20</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="#">iPhone</a>
-                                </td>
-                                <td>
-                                    asdaf
-                                </td>
-                                <td class="price">
-                                    product 11
-                                </td>
-                                <td class="price">asfas</td>
-                                <td class="price">$2.00</td>
-                            </tr>
+
+                            @foreach (var item in Model.List)
+                            {
+                                <tr>
+                                    <td>
+                                        <a href="@Url.Action("Index", "Detail", new { id = Model.ProductOptions.FirstOrDefault(p => p.Id == item.Key).Id })">@Model.ProductOptions.FirstOrDefault(p => p.Id == item.Key).Product.Model.Name @Model.ProductOptions.FirstOrDefault(p => p.Id == item.Key).Product.Name</a>
+                                        <br />
+                                        @(Model.ProductOptions.FirstOrDefault(p => p.Id == item.Key).ColorId != 0 ? Model.ProductOptions.FirstOrDefault(p => p.Id == item.Key).Color.Name : "")
+                                    </td>
+                                    <td style="text-transform:capitalize">
+                                        @(Model.ProductOptions.FirstOrDefault(p => p.Id == item.Key).Product.Model.Brand.Name)
+                                    </td>
+                                    <td class="price">
+                                        @item.Value
+                                    </td>
+
+
+                                    @if (item.Value >= 10 && item.Value < 20)
+                                    {
+                                        <td class="price" data-proId="@item.Key">
+                                            $@((Model.ProductOptions.FirstOrDefault(p => p.Id == item.Key).Price * 95 / 100).ToString("#.00"))
+                                            <br />
+                                            <span style="text-decoration:line-through">$@Model.ProductOptions.FirstOrDefault(p => p.Id == item.Key).Price.ToString("#.00") </span>
+                                        </td>
+                                        <td class="price forSumTotal" data-ownTotal="@item.Key">$@(((Model.ProductOptions.FirstOrDefault(p => p.Id == item.Key).Price) * 95/100 * (item.Value)).ToString("#.00"))</td>
+                                    }
+                                    else if (item.Value > 0 && item.Value < 10)
+                                    {
+                                        <td class="price" data-proId="@item.Key">
+                                            $@(Model.ProductOptions.FirstOrDefault(p => p.Id == item.Key).Price.ToString("#.00"))
+                                            <br />
+                                            <span style="text-decoration:line-through"></span>
+
+                                        </td>
+                                        <td class="price forSumTotal" data-ownTotal="@item.Key">$@(((Model.ProductOptions.FirstOrDefault(p => p.Id == item.Key).Price) * (item.Value)).ToString("#.00"))</td>
+                                    }
+                                    else if (item.Value >= 20 && item.Value < 30)
+                                    {
+                                        <td class="price" data-proId="@item.Key">
+                                            $@((Model.ProductOptions.FirstOrDefault(p => p.Id == item.Key).Price * 88 / 100).ToString("#.00"))
+                                            <br />
+                                            <span style="text-decoration:line-through">$@Model.ProductOptions.FirstOrDefault(p => p.Id == item.Key).Price.ToString("#.00") </span>
+                                        </td>
+                                        <td class="price forSumTotal" data-ownTotal="@item.Key">$@(((Model.ProductOptions.FirstOrDefault(p => p.Id == item.Key).Price) * 88/100 * (item.Value)).ToString("#.00"))</td>
+                                    }
+                                    else if (item.Value >= 30)
+                                    {
+                                        <td class="price" data-proId="@item.Key">
+                                            $@((Model.ProductOptions.FirstOrDefault(p => p.Id == item.Key).Price * 80 / 100).ToString("#.00"))
+                                            <br />
+                                            <span style="text-decoration:line-through">$@Model.ProductOptions.FirstOrDefault(p => p.Id == item.Key).Price.ToString("#.00") </span>
+                                        </td>
+                                        <td class="price forSumTotal" data-ownTotal="@item.Key">$@(((Model.ProductOptions.FirstOrDefault(p => p.Id == item.Key).Price) * 80/100 * (item.Value)).ToString("#.00"))</td>
+                                    }
+                                </tr>
+
+                            }
+
                             <tr>
                                 <th colspan="4" class="price">Sub-Total:</th>
-                                <td class="price">45$</td>
+                                <td class="price ForTotPr">$@ViewBag.CartCountPrice.Value.ToString("#.00")</td>
                             </tr>
                             <tr>
                                 <th colspan="4" class="price">Free Shipping:</th>
-                                <td class="price">45$</td>
+                                <td class="price ForTotPr ForShipPrice">$0.00</td>
                             </tr>
                             <tr>
                                 <th colspan="4" class="price">Total:</th>
-                                <td class="price">45$</td>
+                                <td class="price" id="TotPrCh">$@ViewBag.CartCountPrice.Value.ToString("#.00")</td>
                             </tr>
                         </tbody>
                     </table>
                     <div class="myButton">
-                        <button class="btn">Confirm Order</button>
+                        <button id="EndBtn" data-id="3"  class="btn">Confirm Order</button>
                     </div>
                 </div>
             </div>

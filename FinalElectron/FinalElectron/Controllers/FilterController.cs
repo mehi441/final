@@ -97,5 +97,17 @@ namespace FinalElectron.Controllers
             ViewBag.Testimonials = db.Testimonials.OrderByDescending(p => p.Id).Take(6).ToList();
             return View();
         }
+
+        //public JsonResult GetData(int[] BrandId, int RangeMax)
+        //{
+        //    var products = db.Products.Where(p => p.Id == 1).Select(s => new {
+        //        s.Id,
+        //        s.Name,
+        //        Img = s.ProductImages.FirstOrDefault().Name,
+        //        s.Reviews
+        //    }).ToList();
+
+        //    return Json(products, JsonRequestBehavior.AllowGet);
+        //}
     }
 }
