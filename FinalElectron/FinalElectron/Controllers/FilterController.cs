@@ -1,5 +1,6 @@
 ﻿using FinalElectron.DAL;
 using FinalElectron.Models;
+using FinalElectron.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace FinalElectron.Controllers
         {
 
 
-            List<Product> proFilter = db.Products.Include("Model")
+            List<Product> proFilters = db.Products.Include("Model")
                                                           .Include("SubCategory")
                                                           .Include("SubCategory.Category")
                                                           .Include("ProductImages")
@@ -26,8 +27,25 @@ namespace FinalElectron.Controllers
                                                           .Include("Reviews")
                                                           .Where(p => p.SubCategoryId==id)
                                                           .ToList();
+            // brands name and count
+            List<KeyValuePair<string, int>> brandAndCount = new List<KeyValuePair<string, int>>();
 
+            List<Brand> brands = db.Brands.ToList();
 
+            foreach (var item in brands)
+            {
+                brandAndCount.Add(new KeyValuePair<string, int>(item.Name, db.ProductOptions.Where(p=>p.Product.Model.Brand.Name==item.Name).ToList().Count));
+            }
+
+            int stockCount = db.ProductOptions.Where(p => p.Quantity > 0).ToList().Count;
+            int outOfStockCount = db.ProductOptions.Where(p => p.Quantity == 0).ToList().Count;
+            // is stock and out of stock count
+            KeyValuePair<int, int> stockAndOutSrock = new KeyValuePair<int, int>( stockCount , outOfStockCount);
+
+            VmFilter vmFilter = new VmFilter();
+            vmFilter.BrandAndCounts = brandAndCount;
+            vmFilter.ProFilters = proFilters;
+            vmFilter.StockAndOutSrock = stockAndOutSrock;
 
 
             #region Cart list
@@ -108,7 +126,7 @@ namespace FinalElectron.Controllers
             ViewBag.Categories = db.Categories.Include("SubCategories").ToList();
             ViewBag.LatestProS = db.Products.OrderByDescending(p => p.Id).Take(21).ToList();
             ViewBag.Testimonials = db.Testimonials.OrderByDescending(p => p.Id).Take(6).ToList();
-            return View(proFilter);
+            return View(vmFilter);
         }
 
         //public JsonResult GetData(int[] BrandId, int RangeMax)

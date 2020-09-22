@@ -19,6 +19,13 @@
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 
+    <!-- jquerry ui css for range slider -- -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+
+    <!-- price range slider for  -->
+    <link href="~/Public/css/price_range_style.css" rel="stylesheet" />
+
+
     <!-- esas css-- -->
     <link rel="stylesheet" href="~/Public/css/style.css">
 
@@ -192,76 +199,76 @@
                             <div class="owl-carousel owl-theme">
 
                                 @*@foreach (var item in ViewBag.HotDeals)
-                                {
-                                    <div class="item">
-                                        <a href="#">
-                                            <div class="image">
-                                                <img src="~/Public/img/Watch.jpg" alt="Watch sale">
-                                            </div>
-                                            <div class="timer">
-                                                <ul>
-                                                    <li>
-                                                        <div>
-                                                            <h3>159</h3>
-                                                            <h4>Days</h4>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div>
-                                                            <h3>9</h3>
-                                                            <h4>Hrs</h4>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div>
-                                                            <h3>16</h3>
-                                                            <h4>Mins</h4>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div>
-                                                            <h3>26</h3>
-                                                            <h4>Secs</h4>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </a>
+                                    {
+                                        <div class="item">
+                                            <a href="#">
+                                                <div class="image">
+                                                    <img src="~/Public/img/Watch.jpg" alt="Watch sale">
+                                                </div>
+                                                <div class="timer">
+                                                    <ul>
+                                                        <li>
+                                                            <div>
+                                                                <h3>159</h3>
+                                                                <h4>Days</h4>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div>
+                                                                <h3>9</h3>
+                                                                <h4>Hrs</h4>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div>
+                                                                <h3>16</h3>
+                                                                <h4>Mins</h4>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div>
+                                                                <h3>26</h3>
+                                                                <h4>Secs</h4>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </a>
 
-                                        <div class="choose">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        <div><i class="fas fa-shopping-cart"></i></div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <div><i class="far fa-heart"></i></div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <div><i class="far fa-chart-bar"></i></div>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="content">
-                                            <h4>apple Watch 30"</h4>
-                                            <h5>$110.00 <span>$122.00</span></h5>
-                                            <div class="stars">
+                                            <div class="choose">
                                                 <ul>
-                                                    <li> <i class="fa fa-star"></i> </li>
-                                                    <li> <i class="fa fa-star"></i> </li>
-                                                    <li> <i class="fa fa-star"></i> </li>
-                                                    <li> <i class="fa fa-star"></i> </li>
-                                                    <li> <i class="fa fa-star sade"></i> </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <div><i class="fas fa-shopping-cart"></i></div>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <div><i class="far fa-heart"></i></div>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <div><i class="far fa-chart-bar"></i></div>
+                                                        </a>
+                                                    </li>
                                                 </ul>
                                             </div>
+                                            <div class="content">
+                                                <h4>apple Watch 30"</h4>
+                                                <h5>$110.00 <span>$122.00</span></h5>
+                                                <div class="stars">
+                                                    <ul>
+                                                        <li> <i class="fa fa-star"></i> </li>
+                                                        <li> <i class="fa fa-star"></i> </li>
+                                                        <li> <i class="fa fa-star"></i> </li>
+                                                        <li> <i class="fa fa-star"></i> </li>
+                                                        <li> <i class="fa fa-star sade"></i> </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                }*@
+                                    }*@
 
                                 <div class="item">
                                     <a href="#">
@@ -945,7 +952,7 @@
                             <div class="myForm">
                                 <form action="@Url.Action("AddNewsletter","Home")" method="post" id="myNewsletter">
                                     <div class="form-group">
-                                        <input type="email" class="form-control" name="email" 
+                                        <input type="email" class="form-control" name="email"
                                                placeholder="Your email address">
                                     </div>
                                     <button type="submit" class="btn btn-primary">SUBSCRIBE</button>
@@ -1120,6 +1127,11 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.2.0/dist/sweetalert2.all.min.js"></script>
 
 
+    <!-- jquerry ui for range slider -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <!-- price range slider -->
+    <script src="~/Public/js/price_range_script.js"></script>
 
     <script src="~/Public/js/script.js"></script>
 </body>

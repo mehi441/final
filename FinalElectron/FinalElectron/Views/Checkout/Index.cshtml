@@ -31,7 +31,7 @@
 
         @if (Session["User"] == null)
         {
-            <div class="row content">
+            <div class="row content active">
                 <div class="col-lg-6">
                     <div class="newCostumer">
                         <h2>New Customer</h2>
@@ -97,7 +97,7 @@
         </div>
         @if (Session["User"] != null)
         {
-            <div class="row content">
+            <div class="row content active">
                 <div class="col-lg-12">
                     <div class="addressInfo">
                         <h3>Select your address</h3>

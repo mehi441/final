@@ -1,11 +1,11 @@
-﻿@model List<FinalElectron.Models.Product>
+﻿@model FinalElectron.ViewModels.VmFilter
 
 
 @{
     ViewBag.Title = "Index";
 }
 
-<div class="col-lg-9" id="specials">
+<div class="col-xs-12 col-sm-8 col-md-9 col-lg-9" id="specials">
     <div id="breadcrumb">
         <div class="icon">
             <a href="@Url.Action("Index","Home")">
@@ -13,11 +13,11 @@
             </a>
             <i class="fas fa-chevron-right"></i>
         </div>
-        <a href="#">@(Model.Count>0 ? Model.FirstOrDefault().SubCategory.Category.Name:"")</a>
+        <a href="#">@(Model.ProFilters.Count>0 ? Model.ProFilters.FirstOrDefault().SubCategory.Category.Name:"")</a>
         <div class="icon">
             <i class="fas fa-chevron-right"></i>
         </div>
-        <a href="#">@(Model.Count>0 ? Model.FirstOrDefault().SubCategory.Name:"")</a>
+        <a href="#">@(Model.ProFilters.Count>0 ? Model.ProFilters.FirstOrDefault().SubCategory.Name:"")</a>
     </div>
     <div id="navbar">
         <div class="row">
@@ -69,7 +69,7 @@
     <div id="products">
         <div class="row">
 
-            @foreach (var item in Model)
+            @foreach (var item in Model.ProFilters)
             {
                 <div class="item col-lg-3 col-md-4 col-sm-6 col-xs-12">
                     <div class="product">
@@ -133,53 +133,6 @@
                     </div>
                 </div>
             }
-
-            @*<div class="item col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <div class="product">
-                    <div class="image">
-                        <img src="~/Public/img/products/tv.jpg" alt="phone">
-                    </div>
-                    <div class="overlay">
-                        <img src="~/Public/img/products/notbuk.jpg" alt="phone">
-                    </div>
-                    <div class="forSale">
-                        <span>SALE</span>
-                    </div>
-                    <div class="choose">
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    <div><i class="fas fa-shopping-cart"></i></div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div><i class="far fa-heart"></i></div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div><i class="far fa-chart-bar"></i></div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="content">
-                        <h4>sony tv</h4>
-                        <h5>$110.00 <span>$122.00</span></h5>
-                        <div class="stars">
-                            <ul>
-                                <li> <i class="fa fa-star"></i> </li>
-                                <li> <i class="fa fa-star"></i> </li>
-                                <li> <i class="fa fa-star"></i> </li>
-                                <li> <i class="fa fa-star"></i> </li>
-                                <li> <i class="fa fa-star sade"></i> </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>*@
-
         </div>
     </div>
 </div>
@@ -191,10 +144,13 @@
         <hr>
         <div class="choose">
             <div class="myHeader">
-                <h3 class="title">Brand</h3>
+                <h3 class="title">PRICE</h3>
                 <i class="fas fa-caret-down"></i>
             </div>
-            <div class="myOption price">
+            <div class="myOption price mt-2">
+                <div id="slider-range" class="price-filter-range" name="rangeInput"></div>
+                <input type="number" min=0 max="9900" oninput="validity.valid||(value='0');" id="min_price" class="price-range-field" />
+                <input type="number" min=0 max="10000" oninput="validity.valid||(value='10000');" id="max_price" class="price-range-field" />
             </div>
         </div>
         <hr>
@@ -204,77 +160,53 @@
                 <i class="fas fa-caret-down"></i>
             </div>
             <div class="myOption brand">
-                <div class="brandOption">
-                    <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Apple</label>
-                    </div>
-                    <div class="brandQuantity">
-                        <span>3</span>
-                    </div>
-                </div>
-                <div class="brandOption">
-                    <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Canon</label>
-                    </div>
-                    <div class="brandQuantity">
-                        <span>3</span>
-                    </div>
-                </div>
-                <div class="brandOption">
-                    <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1" disabled>
-                        <label class="form-check-label" for="exampleCheck1">HTC</label>
-                    </div>
-                    <div class="brandQuantity">
-                        <span>0</span>
-                    </div>
-                </div>
-                <div class="brandOption">
-                    <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1" disabled>
-                        <label class="form-check-label" for="exampleCheck1">Samsung</label>
-                    </div>
-                    <div class="brandQuantity">
-                        <span>3</span>
-                    </div>
-                </div>
+                @foreach (var item in Model.BrandAndCounts)
+                {
+
+                    if (item.Value!=0)
+                    {
+                          <div class="brandOption">
+                              <div class="form-group form-check">
+                                  <input type="checkbox" class="form-check-input" id="chBrend@(item.Key)">
+                                  <label class="form-check-label" style="text-transform:capitalize"  for="chBrend@(item.Key)">@item.Key</label>
+                              </div>
+                              <div class="brandQuantity">
+                                  <span>@item.Value</span>
+                              </div>
+                          </div>
+                    }
+                }
             </div>
         </div>
         <hr>
         <div class="choose">
             <div class="myHeader">
-                <h3 class="title">Brand</h3>
+                <h3 class="title">STOCK</h3>
                 <i class="fas fa-caret-down"></i>
             </div>
             <div class="myOption stock">
                 <div class="stockOption">
-                    <!-- <div class="form-group form-check">
-                        <input type="radio" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Apple</label>
-                    </div> -->
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="exampleRadios"
-                               id="exampleRadios2" value="option2">
+                               id="exampleRadios2" value="option2" @(Model.StockAndOutSrock.Key==0 ? "disabled":"")>
                         <label class="form-check-label" for="exampleRadios2">
                             In stock
                         </label>
                     </div>
-                    <div class="brandQuantity">
-                        <span>3</span>
+                    <div class="brandQuantity @(Model.StockAndOutSrock.Key==0 ? "backRed":"")">
+                        <span>@Model.StockAndOutSrock.Key</span>
                     </div>
                 </div>
                 <div class="stockOption">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="exampleRadios"
-                               id="exampleRadios1" value="option1" checked>
+                               id="exampleRadios1" value="option1" @(Model.StockAndOutSrock.Value==0 ? "disabled":"")>
                         <label class="form-check-label" for="exampleRadios1">
                             Out of stock
                         </label>
                     </div>
-                    <div class="brandQuantity">
-                        <span>3</span>
+                    <div class="brandQuantity @(Model.StockAndOutSrock.Value==0 ? "backRed":"")">
+                        <span>@Model.StockAndOutSrock.Value</span>
                     </div>
                 </div>
             </div>

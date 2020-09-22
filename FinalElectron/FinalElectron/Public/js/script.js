@@ -343,8 +343,6 @@ $(document).ready(function () {
 
     });
 
-
-
     // product Count Change in cart
     $("#soppingCart .addCardInput").change(function () {
 
@@ -441,8 +439,6 @@ $(document).ready(function () {
             }
         });
     });
-
-
 
     // remove Addres from user address list and database
     $("#account #register #addressList .btnDelete").click(function () {
@@ -714,7 +710,6 @@ $(document).ready(function () {
         });
     });
 
-
     // add pay to order
     $("#AddPayToOrder").submit(function (event) {
         event.preventDefault(); //prevent default action 
@@ -740,7 +735,6 @@ $(document).ready(function () {
         });
     });
 
-
     // inut clik show cart inputs for paying
     $(".inpR").change(function () {
 
@@ -750,7 +744,6 @@ $(document).ready(function () {
             $("#ForAddCartInput").css("display", "none");
         }
     });
-
 
     // home shipping change eveti 
     $(".inpShip").change(function () {
@@ -776,7 +769,6 @@ $(document).ready(function () {
         }
     });
 
-
     // End Btn click
     $("#EndBtn").click(function (e) {
         e.preventDefault();
@@ -801,8 +793,7 @@ $(document).ready(function () {
         });
     });
 
-
-    //// login user in checkbox page
+    // login user in checkbox page
     $("#CheckLogin").submit(function (event) {
         event.preventDefault(); //prevent default action 
         var post_url = $(this).attr("action"); //get form action url
@@ -828,7 +819,6 @@ $(document).ready(function () {
         });
     });
 
-
     // add product to card from order details page
     $(".addOrdItToCard").click(function () {
 
@@ -843,6 +833,11 @@ $(document).ready(function () {
             timer: 1200
         })
     });
+
+    // filter section elements toogle active
+    $("#filter .myHeader").click(function () {
+        $(this).next().toggleClass("d-none");
+    })
 
 
 

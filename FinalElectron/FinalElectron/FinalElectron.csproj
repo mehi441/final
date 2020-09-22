@@ -246,6 +246,7 @@
     <Compile Include="ViewModels\VmBrand.cs" />
     <Compile Include="ViewModels\VmCart.cs" />
     <Compile Include="ViewModels\VmDetail.cs" />
+    <Compile Include="ViewModels\VmFilter.cs" />
     <Compile Include="ViewModels\VmHome.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -814,6 +815,7 @@
     <Content Include="Areas\Admin\Public\libs\tooltipster\tooltipster.bundle.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Public\css\price_range_style.css" />
     <Content Include="Public\css\style.css" />
     <Content Include="Public\img\Blogs\charger.jpg" />
     <Content Include="Public\img\Blogs\dinamikler.jpg" />
@@ -859,6 +861,7 @@
     <Content Include="Public\img\view-grid.png" />
     <Content Include="Public\img\view-list.png" />
     <Content Include="Public\img\Watch.jpg" />
+    <Content Include="Public\js\price_range_script.js" />
     <Content Include="Public\js\script.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
