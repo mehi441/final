@@ -993,6 +993,8 @@
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Contact\ContactSubmit.cshtml" />
     <Content Include="Views\Brand\Index.cshtml" />
+    <Content Include="Views\Account\OrderHistory.cshtml" />
+    <Content Include="Views\Account\OrderById.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202009032303480_init.resx">

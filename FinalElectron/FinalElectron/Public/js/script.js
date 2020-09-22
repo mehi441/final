@@ -829,6 +829,20 @@ $(document).ready(function () {
     });
 
 
+    // add product to card from order details page
+    $(".addOrdItToCard").click(function () {
+
+        Id = parseInt($(this).data("id"));
+        refreshCart(Id, 1);
+
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Product added to Cart',
+            showConfirmButton: false,
+            timer: 1200
+        })
+    });
 
 
 

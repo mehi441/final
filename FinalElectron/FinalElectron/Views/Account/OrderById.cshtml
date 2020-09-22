@@ -1,0 +1,186 @@
+﻿@model List<FinalElectron.Models.OrderItem>
+
+@{
+    ViewBag.Title = "OrderById";
+}
+
+
+
+<!-- Register  page -->
+<div class="col-lg-9 col-sm-8" id="account">
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- register page -->
+            <div id="register">
+                <div id="breadcrumb">
+                    <div class="icon">
+                        <a href="@Url.Action("Index","Home")">
+                            <i class="fa fa-home"></i>
+                        </a>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <a href="@Url.Action("Index","Account")">Account</a>
+                    <div class="icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <a href="@Url.Action("OrderHistory","Account")">Order History</a>
+                    <div class="icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <a href="@Url.Action("OrderById","Account" ,new { id=Model.FirstOrDefault().Order.Id})">Order Details</a>
+                </div>
+                <h2 class="title">My Wish List</h2>
+                <table class="table table-bordered">
+                    <colgroup>
+                        <col span="1" style="width: 50%;">
+                    </colgroup>
+                    <thead style="background-color:white">
+                        <tr class="wishTd">
+                            <td colspan="2">Order Details</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr id="addressList" style="font-size:14px">
+                            <td>
+                                <span class="font-weight-bold">Order ID: </span>#@Model.FirstOrDefault().Order.Id
+                                <br />
+                                <span class="font-weight-bold">Date Added: </span>@Model.FirstOrDefault().Order.AddedDate.ToString("dd/MMM/yyyy")
+                            </td>
+                            <td>
+                                <span class="font-weight-bold">Payment Method: </span>@(Model.FirstOrDefault().Order.PeymentMethod? "Paid by Card": "Cash On Delivery")
+                                <br />
+                                <span class="font-weight-bold">Shipping Method: </span>@(Model.FirstOrDefault().Order.IsFreeShipping? "Free Shipping": " Flat Shipping")
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="table table-bordered">
+
+                    <thead style="background-color:white">
+                        <tr class="wishTd">
+                            <td>Shipping Address</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr id="addressList" style="font-size:14px">
+                            <td>
+                                <p class="mb-0" style="text-transform:capitalize">@Model.FirstOrDefault().Order.Address.Name</p>
+                                <p class="mb-0" style="text-transform:capitalize">@Model.FirstOrDefault().Order.Address.Surname</p>
+                                <p class="mb-0" style="text-transform:capitalize">@(Model.FirstOrDefault().Order.Address.Company!=null? @Model.FirstOrDefault().Order.Address.Company: "")</p>
+                                <p class="mb-0" style="text-transform:capitalize">@Model.FirstOrDefault().Order.Address.AddressFirst</p>
+                                <p class="mb-0" style="text-transform:capitalize">@(@Model.FirstOrDefault().Order.Address.AddressSecond!=null? @Model.FirstOrDefault().Order.Address.AddressSecond: "")</p>
+                                <p class="mb-0" style="text-transform:capitalize">@(@Model.FirstOrDefault().Order.Address.City)</p>
+                                <p class="mb-0" style="text-transform:capitalize">@(@Model.FirstOrDefault().Order.Address.PostCode)</p>
+                                <p class="mb-0" style="text-transform:capitalize">@(@Model.FirstOrDefault().Order.Address.Country)</p>
+                                <p class="mb-0" style="text-transform:capitalize">@(@Model.FirstOrDefault().Order.Address.Region)</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="table table-bordered">
+                    <thead style="background-color:white">
+
+                        <tr class="wishTd">
+                            <td>Product Name</td>
+                            <td>Brand</td>
+                            <td style="text-align:end">Quantity</td>
+                            <td style="text-align:end">Price</td>
+                            <td style="text-align:end">Total</td>
+                            <td></td>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr id="addressList" class="wishTd">
+                                <td style="text-transform:capitalize">
+                                    @item.ProductOption.Product.Model.Name @item.ProductOption.Product.Name @item.ProductOption.Color.Name
+                                </td>
+
+                                <td style="text-transform:capitalize">
+                                    @item.ProductOption.Product.Model.Brand.Name
+                                </td>
+                                <td style="text-align:end">
+                                    @item.Quantity.ToString("#.##")
+                                </td>
+                                <td style="text-align:end">
+                                    @item.Price.ToString("#.00")
+                                </td>
+                                <td style="text-align:end">
+                                    $@((item.Price*item.Quantity).ToString("#.00"))
+                                </td>
+                                <td class="ForRightSide">
+                                    <button data-id="@item.ProductOption.Id" class="btn addOrdItToCard mr-0"><i class="fa fa-shopping-cart"></i></button>
+                                </td>
+                            </tr>
+                        }
+                        <tr id="addressList" class="wishTd">
+                            <td colspan="3">
+                            </td>
+                            <td class="font-weight-bold" style="text-align:end">Sub-Total</td>
+                            <td style="text-align:end">
+                                $@Model.Sum(o => o.Price * o.Quantity).ToString("#.00")
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr id="addressList" class="wishTd">
+                            <td colspan="3">
+                            </td>
+                            <td class="font-weight-bold" style="text-align:end">Flat Shipping Rate</td>
+                            <td style="text-align:end">
+                                $@Model.FirstOrDefault().Order.ShippingPrice.ToString("#.00")
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr id="addressList" class="wishTd">
+                            <td colspan="3">
+                            </td>
+                            <td class="font-weight-bold" style="text-align:end">Total</td>
+                            <td style="text-align:end">
+                                $@((Model.FirstOrDefault().Order.ShippingPrice+ Model.Sum(o => o.Price * o.Quantity)).ToString("#.00"))
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+                <div class="buttonsDiv">
+                    <div></div>
+                    <a href="@Url.Action("OrderHistory","Account")" class="btn">Continue</a>
+                </div>
+            </div>
+            <!-- end of register page -->
+        </div>
+        <div class="col-lg-4">
+            <div id="accTable">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <td><a href="#">Login</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Register</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Wish List</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Order History</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Newsletter</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end of Register page -->

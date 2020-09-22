@@ -1,4 +1,5 @@
 ﻿using FinalElectron.DAL;
+using FinalElectron.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,20 @@ namespace FinalElectron.Controllers
         // GET: Filter
         private ElectronContex db = new ElectronContex();
 
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
+
+
+            List<Product> proFilter = db.Products.Include("Model")
+                                                          .Include("SubCategory")
+                                                          .Include("SubCategory.Category")
+                                                          .Include("ProductImages")
+                                                          .Include("ProductOptions")
+                                                          .Include("ProductOptions.Color")
+                                                          .Include("Reviews")
+                                                          .Where(p => p.SubCategoryId==id)
+                                                          .ToList();
+
 
 
 
@@ -95,7 +108,7 @@ namespace FinalElectron.Controllers
             ViewBag.Categories = db.Categories.Include("SubCategories").ToList();
             ViewBag.LatestProS = db.Products.OrderByDescending(p => p.Id).Take(21).ToList();
             ViewBag.Testimonials = db.Testimonials.OrderByDescending(p => p.Id).Take(6).ToList();
-            return View();
+            return View(proFilter);
         }
 
         //public JsonResult GetData(int[] BrandId, int RangeMax)

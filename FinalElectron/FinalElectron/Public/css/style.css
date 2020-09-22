@@ -2903,13 +2903,37 @@
     }
 
 
+#account .BtnShowOrder {
+    background-color: #ed1e3c;
+}
 
+#account .BtnShowOrder i{
+    margin-left:-3px;
+}
+
+    #account .BtnShowOrder:hover {
+        background-color: #222;
+    }
+
+
+.addOrdItToCard {
+    background-color: #ed1e3c;
+    transition:0.4s linear;
+}
+
+.addOrdItToCard:focus {
+    box-shadow:0 0 0 0;
+}
+
+    .addOrdItToCard:hover {
+        background-color: #222;
+    }
 
 
 #register .OurBrand .BrandChar {
     transition: 0.4s linear;
-    cursor:pointer;
-    color:#222;
+    cursor: pointer;
+    color: #222;
 }
 
     #register .OurBrand .BrandChar:hover {
