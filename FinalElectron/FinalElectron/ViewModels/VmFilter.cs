@@ -8,11 +8,12 @@ namespace FinalElectron.ViewModels
 {
     public class VmFilter
     {
-         
         public List<Product> ProFilters { get; set; }
 
         public List<KeyValuePair<string,int>> BrandAndCounts { get; set; }
 
         public KeyValuePair<int,int> StockAndOutSrock { get; set; }
+        
+        public List<Brand> Brands { get; set; }
     }
 }

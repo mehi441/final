@@ -2970,6 +2970,28 @@
     display:none;
 }
 
+
+#BtnClrBrands{
+    font-size:14px;
+    transition:0.4s linear;
+}
+
+
+    #BtnClrBrands:hover {
+        color: #ed1e3c;
+    }
+
+
+#BtnClrIsStock {
+    font-size: 14px;
+    transition: 0.4s linear;
+}
+
+
+    #BtnClrIsStock:hover {
+        color: #ed1e3c;
+    }
+
 /*
 .ui-state-focus, .ui-widget-header .ui-state-focus, .ui-button:hover, .ui-button:focus {
     border: 1px solid #red !important;
@@ -2977,9 +2999,6 @@
     font-weight: normal;
     color: red!important;
 }*/
-
-
-
 @keyframes topbarTitle {
     0% {
     color: #ffffff; }

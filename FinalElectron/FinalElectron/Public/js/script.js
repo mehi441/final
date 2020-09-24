@@ -840,6 +840,65 @@ $(document).ready(function () {
     })
 
 
+    // add clear btn to is stock filter
+    $(".isStockFltr").click(function () {
+        $("#BtnClrIsStock").removeClass("d-none");
+    });
+
+    // remove clicked items from is stock 
+    $("#BtnClrIsStock").click(function () {
+        $(".isStockFltr").each(function () {
+            $(this).prop("checked", false);
+        });
+        refreshFilter();
+        $(this).addClass("d-none");
+    });
+
+    // add clear btn to brands filter
+    $(".chkBoxBrdIdFltr").click(function () {
+        $("#BtnClrBrands").removeClass("d-none");
+    });
+
+    // remove clicked items from brands filter 
+    $("#BtnClrBrands").click(function () {
+        $(".chkBoxBrdIdFltr").each(function () {
+            $(this).prop("checked", false);
+        });
+        refreshFilter();
+        $(this).addClass("d-none");
+    });
+
+    // Brands Fltr refresh filter
+    $(".chkBoxBrdIdFltr").change(function () {
+        refreshFilter();
+        var IdSlctd = []; // get selected brands ids in array int
+        $('input.chkBoxBrdIdFltr:checked').each(function () {
+            IdSlctd.push(parseInt(this.value));
+        });
+        if (IdSlctd.length == 0) {
+            $("#BtnClrBrands").addClass("d-none");
+        }
+    });
+
+    // Filter Is Stock change event refresh products in filter
+    $(".isStockFltr").change(function () {
+        refreshFilter();
+    });
+
+    // minprice change event refresh products in filter
+    $(".minPrcFilter").change(function () { // dont work
+        refreshFilter();
+    });
+
+    // max price change event refresh products in filter
+    $(".maxPrcFilter").change(function () { // dont work
+        refreshFilter();
+    });
+
+    // sort by filter change event refresh products in filter
+    $(".sortSltFltr").change(function () { // dont work
+        refreshFilter();
+    });
 
 
 
@@ -864,14 +923,121 @@ $(document).ready(function () {
 
 
 
+    // refresh filter
+    function refreshFilter() {
+        var checkedIsStockVal = $('.isStockFltr:checked').val();
+        var minPrcVal = parseInt($(".minPrcFilter").val()); // get min value price
+        var maxPrcVal = parseInt($(".maxPrcFilter").val()); // get max value price
+        var sortSelId = parseInt($('select.sortSltFltr').children("option:selected").val()); // get Sort type id
+        var showSelId = parseInt($('select.showCntFltr').children("option:selected").val()); // get Show count id
+
+        var brandIdsSlctd = []; // get selected brands ids in array int
+        $('input.chkBoxBrdIdFltr:checked').each(function () {
+            brandIdsSlctd.push(parseInt(this.value));
+        });
+
+        //console.log(minPrcVal, maxPrcVal, brandIdsSlctd, checkedIsStockVal, sortSelId, showSelId );
+
+        var filter_data = {  // send data object to controller
+            MinPrc: minPrcVal,
+            MaxPrc: maxPrcVal,
+            BrandId: brandIdsSlctd,
+            IsStock: checkedIsStockVal,
+            SortId: sortSelId,
+            ShowCnt: showSelId
+        };
+
+        $.ajax({
+            url: "/Filter/GetData/",
+            type: "post",
+            data: filter_data,
+            dataType: "json",
+            success: function (response) {  // recive response from controller
 
 
+                $("#products #FltrRow").empty(); //  remove items from row
+                $.each(response, function (i, item) {
+                    var row = $("#products #FltrRow");
 
+                    var divItem = $("<div>", { "class": "item col-lg-3 col-md-4 col-sm-6 col-xs-12" }); // create item div
 
+                    var ItemPro = $("<div>", { "class": "product" }).appendTo(divItem); // creat product div
 
- 
+                    var ProLink = $("<a>", { "href": "/Detail/Index/" + item.Id }).appendTo(ItemPro); // create "a" tag
 
+                    var LinkImageDiv = $("<div>", { "class": "image" }).appendTo(ProLink); // add image div to a tag
 
+                    $("<img>", { "src": "/Uploads/" + item.Img, "alt": "phoone" }).appendTo(LinkImageDiv); // add img tag to image div
+
+                    if (item.HoverImg != null) {
+                        // check hover image of item then add
+                        var LinkHoverDiv = $("<div>", { "class": "overlay" }).appendTo(ProLink); // creat overlay div add to "a" tag
+                        $("<img>", { "src": "/Uploads/" + item.HoverImg, "alt": "dinamik" }).appendTo(LinkHoverDiv); // add img to overlay div
+                    }
+
+                    if (item.Quantity != 0) {
+                        // check quantiy of item then add
+                        var LinkSaleDiv = $("<div>", { "class": "forSale" }).appendTo(ProLink); // creat Sale div add to "a" tag
+                        var SaleDivSpan = $("<span>").appendTo(LinkSaleDiv); // creat span add forSale div
+                        SaleDivSpan.append("SALE"); // add text to span 
+                    }
+
+                    var ProChoose = $("<div>", { "class": "choose" }).appendTo(ItemPro); // creat choose div add to product div
+                    var ChooseUl = $("<ul>").appendTo(ProChoose); // creat ul tag div add to Choose div
+
+                    // add Shop icon
+                    var UlLi1 = $("<li>").appendTo(ChooseUl); // create li tag add to ul
+                    var Li1Div1 = $("<div>", { "class": "addCardBtn", "data-id": item.Id }).appendTo(UlLi1); // creat div add to li tag
+                    $("<i>", { "class": "fas fa-shopping-cart" }).appendTo(Li1Div1); // creat icon add to div1 tag
+
+                    // add Wish icon
+                    var UlLi2 = $("<li>").appendTo(ChooseUl); // create li tag add to ul
+                    var Li1Div2 = $("<div>", { "class": "addWishBtn", "data-id": item.Id }).appendTo(UlLi2); // creat div add to li tag
+                    $("<i>", { "class": "far fa-heart" }).appendTo(Li1Div2); // creat icon add to div2 tag
+
+                    // add Compare icon
+                    var UlLi3 = $("<li>").appendTo(ChooseUl); // create li tag add to ul
+                    var Li1Div3 = $("<div>", { "class": "addCompareBtn", "data-id": item.Id }).appendTo(UlLi3); // creat div add to li tag
+                    $("<i>", { "class": "far fa-chart-bar" }).appendTo(Li1Div3); // creat icon add to div3 tag
+
+                    // create content div
+                    var ProContent = $("<div>", { "class": "content" }).appendTo(ItemPro); // creat Content div add to product div
+
+                    var ContentLink = $("<a>", { "href": "/Detail/Index/" + item.Id, "style": "text-decoration:none" }).appendTo(ProContent); // create a tag for name
+                    var LinkH4 = $("<h4>").appendTo(ContentLink); // create h4 tag for name add to "a" tag
+                    LinkH4.append(item.BrandName + " " + item.ModelName + " " + item.ProName + " " + item.ColorName); // add text to h4 tag
+
+                    var ContentkH5 = $("<h5>").appendTo(ProContent); // create h5 tag for price add to content div
+                    ContentkH5.append("$ " + item.Price); // add text to h5 tag
+                    if (item.OldPrice != 0) { // check if old price is null
+                        var OldPriceSpan = $("<span>").appendTo(ContentkH5); // creat span for old price add h5 tag
+                        OldPriceSpan.append("$ " + item.OldPrice); // add text to span 
+                    }
+                    // end prices
+
+                    // create stars div
+                    var ContentStars = $("<div>", { "class": "stars" }).appendTo(ProContent); // creat stars div add to content
+                    var StarsUl = $("<ul>").appendTo(ContentStars); // creat ul tag  add to stars div
+
+                    for (var i = 0; i < 5; i++) {
+                        var ulStar = $("<li>"); // create li tag for ul star
+
+                        if (item.StarCount <= i) {
+                            $("<i>", { "class": "fa fa-star sade" }).appendTo(ulStar); // creat icon add to  li tag
+                        } else {
+                            $("<i>", { "class": "fa fa-star" }).appendTo(ulStar); // creat icon add to  li tag
+                        }
+
+                        StarsUl.append(ulStar); // add li to ulb
+                    }
+                    row.append(divItem); //  add new item to Row
+                });
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
 
 
     // refresh cart cookie

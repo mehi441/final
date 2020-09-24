@@ -45,29 +45,34 @@
             <div class="col-lg-4">
                 <div class="sort">
                     <h2>Sort By: </h2>
-                    <select class="form-control">
-                        <option selected>Default</option>
-                        <option>Default select</option>
-                        <option>Default select</option>
-                        <option>Default select</option>
+                    <select class="form-control sortSltFltr">
+                        <option value="0" selected>Default</option>
+                        <option value="1" >Name (A - Z)</option>
+                        <option value="2" >Name (Z - A)</option>
+                        <option value="3" >Price (Low > High)</option>
+                        <option value="4" >Price (High > Low)</option>
+                        <option value="5" >Rating (Highest)</option>
+                        <option value="6" >Rating (Lowest)</option>
+                        <option value="7" >Model (A - Z)</option>
+                        <option value="8" >Model (Z - A)</option>
                     </select>
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="show">
                     <h2>Show: </h2>
-                    <select class="form-control">
-                        <option selected>7</option>
-                        <option>9</option>
-                        <option>25</option>
-                        <option>49</option>
+                    <select class="form-control showCntFltr">
+                        <option value="4" >4</option>
+                        <option value="8" selected>8</option>
+                        <option value="16" >16</option>
+                        <option value="32" >32</option>
                     </select>
                 </div>
             </div>
         </div>
     </div>
     <div id="products">
-        <div class="row">
+        <div class="row" id="FltrRow">
 
             @foreach (var item in Model.ProFilters)
             {
@@ -149,8 +154,8 @@
             </div>
             <div class="myOption price mt-2">
                 <div id="slider-range" class="price-filter-range" name="rangeInput"></div>
-                <input type="number" min=0 max="9900" oninput="validity.valid||(value='0');" id="min_price" class="price-range-field" />
-                <input type="number" min=0 max="10000" oninput="validity.valid||(value='10000');" id="max_price" class="price-range-field" />
+                <input type="number" min=0 max="9900" oninput="validity.valid||(value='0');" id="min_price" class="price-range-field minPrcFilter" />
+                <input type="number" min=0 max="10000" oninput="validity.valid||(value='10000');" id="max_price" class="price-range-field maxPrcFilter" />
             </div>
         </div>
         <hr>
@@ -160,6 +165,7 @@
                 <i class="fas fa-caret-down"></i>
             </div>
             <div class="myOption brand">
+                <span id="BtnClrBrands" class="d-none" style="font-size:14px"><i class="fa fa-window-close"></i> Clear</span>
                 @foreach (var item in Model.BrandAndCounts)
                 {
 
@@ -167,7 +173,7 @@
                     {
                           <div class="brandOption">
                               <div class="form-group form-check">
-                                  <input type="checkbox" class="form-check-input" id="chBrend@(item.Key)">
+                                  <input type="checkbox" class="form-check-input chkBoxBrdIdFltr" id="chBrend@(item.Key)" value="@Model.Brands.FirstOrDefault(b=>b.Name==item.Key).Id">
                                   <label class="form-check-label" style="text-transform:capitalize"  for="chBrend@(item.Key)">@item.Key</label>
                               </div>
                               <div class="brandQuantity">
@@ -185,10 +191,11 @@
                 <i class="fas fa-caret-down"></i>
             </div>
             <div class="myOption stock">
+                <span id="BtnClrIsStock" class="d-none" style="font-size:14px"><i class="fa fa-window-close"></i> Clear</span>
                 <div class="stockOption">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios"
-                               id="exampleRadios2" value="option2" @(Model.StockAndOutSrock.Key==0 ? "disabled":"")>
+                        <input class="form-check-input isStockFltr" type="radio" name="exmplRadio"
+                               id="exampleRadios2" value="yes" @(Model.StockAndOutSrock.Key == 0 ? "disabled" : "")>
                         <label class="form-check-label" for="exampleRadios2">
                             In stock
                         </label>
@@ -199,8 +206,8 @@
                 </div>
                 <div class="stockOption">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios"
-                               id="exampleRadios1" value="option1" @(Model.StockAndOutSrock.Value==0 ? "disabled":"")>
+                        <input class="form-check-input isStockFltr" type="radio" name="exmplRadio"
+                               id="exampleRadios1" value="no" @(Model.StockAndOutSrock.Value == 0 ? "disabled" : "")>
                         <label class="form-check-label" for="exampleRadios1">
                             Out of stock
                         </label>

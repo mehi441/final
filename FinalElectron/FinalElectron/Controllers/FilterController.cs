@@ -3,6 +3,7 @@ using FinalElectron.Models;
 using FinalElectron.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -42,10 +43,15 @@ namespace FinalElectron.Controllers
             // is stock and out of stock count
             KeyValuePair<int, int> stockAndOutSrock = new KeyValuePair<int, int>( stockCount , outOfStockCount);
 
+
+            // brands list
+            
+
             VmFilter vmFilter = new VmFilter();
             vmFilter.BrandAndCounts = brandAndCount;
             vmFilter.ProFilters = proFilters;
             vmFilter.StockAndOutSrock = stockAndOutSrock;
+            vmFilter.Brands = brands;
 
 
             #region Cart list
@@ -129,16 +135,96 @@ namespace FinalElectron.Controllers
             return View(vmFilter);
         }
 
-        //public JsonResult GetData(int[] BrandId, int RangeMax)
-        //{
-        //    var products = db.Products.Where(p => p.Id == 1).Select(s => new {
-        //        s.Id,
-        //        s.Name,
-        //        Img = s.ProductImages.FirstOrDefault().Name,
-        //        s.Reviews
-        //    }).ToList();
+        public JsonResult GetData(int MinPrc, int MaxPrc , int[] BrandId, string IsStock , int SortId, int ShowCnt )
+        {
+            List<ProductOption> productOptions = new List<ProductOption>();
 
-        //    return Json(products, JsonRequestBehavior.AllowGet);
-        //}
+            if (BrandId != null)
+            {
+                foreach (var item in BrandId)
+                {
+                    productOptions.AddRange(db.ProductOptions.Where(p=>p.Product.Model.BrandId==item)
+                                                    .Include("Color")
+                                                    .Include("Product")
+                                                    .Include("Product.Reviews")
+                                                    .Include("Product.SubCategory")
+                                                    .Include("Product.SubCategory.Category")
+                                                    .Include("Product.Model")
+                                                    .Include("Product.Model.Brand")
+                                                    .Include("Product.ProductImages")
+                                                     );
+                }
+            }
+            else
+            {
+                productOptions = db.ProductOptions.Include("Color")
+                                                  .Include("Product")
+                                                  .Include("Product.Reviews")
+                                                  .Include("Product.SubCategory")
+                                                  .Include("Product.SubCategory.Category")
+                                                  .Include("Product.Model")
+                                                  .Include("Product.Model.Brand")
+                                                  .Include("Product.ProductImages")
+                                                  .ToList();
+            }
+
+            if (SortId == 0)
+            {
+                productOptions = productOptions.OrderByDescending(p => p.Id).ToList();
+            }
+            else if (SortId == 1)
+            {
+                productOptions = productOptions.OrderBy(b => b.Product.Model.Brand.Name).ThenBy(m => m.Product.Model.Name).ThenBy(c => c.Color.Name).ToList();
+            }
+            else if (SortId == 2)
+            {
+                productOptions = productOptions.OrderByDescending(b => b.Product.Model.Brand.Name).ThenByDescending (m => m.Product.Model.Name).ThenByDescending(c => c.Color.Name).ToList();
+            }
+            else if (SortId == 3)
+            {
+                productOptions = productOptions.OrderBy(p => p.Price).ThenBy(b => b.Product.Model.Brand.Name).ToList();
+            }
+            else if (SortId == 4)
+            {
+                productOptions = productOptions.OrderByDescending(p => p.Price).ThenByDescending(b => b.Product.Model.Brand.Name).ToList();
+            }
+            else if (SortId == 5)
+            {
+                productOptions = productOptions.OrderByDescending(b => b.Product.Reviews.Count==0?  0 : b.Product.Reviews.Sum(r => r.Star) / b.Product.Reviews.Count).ThenByDescending(m => m.Product.Model.Brand.Name).ThenByDescending(c => c.Color.Name).ToList();
+            }
+            else if (SortId == 6)
+            {
+                productOptions = productOptions.OrderBy(b => b.Product.Reviews.Count == 0 ? 0 : b.Product.Reviews.Sum(r => r.Star) / b.Product.Reviews.Count).ThenBy(m => m.Product.Model.Brand.Name).ThenBy(c => c.Color.Name).ToList();
+            }
+            else if (SortId == 7)
+            {
+                productOptions = productOptions.OrderBy(p => p.Product.Model.Name).ThenBy(b => b.Product.Model.Brand.Name).ToList();
+            }
+            else if (SortId == 8)
+            {
+                productOptions = productOptions.OrderByDescending(p => p.Product.Model.Name).ThenByDescending(b => b.Product.Model.Brand.Name).ToList();
+            }
+
+            var products = productOptions.Where(p => (p.Price >= MinPrc) &&
+                                                     (p.Price <= MaxPrc) &&
+                                                     (IsStock == null ? true : (IsStock == "yes" ? p.Quantity > 0 : p.Quantity == 0))
+                                                    ).Select(p => new
+                                                    {
+                                                        p.Id,
+                                                        ColorName = p.Color.Name,
+                                                        Img = p.Product.ProductImages.FirstOrDefault().Name,
+                                                        HoverImg= p.Product.HoverImage,
+                                                        p.Quantity,
+                                                        ProName = p.Product.Name,
+                                                        ModelName = p.Product.Model.Name,
+                                                        BrandName = p.Product.Model.Brand.Name,
+                                                        Price= p.Price.ToString("#.00"),
+                                                        OldPrice =p.OldPrice.ToString("#.00"),
+                                                        StarCount= (p.Product.Reviews.Count==0? 0 : p.Product.Reviews.Sum(r => r.Star) / p.Product.Reviews.Count)
+                                                    }).ToList();
+
+
+            return Json(products, JsonRequestBehavior.AllowGet);
+        }
     }
 }
