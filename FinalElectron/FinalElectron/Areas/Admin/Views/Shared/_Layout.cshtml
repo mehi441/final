@@ -133,7 +133,7 @@
                         <div class="dropdown-divider"></div>
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <a href="@Url.Action("Logout","Home")" class="dropdown-item notify-item">
                             <i class="mdi mdi-logout-variant"></i>
                             <span>Logout</span>
                         </a>
@@ -260,6 +260,13 @@
                             <a href="@Url.Action("index","Contact")" class="waves-effect waves-light">
                                 <i class="mdi mdi-layers"></i>
                                 <span>  Contact  </span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="@Url.Action("index","Partners")" class="waves-effect waves-light">
+                                <i class="mdi mdi-layers"></i>
+                                <span>  Partners  </span>
                             </a>
                         </li>
 

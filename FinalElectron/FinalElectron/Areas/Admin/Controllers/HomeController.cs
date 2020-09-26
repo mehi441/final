@@ -1,9 +1,12 @@
-﻿using FinalElectron.DAL;
+﻿using FinalElectron.Areas.Admin.Filters;
+using FinalElectron.DAL;
 using FinalElectron.Models;
+using FinalElectron.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace FinalElectron.Areas.Admin.Controllers
@@ -13,11 +16,13 @@ namespace FinalElectron.Areas.Admin.Controllers
         // GET: Admin/Home
         private ElectronContex db = new ElectronContex();
 
+        [logout]
         public ActionResult Index()
         {
             return View();
         }
 
+        [logout]
         public ActionResult HotDeal()
         {
             return View(db.HotDeals.Include("ProductOption")
@@ -29,6 +34,7 @@ namespace FinalElectron.Areas.Admin.Controllers
         }
 
         // create
+        [logout]
         public ActionResult CreateHot()
         {
             ViewBag.ProductOptions = db.ProductOptions.Include("Product")
@@ -39,6 +45,7 @@ namespace FinalElectron.Areas.Admin.Controllers
             return View();
         }
 
+        [logout]
         [HttpPost]
         public ActionResult CreateHot(HotDeal hotDeal)
         {
@@ -84,6 +91,7 @@ namespace FinalElectron.Areas.Admin.Controllers
         }
 
         // delete hot deal
+        [logout]
         public ActionResult DeleteHot(int? id)
         {
             HotDeal hotDeal = db.HotDeals.Find(id);
@@ -100,5 +108,46 @@ namespace FinalElectron.Areas.Admin.Controllers
 
 
 
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(LoginAdmin login)
+        {
+            if (ModelState.IsValid)
+            {
+                Models.Admin admin = db.Admins.FirstOrDefault(a => a.Username == login.Username);
+
+                if (admin != null)
+                {
+                    if (Crypto.VerifyHashedPassword(admin.Password, login.Password) == true)
+                    {
+                        Session["Admin"] = admin;
+                        Session["AdminId"] = admin.Id;
+
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("Password", "Wrong password or Email");
+                        return View(login);
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("Username", "Wrong Username");
+                    return View(login);
+                }
+            }
+            return View(login);
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Login"); ;
+        }
     }
 }

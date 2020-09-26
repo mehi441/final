@@ -1,4 +1,5 @@
-﻿using FinalElectron.DAL;
+﻿using FinalElectron.Areas.Admin.Filters;
+using FinalElectron.DAL;
 using FinalElectron.Models;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,8 @@ using System.Web.Mvc;
 
 namespace FinalElectron.Areas.Admin.Controllers
 {
+    [logout]
+
     public class CategoriesController : Controller
     {
         private ElectronContex db = new ElectronContex();

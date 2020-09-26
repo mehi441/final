@@ -14,8 +14,12 @@ namespace FinalElectron.ViewModels
 
         public List<Product> ProductsLatest { get; set; }
 
+        public List<Partner> Partners { get; set; }
+        
 
+        //public List<Product> ProductsTrend { get; set; }
 
+         
 
 
 

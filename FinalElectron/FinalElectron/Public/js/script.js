@@ -663,7 +663,7 @@ $(document).ready(function () {
         });
     });
 
-    // Check boc yollari 
+    // CheckOut page yollari 
     //add Address to order 
     $("#addAddressOrder").submit(function (event) {
         event.preventDefault(); //prevent default action 
@@ -781,7 +781,7 @@ $(document).ready(function () {
             success: function (response) {
                 console.log(response);
                 if (response ==="sucses") {
-                    Swal.fire("Your order has been placed! Your order has been successfully processed! You can view your order history by going to the my account page and by clicking on history. If your purchase has an associated download, you can go to the account downloads page to view them.Please direct any questions you have to the store owner.Thanks for shopping with us online!")
+                    Swal.fire("Your order has been placed! Your order has been successfully processed! You can view your order history by going to the my account page and by clicking on history.Thanks for shopping with us online!")
 
                     setInterval(function () { window.location.href = '/Home/Index/'; }, 3000);
                 }
@@ -887,6 +887,8 @@ $(document).ready(function () {
 
     // minprice change event refresh products in filter
     $(".minPrcFilter").change(function () { // dont work
+        //setTimeout(refreshFilter(), 1000);
+
         refreshFilter();
     });
 

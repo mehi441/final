@@ -11,9 +11,13 @@ namespace FinalElectron.Models
     {
         public int Id { get; set; }
 
-        [MaxLength(200)]
+        [MaxLength(100)]
         [Required]
         public string Title { get; set; }
+
+        [MaxLength(200)]
+        [Required] 
+        public string SubTitle { get; set; }
 
         [MaxLength(200)]
         public string Image { get; set; }

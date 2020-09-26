@@ -6,11 +6,13 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using FinalElectron.Areas.Admin.Filters;
 using FinalElectron.DAL;
 using FinalElectron.Models;
 
 namespace FinalElectron.Areas.Admin.Controllers
 {
+    [logout]
     public class BrandModelsController : Controller
     {
         private ElectronContex db = new ElectronContex();

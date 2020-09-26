@@ -6,9 +6,12 @@ using System.Web;
 using System.Web.Mvc;
 using FinalElectron.Models;
 using System.IO;
+using FinalElectron.Areas.Admin.Filters;
 
 namespace FinalElectron.Areas.Admin.Controllers
 {
+    [logout]
+
     public class ProductsController : Controller
     {
         private ElectronContex db = new ElectronContex();

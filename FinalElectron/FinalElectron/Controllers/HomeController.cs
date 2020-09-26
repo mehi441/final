@@ -38,14 +38,14 @@ namespace FinalElectron.Controllers
                                                .OrderByDescending(o => o.Id)
                                                .ToList();
 
-
+            List<Partner> partners = db.Partners.ToList();
 
 
             VmHome vmHome = new VmHome();
             vmHome.ProductsForCategories = productsCategories;
             vmHome.ProductsSpecial = productsForSpecial;
             vmHome.ProductsLatest = productsLatest;
-
+            vmHome.Partners = partners;
 
             #region Cart list
 
@@ -121,14 +121,15 @@ namespace FinalElectron.Controllers
             #endregion
 
 
-            ViewBag.HotDeals = db.HotDeals.Include("ProductOption")
-                                          .Include("ProductOption.Color")
-                                          .Include("ProductOption.Product")
-                                          .Include("ProductOption.Product.Model")
-                                          .Include("ProductOption.Product.Model.Brand")
-                                          .Include("ProductOption.Product.ProductImages")
-                                          .Include("ProductOption.Product.Reviews")
-                                          .ToList();
+            //ViewBag.HotDeals = db.HotDeals
+            //                              .Include("ProductOption")
+            //                              .Include("ProductOption.Color")
+            //                              .Include("ProductOption.Product")
+            //                              .Include("ProductOption.Product.Model")
+            //                              .Include("ProductOption.Product.Model.Brand")
+            //                              .Include("ProductOption.Product.ProductImages")
+            //                              .Include("ProductOption.Product.Reviews")
+            //                              .ToList();
 
 
             ViewBag.Categories = db.Categories.Include("SubCategories").ToList();
@@ -157,7 +158,6 @@ namespace FinalElectron.Controllers
                 return Content("error");
             }
         }
-
 
         public ActionResult GetProCount()
         {
@@ -258,11 +258,5 @@ namespace FinalElectron.Controllers
 
             return Content(resp);
         }
-
-
-
-
-
-
     }
 }
