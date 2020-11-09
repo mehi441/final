@@ -90,7 +90,9 @@
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="navImg">
+                                <a href="@Url.Action("Index","Home")">
                                 <img src="~/Public/img/logo/logo-new.png" alt="logo">
+                                    </a>
                             </div>
                         </div>
                         <div class="col-lg-7">
@@ -1023,12 +1025,12 @@
                             <h2>extras</h2>
                             <div class="choose">
                                 <ul>
-                                    <li><a href="#">Contact Us</a></li>
-                                    <li><a href="#">specials</a></li>
+                                    <li><a href="@Url.Action("Index","Contact")">Contact Us</a></li>
+                                    <li><a href="@Url.Action("Index","Special")">specials</a></li>
                                     <li><a href="#">Affiliate</a></li>
-                                    <li><a href="#">Brands</a></li>
-                                    <li><a href="#">Order History</a></li>
-                                    <li><a href="#">site map</a></li>
+                                    <li><a href="@Url.Action("Index","Brand")">Brands</a></li>
+                                    <li><a href="@Url.Action("OrderHistory","Account")">Order History</a></li>
+                                    <li><a href="@Url.Action("Index","Sitemap")">site map</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -1036,12 +1038,12 @@
                             <h2>INFORMATION</h2>
                             <div class="choose">
                                 <ul>
-                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="@Url.Action("Index","Contact")">About Us</a></li>
                                     <li><a href="#">Delivery Information</a></li>
                                     <li><a href="#">Privacy Policy</a></li>
                                     <li><a href="#">Terms & Conditions</a></li>
                                     <li><a href="#">Gift Certificates</a></li>
-                                    <li><a href="#">Order History</a></li>
+                                    <li><a href="@Url.Action("OrderHistory","Account")">Order History</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -1049,9 +1051,9 @@
                             <h2>MY ACCOUNT</h2>
                             <div class="choose">
                                 <ul>
-                                    <li><a href="#">My Account</a></li>
-                                    <li><a href="#">Order History</a></li>
-                                    <li><a href="#">Wish List</a></li>
+                                    <li><a href="@Url.Action("Index","Account")">My Account</a></li>
+                                    <li><a href="@Url.Action("OrderHistory","Account")">Order History</a></li>
+                                    <li><a href="@Url.Action("Wishlist","Account")">Wish List</a></li>
                                     <li><a href="#">Newsletter</a></li>
                                     <li><a href="#">Returns</a></li>
                                     <li><a href="#">Gift Certificates</a></li>

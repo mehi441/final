@@ -169,7 +169,7 @@ $(document).ready(function () {
 
     // latest blogs owl
     $('#home #latestBlog .sliderBlog .owl-carousel').owlCarousel({
-        loop: true,
+        loop: false,
         margin: 30,
         nav: true,
         items: 2,

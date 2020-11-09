@@ -15,11 +15,15 @@ namespace FinalElectron.ViewModels
         public List<Product> ProductsLatest { get; set; }
 
         public List<Partner> Partners { get; set; }
-        
+
+        public List<Blog> Blogs { get; set; }
+
+        public List<AdSlide> AdSlides { get; set; }
+
 
         //public List<Product> ProductsTrend { get; set; }
 
-         
+
 
 
 

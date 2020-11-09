@@ -129,6 +129,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdSliderController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BlogsController.cs" />
     <Compile Include="Areas\Admin\Controllers\BrandModelsController.cs" />
     <Compile Include="Areas\Admin\Controllers\BrandsController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
@@ -149,6 +151,7 @@
     <Compile Include="Controllers\CompareController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\DetailController.cs" />
+    <Compile Include="Controllers\DetailsBlogController.cs" />
     <Compile Include="Controllers\FilterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -219,6 +222,10 @@
     <Compile Include="Migrations\202009261021291_add subtitle Blog.cs" />
     <Compile Include="Migrations\202009261021291_add subtitle Blog.designer.cs">
       <DependentUpon>202009261021291_add subtitle Blog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009281343302_edit adSlider model.cs" />
+    <Compile Include="Migrations\202009281343302_edit adSlider model.designer.cs">
+      <DependentUpon>202009281343302_edit adSlider model.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdFooter.cs" />
@@ -997,6 +1004,13 @@
     <Content Include="Areas\Admin\Views\Admins\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Admins\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Blogs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Blogs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Blogs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Blogs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Blogs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdSlider\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AdSlider\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Public\css\style.css.map" />
     <Content Include="Views\Special\Index.cshtml" />
@@ -1018,6 +1032,7 @@
     <Content Include="Views\Brand\Index.cshtml" />
     <Content Include="Views\Account\OrderHistory.cshtml" />
     <Content Include="Views\Account\OrderById.cshtml" />
+    <Content Include="Views\DetailsBlog\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202009032303480_init.resx">
@@ -1064,6 +1079,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009261021291_add subtitle Blog.resx">
       <DependentUpon>202009261021291_add subtitle Blog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009281343302_edit adSlider model.resx">
+      <DependentUpon>202009281343302_edit adSlider model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

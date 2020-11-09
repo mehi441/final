@@ -131,7 +131,7 @@ namespace FinalElectron.Areas.Admin.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError("Password", "Wrong password or Email");
+                        ModelState.AddModelError("Password", "Wrong password or Username");
                         return View(login);
                     }
                 }

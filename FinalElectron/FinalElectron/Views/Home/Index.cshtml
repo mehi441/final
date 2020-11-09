@@ -8,16 +8,14 @@
     <!--- slider offers -->
     <div id="offers">
         <div class="owl-carousel owl-theme">
-            <div class="item">
-                <a href="#">
-                    <img src="~/Public/img/offers slide/dinamik.jpg" alt="">
-                </a>
-            </div>
-            <div class="item">
-                <a href="#">
-                    <img src="~/Public/img/offers slide/tv.jpg" alt="">
-                </a>
-            </div>
+            @foreach (var item in Model.AdSlides)
+            {
+                <div class="item">
+                    <a href="@item.Link">
+                        <img src="~/Uploads/@item.Image" alt="ads">
+                    </a>
+                </div>
+            }
         </div>
     </div>
     <!-- shop by category -->
@@ -562,95 +560,32 @@
         <hr>
         <div class="sliderBlog">
             <div class="owl-carousel owl-theme">
-                <div class="item">
-                    <div class="blog">
-                        <div class="image">
-                            <img src="~/Public/img/products/parfum.jpg" alt="phone">
-                        </div>
-                        <div class="content">
-                            <h4><a href="#">canon camera</a></h4>
-                            <div>
-                                <span>0 comments</span>
-                                <span>|</span>
-                                <span>tuesday 19th june 2015</span>
-                            </div>
-                            <h5>
-                                <a href="#">
-                                    Lorem ipsum dolor sit, amet consectetur adipisicing
-                                    elit. Magnam autem, perspiciatis tempore perferendis?
+                @foreach (var item in Model.Blogs)
+                {
+                    <div class="item">
+                        <div class="blog">
+                            <div class="image">
+                                <a href="@Url.Action("Index","DetailsBlog" ,new { id=item.Id})">
+                                    <img src="~/Uploads/@item.Image" alt="phone">
                                 </a>
-                            </h5>
-                            <button class="btn">Read More</button>
+                            </div>
+                            <div class="content">
+                                <h4><a href="@Url.Action("Index","DetailsBlog" ,new { id=item.Id})">@item.Title</a></h4>
+                                <div>
+                                    <span>0 comments</span>
+                                    <span>|</span>
+                                    <span>@item.AddedDate.ToString("dddd d MMMM yyyy")</span>
+                                </div>
+                                <h5>
+                                    <a href="@Url.Action("Index","DetailsBlog" ,new { id=item.Id})">
+                                        @item.SubTitle
+                                    </a>
+                                </h5>
+                                <a href="@Url.Action("Index","DetailsBlog" ,new { id=item.Id})" class="btn">Read More</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="item">
-                    <div class="blog">
-                        <div class="image">
-                            <img src="~/Public/img/Blogs/charger.jpg" alt="phone">
-                        </div>
-                        <div class="content">
-                            <h4><a href="#">canon camera</a></h4>
-                            <div>
-                                <span>0 comments</span>
-                                <span>|</span>
-                                <span>tuesday 19th june 2015</span>
-                            </div>
-                            <h5>
-                                <a href="#">
-                                    Lorem ipsum dolor sit, amet consectetur adipisicing
-                                    elit. Magnam autem, perspiciatis tempore perferendis?
-                                </a>
-                            </h5>
-                            <button class="btn">Read More</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="blog">
-                        <div class="image">
-                            <img src="~/Public/img/Blogs/dinamikler.jpg" alt="phone">
-                        </div>
-                        <div class="content">
-                            <h4><a href="#">canon camera</a></h4>
-                            <div>
-                                <span>0 comments</span>
-                                <span>|</span>
-                                <span>tuesday 19th june 2015</span>
-                            </div>
-                            <h5>
-                                <a href="#">
-                                    Lorem ipsum dolor sit, amet consectetur adipisicing
-                                    elit. Magnam autem, perspiciatis tempore perferendis?
-                                </a>
-                            </h5>
-                            <button class="btn">Read More</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="blog">
-                        <div class="image">
-                            <img src="~/Public/img/Blogs/google.jpg" alt="phone">
-                        </div>
-                        <div class="content">
-                            <h4><a href="#">canon camera</a></h4>
-                            <div>
-                                <span>0 comments</span>
-                                <span>|</span>
-                                <span>tuesday 19th june 2015</span>
-                            </div>
-                            <h5>
-                                <a href="#">
-                                    Lorem ipsum dolor sit, amet consectetur adipisicing
-                                    elit. Magnam autem, perspiciatis tempore perferendis?
-                                </a>
-                            </h5>
-                            <button class="btn">Read More</button>
-                        </div>
-                    </div>
-                </div>
-
+                }
             </div>
         </div>
     </div>

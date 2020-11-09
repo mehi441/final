@@ -40,12 +40,21 @@ namespace FinalElectron.Controllers
 
             List<Partner> partners = db.Partners.ToList();
 
+            List<Blog> blogs = db.Blogs.ToList();
+
+            List<AdSlide> adSlides = db.AdSlides.Where(a => a.EndDate > DateTime.Now).ToList();
+            
 
             VmHome vmHome = new VmHome();
             vmHome.ProductsForCategories = productsCategories;
             vmHome.ProductsSpecial = productsForSpecial;
             vmHome.ProductsLatest = productsLatest;
             vmHome.Partners = partners;
+            vmHome.Blogs = blogs;
+            vmHome.AdSlides = adSlides;
+
+
+
 
             #region Cart list
 

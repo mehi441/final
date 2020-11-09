@@ -1210,34 +1210,38 @@
             font-size: 12px;
             color: #797979;
             text-decoration: none; }
-        #wrapper main #home #latestBlog .sliderBlog .owl-theme .item .blog .content button {
+        #wrapper main #home #latestBlog .sliderBlog .owl-theme .item .blog .content .btn {
           margin-top: 10px;
           color: #ffffff;
           text-shadow: none;
           background-color: #ed1e3c;
           border-color: #ed1e3c;
           transition: 0.4s linear; }
-          #wrapper main #home #latestBlog .sliderBlog .owl-theme .item .blog .content button:focus {
+          #wrapper main #home #latestBlog .sliderBlog .owl-theme .item .blog .content .btn:focus {
             box-shadow: none; }
-          #wrapper main #home #latestBlog .sliderBlog .owl-theme .item .blog .content button:hover {
+          #wrapper main #home #latestBlog .sliderBlog .owl-theme .item .blog .content .btn:hover {
             background-color: #333333;
             border-color: #333333; }
+
+
       #wrapper main #home #latestBlog .sliderBlog .owl-theme .owl-nav {
         position: absolute;
         top: -81px;
         right: -3px; }
-        #wrapper main #home #latestBlog .sliderBlog .owl-theme .owl-nav button {
+        #wrapper main #home #latestBlog .sliderBlog .owl-theme .owl-nav .btn {
           width: 26px;
           height: 26px;
           font-size: 20px;
           line-height: 1;
           background-color: #cacaca;
           color: white; }
-          #wrapper main #home #latestBlog .sliderBlog .owl-theme .owl-nav button:hover {
-            background-color: #ed1e3c; }
-          #wrapper main #home #latestBlog .sliderBlog .owl-theme .owl-nav button:focus {
-            border: 0;
-            outline: 0px; }
+            #wrapper main #home #latestBlog .sliderBlog .owl-theme .owl-nav .btn:hover {
+                background-color: #ed1e3c;
+            }
+            #wrapper main #home #latestBlog .sliderBlog .owl-theme .owl-nav .btn:focus {
+                border: 0;
+                outline: 0px;
+            }
   #wrapper main #home #latestProduct {
     background-color: white;
     margin-top: 40px;

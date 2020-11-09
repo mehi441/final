@@ -97,3 +97,4 @@ C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron
 C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron.Migrations.checkrequired.resources
 C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron.Migrations.addisReadytoorder.resources
 C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron.Migrations.addsubtitleBlog.resources
+C:\Users\mehib\Desktop\final\FinalElectron\FinalElectron\obj\Debug\FinalElectron.Migrations.editadSlidermodel.resources
